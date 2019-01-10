@@ -264,9 +264,9 @@ namespace NPRFIDTool
             dbManager = new NPDBManager(configManager.dbConfig);
             try
             {
-                /* 暂时注释
-                 dbManager.connectDataBase();
-                 */
+
+                dbManager.connectDataBase();
+
             }
             catch (Exception ex)
             {
@@ -275,10 +275,9 @@ namespace NPRFIDTool
                 return;
             }
             // 清空数据库
-            /* 暂时注释
             dbManager.clearDataBase(TableType.TableTypeCheck);
             dbManager.clearDataBase(TableType.TableTypeRemain);
-            */
+
             #endregion
 
             #region WebSocket连接
@@ -308,6 +307,7 @@ namespace NPRFIDTool
                     stopCheckReading();
                     // 将盘点数据写入数据库
                     dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
+                    timingManager.startScanCycleTimer();
                 };
 
                 timingManager.scanCycleStartHandler += (src, ee) =>
@@ -364,16 +364,25 @@ namespace NPRFIDTool
             // 尝试连接盘点设备
             NPLogger.log("尝试连接盘点设备...");
             int index = 0;
+            bool prepareSuccess = true;
             foreach(NPRFIDReaderInfo info in checkReaderInfos)
             {
                 updateDataGridViewConnectStatus(index, "连接中");
                 readerManager.prepareReader(info, (msg, success) =>
                 {
                     updateDataGridViewConnectStatus(index, msg);
-                    if (!success) return;
+                    if (!success) prepareSuccess = false;
 
                 });
                 index++;
+            }
+            if (!prepareSuccess)
+            {
+                NPLogger.log("部分盘点设备无法连接,请检查配置");
+                return;
+            }else
+            {
+                NPLogger.log("盘点设备准备完毕,开始首次盘点");
             }
             // 开始盘点
             startCheckReading();
@@ -806,8 +815,19 @@ namespace NPRFIDTool
 
         private void updateDataGridViewConnectStatus(int index, string msg)
         {
-            this.dataGridView1.Rows[index].Cells[3].Value = msg;
-            this.dataGridView1.Refresh();
+            if (dataGridView1.InvokeRequired)
+            {
+                this.BeginInvoke(new EventHandler(delegate {
+                    dataGridView1.Rows[index].Cells[3].Value = msg;
+                    dataGridView1.Refresh();
+                }));
+            }
+            else
+            {
+                dataGridView1.Rows[index].Cells[3].Value = msg;
+                dataGridView1.Refresh();
+            }
+
         }
 
         private void startCheckReading()

@@ -228,7 +228,7 @@ namespace NPRFIDTool.NPKit
             for (int i = 0; i < antnum; ++i)
             {
                 pwrs[i].AntId = (byte)(i + 1);
-                if (readerInfo.portType == PortType.PortTypeCheck && Array.IndexOf(usedPorts,i+1) != -1)
+                if (readerInfo.portType == PortType.PortTypeCheck)
                 {
                     pwrs[i].ReadPower = (ushort)maxp;
                     pwrs[i].WritePower = (ushort)maxp;

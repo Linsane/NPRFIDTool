@@ -10,33 +10,24 @@
   "inStorePower": 1000,
   "inStoreAntNums": 4,
   "inStorePorts": [
-    1
+    2
   ],
   "checkIP": "192.168.100.188",
   "checkAntNums": 4,
   "checkPorts": [
     2
   ],
-  "readPortTime": 20,
+  "readPortTime": 10,
   "readPortCycle": 30,
   "analyzeCycle": 48,
   "wsAddress": "123.207.54.83:1369",
   "checkReaderInfos": [
     {
-      "readerIP": "192.168.100.123",
+      "readerIP": "192.168.100.188",
       "readerAntNum": 4,
       "usedPorts": [
-        1,
-        2,
         3,
         4
-      ]
-    },
-    {
-      "readerIP": "123.134.123.199",
-      "readerAntNum": 1,
-      "usedPorts": [
-        1
       ]
     }
   ]
