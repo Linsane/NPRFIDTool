@@ -26,8 +26,8 @@
       "readerIP": "192.168.100.188",
       "readerAntNum": 4,
       "usedPorts": [
-        1,
-        2
+        3,
+        4
       ]
     }
   ]

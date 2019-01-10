@@ -305,7 +305,7 @@ namespace NPRFIDTool
                     // 停止读盘点接口
                     Console.WriteLine("停止盘点");
                     NPLogger.log("停止盘点");
-                    stopCheckReading();
+                    stopCheckReading(false);
                     // 将盘点数据写入数据库
                     dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
                     timingManager.startScanCycleTimer();
@@ -637,6 +637,7 @@ namespace NPRFIDTool
             if (timingManager != null) timingManager.stopCycles();
             timingManager = null;
             readerManager.endReading(inStoreReader);
+            stopCheckReading(true);
             readerManager.clear();
         }
    
@@ -852,16 +853,19 @@ namespace NPRFIDTool
             timingManager.startReadPortTimer();
         }
 
-        private void stopCheckReading()
+        private void stopCheckReading(bool disconnected)
         {
             int index = 0;
             foreach (NPRFIDReaderInfo info in checkReaderInfos)
             {
-                readerManager.stopCheckReading(info, (msg) =>
-                {
+                readerManager.stopCheckReading(info, (msg) =>{
                     updateDataGridViewConnectStatus(index, msg);
-                    index++;
                 });
+                if (disconnected)
+                {
+                    updateDataGridViewConnectStatus(index, "未连接");
+                }
+                index++;
             }
         }
     }
