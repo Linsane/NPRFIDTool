@@ -252,6 +252,7 @@ namespace NPRFIDTool
                     return;
                 }
             }
+
             #endregion
 
             controlButton.Text = "停止";
@@ -371,7 +372,11 @@ namespace NPRFIDTool
                 readerManager.prepareReader(info, (msg, success) =>
                 {
                     updateDataGridViewConnectStatus(index, msg);
-                    if (!success) prepareSuccess = false;
+                    if (!success)
+                    {
+                        prepareSuccess = false;
+                        
+                    }
 
                 });
                 index++;
@@ -796,6 +801,9 @@ namespace NPRFIDTool
             {
                 this.checkReaderInfos = new ArrayList(readerInfos);
                 this.renderDataGridView(this.checkReaderInfos);
+                // 确认就保存盘点设备配置
+                configManager.setCheckReaderInfos(checkReaderInfos);
+                configManager.markDownConfiguration();
             };
             checkForm.ShowDialog();
         }
