@@ -33,6 +33,7 @@ namespace NPRFIDTool.NPKit
         public static WebSocketStatusHandler statusHandler;
         public static string currentAddress;
         public static System.Timers.Timer heartBeatTimer;
+        public static bool showError;
 
         // 建立长链接
         public static void connect(string address)
@@ -109,8 +110,12 @@ namespace NPRFIDTool.NPKit
 
             ws.OnError += (sender, e) =>
             {
-                MessageBox.Show("Websocket Err:" + e.Message);
-                errorHandler(e);
+                if (!showError)
+                {
+                    showError = true;
+                    MessageBox.Show("Websocket Err:" + e.Message);
+                    errorHandler(e);
+                }
             };
 
             ws.ConnectAsync();

@@ -30,6 +30,7 @@ namespace NPRFIDTool
         private RadioButton[] checkRadioList;
         private CheckBox[] checkCheckBoxList;
         private bool hasError;
+        private bool showError;
 
         private delegate void MainThreadMethod();
 
@@ -90,7 +91,6 @@ namespace NPRFIDTool
 
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
-                MessageBox.Show("websocket 连接失败");
                 resetAppStatus();
             };
             // websocket通知开始读入库端口
@@ -150,6 +150,10 @@ namespace NPRFIDTool
 
             readerManager.failHandler += (ex) =>
             {
+                if (!showError)
+                {
+                    showError = true;
+                }
                 MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
                 resetAppStatus();
             };
@@ -785,6 +789,8 @@ namespace NPRFIDTool
             readerManager.endReading(checkReader);
             //NPWebSocket.disconnect();
             readerManager.clear();
+            showError = false;
+            NPWebSocket.showError = false;
         }
    
         #region 控件输入校验
