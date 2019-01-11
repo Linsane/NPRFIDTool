@@ -11,8 +11,8 @@ using Newtonsoft.Json;
 namespace NPRFIDTool.NPKit
 {
     enum ReaderStatus { readerStatusStop, readerStatusReading };
-    delegate void CreatReaderFailHandler(Exception ex);
-    delegate void ReaderPortFail(string msg);
+    delegate void CreatReaderFailHandler(string ip, Exception ex);
+    delegate void ReaderPortFail(string ip, string msg);
     class WrapReader
     {
         public Reader reader;
@@ -54,7 +54,7 @@ namespace NPRFIDTool.NPKit
                 catch (Exception ex)
                 {
                     callback("连接失败");
-                    failHandler(ex);
+                    failHandler(readerInfo.readerIP, ex);
                 }
 
                 // 没有创建成功
@@ -72,7 +72,7 @@ namespace NPRFIDTool.NPKit
                         {
                             connectStatus = ConnectStauts.PortError;
                             callback("天线选择有误");
-                            portFailHandler("盘点天线选择有误");
+                            portFailHandler(readerInfo.readerIP, "盘点天线选择有误");
                             return false;
                         }
                     }
@@ -107,7 +107,7 @@ namespace NPRFIDTool.NPKit
                 }
                 catch (Exception ex)
                 {
-                    failHandler(ex);
+                    failHandler(readerInfo.readerIP,ex);
                     connectStatus = ConnectStauts.Disconnected;
                 }
                 
@@ -145,7 +145,7 @@ namespace NPRFIDTool.NPKit
                     if (Array.IndexOf(wrapReader.validPorts, port) == -1)
                     {
                         connectStatus = ConnectStauts.PortError;
-                        portFailHandler("盘点天线选择有误");
+                        portFailHandler(readerInfo.readerIP, "盘点天线选择有误");
                         return;
                     }
                 }
@@ -159,7 +159,7 @@ namespace NPRFIDTool.NPKit
                     if (Array.IndexOf(wrapReader.validPorts, port) == -1)
                     {
                         connectStatus = ConnectStauts.PortError;
-                        portFailHandler("入库天线选择有误");
+                        portFailHandler(readerInfo.readerIP, "入库天线选择有误");
                         return;
                     }
                 }
@@ -341,7 +341,8 @@ namespace NPRFIDTool.NPKit
             Reader rdrtmp = (Reader)sender;
             //如果需要可在此处记录异常日志
             Console.WriteLine(rdrtmp.Address + "--异常信息:" + expArgs.ReaderException.ToString());
-            NPLogger.log(rdrtmp.Address + "--异常信息:" + expArgs.ReaderException.ToString());
+            NPLogger.log("读写器 " + rdrtmp.Address + "--异常信息:" + expArgs.ReaderException.ToString());
+            failHandler(rdrtmp.Address,expArgs.ReaderException);
         }
 
         #endregion
@@ -424,7 +425,7 @@ namespace NPRFIDTool.NPKit
             {
                 reader.StartReading();
                 wrapReader.isReading = true;
-                callback("读取中");
+                callback("扫描中");
             }
         }
 

@@ -17,13 +17,20 @@
   "checkPorts": [
     2
   ],
-  "readPortTime": 10,
+  "readPortTime": 20,
   "readPortCycle": 30,
   "analyzeCycle": 48,
   "wsAddress": "123.207.54.83:1369",
   "checkReaderInfos": [
     {
       "readerIP": "192.168.100.188",
+      "readerAntNum": 4,
+      "usedPorts": [
+        4
+      ]
+    },
+    {
+      "readerIP": "192.168.100.189",
       "readerAntNum": 4,
       "usedPorts": [
         4

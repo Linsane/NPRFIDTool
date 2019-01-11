@@ -82,8 +82,8 @@ namespace NPRFIDTool
 
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
-                MessageBox.Show("websocket 连接失败");
                 resetAppStatus();
+                MessageBox.Show("websocket 连接失败");
             };
             // websocket通知开始读入库端口
             NPWebSocket.startInStoreHandler += (wse) =>
@@ -140,15 +140,17 @@ namespace NPRFIDTool
 
             #endregion
 
-            readerManager.failHandler += (ex) =>
+            readerManager.failHandler += (ip, ex) =>
             {
+                resetAppStatus();
+                updateDataGridViewConnectStatusForIP(ip, "连接失败");
                 MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
-                resetAppStatus();
             };
-            readerManager.portFailHandler += (ex) =>
+            readerManager.portFailHandler += (ip, ex) =>
             {
-                MessageBox.Show(ex);
                 resetAppStatus();
+                updateDataGridViewConnectStatusForIP(ip, "端口异常");
+                MessageBox.Show(ex);
             };
             #endregion
         }
@@ -226,15 +228,15 @@ namespace NPRFIDTool
             #region 启动条件判断
             if (!validateCurrentConfiguration())
             {
-                MessageBox.Show("请先完善配置");
                 resetAppStatus();
+                MessageBox.Show("请先完善配置");
                 return;
             }
 
             if (hasError)
             {
-                MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
                 resetAppStatus();
+                MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
                 return;
             }
 
@@ -271,8 +273,8 @@ namespace NPRFIDTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
                 resetAppStatus();
+                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
                 return;
             }
             // 清空数据库
@@ -416,8 +418,8 @@ namespace NPRFIDTool
 
             if (hasError)
             {
-                MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
                 resetAppStatus();
+                MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
                 return;
             }
 
@@ -826,6 +828,27 @@ namespace NPRFIDTool
                 this.dataGridView1.Rows[index].Cells[1].Value = info.readerAntNum.ToString();
                 this.dataGridView1.Rows[index].Cells[2].Value = string.Join(",",info.usedPorts);
                 this.dataGridView1.Rows[index].Cells[3].Value = "未连接";
+            }
+        }
+
+        private void updateDataGridViewConnectStatusForIP(string ip, string msg)
+        {
+            int resIndex = -1;
+            int index = 0;
+            foreach(NPRFIDReaderInfo info in this.checkReaderInfos)
+            {
+                if(info.readerIP == ip)
+                {
+                    resIndex = index;
+                    break;
+                } else
+                {
+                    index++;
+                }
+            }
+            if(resIndex != -1)
+            {
+                updateDataGridViewConnectStatus(resIndex, msg);
             }
         }
 
