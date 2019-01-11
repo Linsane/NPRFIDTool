@@ -21,5 +21,13 @@
   "readPortCycle": 30,
   "analyzeCycle": 48,
   "wsAddress": "123.207.54.83:1369",
-  "checkReaderInfos": []
+  "checkReaderInfos": [
+    {
+      "readerIP": "192.168.100.188",
+      "readerAntNum": 4,
+      "usedPorts": [
+        4
+      ]
+    }
+  ]
 }

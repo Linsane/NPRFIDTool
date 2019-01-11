@@ -33,7 +33,7 @@ namespace NPRFIDTool
 
         public void setUpCheckReaderInfos(ArrayList infos)
         {
-            this.checkReaderInfos = new ArrayList(infos);
+            this.checkReaderInfos = this.deepCopy(infos);
             drawItems();
         }
 
@@ -136,11 +136,31 @@ namespace NPRFIDTool
             checkControl.index = index;
             checkControl.deleteHandler = (itemIndex) =>
             {
+                foreach (NPCheckInfoControl control in this.checkControls)
+                {
+                    NPRFIDReaderInfo tempInfo = (NPRFIDReaderInfo)this.checkReaderInfos[control.index];
+                    tempInfo.readerIP = control.getIpAddress();
+                    tempInfo.readerAntNum = control.getPortNum();
+                    tempInfo.usedPorts = control.getUsedPort();
+                    this.checkReaderInfos[control.index] = tempInfo;
+
+                }
                 checkReaderInfos.RemoveAt(itemIndex);
                 drawItems();
             };
             this.Controls.Add(checkControl);
             this.checkControls.Add(checkControl);
+        }
+
+        private ArrayList deepCopy(ArrayList array)
+        {
+            ArrayList list = new ArrayList();
+            foreach(NPRFIDReaderInfo info in array)
+            {
+                NPRFIDReaderInfo nInfo = new NPRFIDReaderInfo(info.portType, info.readerIP, info.readerAntNum, info.usedPorts, info.portPower);
+                list.Add(nInfo);
+            }
+            return list;
         }
     }
 }
