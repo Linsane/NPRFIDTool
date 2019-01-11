@@ -153,14 +153,19 @@ namespace NPRFIDTool
                 if (!showError)
                 {
                     showError = true;
+                    MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
+                    resetAppStatus();
                 }
-                MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
-                resetAppStatus();
+
             };
             readerManager.portFailHandler += (ex) =>
             {
-                MessageBox.Show(ex);
-                resetAppStatus();
+                if (!showError)
+                {
+                    showError = true;
+                    MessageBox.Show(ex);
+                    resetAppStatus();
+                }
             };
             #endregion
         }
