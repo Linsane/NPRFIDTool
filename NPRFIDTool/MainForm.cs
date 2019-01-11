@@ -369,17 +369,18 @@ namespace NPRFIDTool
             foreach(NPRFIDReaderInfo info in checkReaderInfos)
             {
                 updateDataGridViewConnectStatus(index, "连接中");
-                readerManager.prepareReader(info, (msg, success) =>
+                bool success = readerManager.prepareReader(info, (msg) =>
                 {
                     updateDataGridViewConnectStatus(index, msg);
-                    if (!success)
-                    {
-                        prepareSuccess = false;
-                        
-                    }
-
                 });
-                index++;
+                if (!success)
+                {
+                    prepareSuccess = false;
+                    break;
+                } else
+                {
+                    index++;
+                }
             }
             if (!prepareSuccess)
             {

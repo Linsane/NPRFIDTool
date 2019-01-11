@@ -21,6 +21,7 @@ namespace NPRFIDTool
         {
             InitializeComponent();
             this.checkReaderInfos = new ArrayList();
+            this.checkControls = new ArrayList();
         }
 
         private ArrayList checkReaderInfos;
@@ -50,41 +51,20 @@ namespace NPRFIDTool
 
             int index = 0;
 
+            this.updateButtonsLocation();
             foreach (NPRFIDReaderInfo info in checkReaderInfos)
             {
-                NPCheckInfoControl checkControl = new NPCheckInfoControl();
-                checkControl.setTitle("盘点器"+ (index+1));
-                checkControl.setAddress(info.readerIP);
-                checkControl.setPortNum(info.readerAntNum);
-                checkControl.setUsedPort(info.usedPorts);
-                int pointX = 0;
-                int pointY = 0;
-                if (index % 2 == 0)
-                {
-                    pointX = gap;
-                }
-                else
-                {
-                    pointX = gap * 2 + width;
-                }
-                pointY = gap * (index / 2 + 1) + height * (index / 2);
-                checkControl.Location = new System.Drawing.Point(pointX, pointY);
-                checkControl.Size = new System.Drawing.Size(width, height);
-                checkControl.index = index;
-                checkControl.deleteHandler = (itemIndex) =>
-                {
-                    checkReaderInfos.RemoveAt(itemIndex);
-                    drawItems();
-                };
-                this.Controls.Add(checkControl);
-                this.checkControls.Add(checkControl);
+                this.createNewCheckControl(index, info);
                 index++;
             }
-            updateButtonsLocation();
         }
 
         private void updateButtonsLocation()
         {
+            this.Controls.Remove(this.space);
+            this.Controls.Remove(this.cancelButton);
+            this.Controls.Remove(this.comfirmButton);
+            this.Controls.Remove(this.addButton);
             int cancelX = this.cancelButton.Location.X;
             int comfirmX = this.comfirmButton.Location.X;
             int addX = this.addButton.Location.X;
@@ -127,8 +107,40 @@ namespace NPRFIDTool
         {
             NPRFIDReaderInfo info = new NPRFIDReaderInfo(PortType.PortTypeCheck, "", 0, new JArray(),0);
             this.checkReaderInfos.Add(info);
-            this.drawItems();
+            int index = this.checkReaderInfos.Count - 1;
+            this.updateButtonsLocation();
+            this.createNewCheckControl(index, info);
             this.ScrollControlIntoView(this.space);
+        }
+
+        private void createNewCheckControl(int index, NPRFIDReaderInfo info)
+        {
+            NPCheckInfoControl checkControl = new NPCheckInfoControl();
+            checkControl.setTitle("盘点器" + (index + 1));
+            checkControl.setAddress(info.readerIP);
+            checkControl.setPortNum(info.readerAntNum);
+            checkControl.setUsedPort(info.usedPorts);
+            int pointX = 0;
+            int pointY = 0;
+            if (index % 2 == 0)
+            {
+                pointX = gap;
+            }
+            else
+            {
+                pointX = gap * 2 + width;
+            }
+            pointY = gap * (index / 2 + 1) + height * (index / 2);
+            checkControl.Location = new System.Drawing.Point(pointX, pointY);
+            checkControl.Size = new System.Drawing.Size(width, height);
+            checkControl.index = index;
+            checkControl.deleteHandler = (itemIndex) =>
+            {
+                checkReaderInfos.RemoveAt(itemIndex);
+                drawItems();
+            };
+            this.Controls.Add(checkControl);
+            this.checkControls.Add(checkControl);
         }
     }
 }

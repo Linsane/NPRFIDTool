@@ -34,7 +34,7 @@ namespace NPRFIDTool.NPKit
 
         public int connectStatus = ConnectStauts.NotStarted; // 0 未启动 1 连接成功 -1 连接失败 -2 端口有误
 
-        public void prepareReader(NPRFIDReaderInfo readerInfo, Action<string,bool> callback)
+        public bool prepareReader(NPRFIDReaderInfo readerInfo, Action<string> callback)
         {
             Reader reader = null;
             WrapReader wrapReader = null;
@@ -53,12 +53,12 @@ namespace NPRFIDTool.NPKit
                 }
                 catch (Exception ex)
                 {
-                    callback("连接失败",false);
+                    callback("连接失败");
                     failHandler(ex);
                 }
 
                 // 没有创建成功
-                if (reader == null) return; 
+                if (reader == null) return false; 
 
                 // 判断端口是否可用
                 int[] usedPorts = readerInfo.usedPorts.ToObject<int[]>();
@@ -71,14 +71,18 @@ namespace NPRFIDTool.NPKit
                         if (Array.IndexOf(wrapReader.validPorts, port) == -1)
                         {
                             connectStatus = ConnectStauts.PortError;
-                            callback("天线选择有误", false);
+                            callback("天线选择有误");
                             portFailHandler("盘点天线选择有误");
-                            return;
+                            return false;
                         }
                     }
                     wrapReader.checkPorts = new JArray(readerInfo.usedPorts);
                 }
-                callback("已连接", true);
+                callback("已连接");
+                return true;
+            } else
+            {
+                return false;
             }
         }
 
