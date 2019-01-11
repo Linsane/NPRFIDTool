@@ -109,9 +109,8 @@ namespace NPRFIDTool.NPKit
 
             ws.OnError += (sender, e) =>
             {
-                errorHandler(e);
                 MessageBox.Show("Websocket Err:" + e.Message);
-                
+                errorHandler(e);
             };
 
             ws.ConnectAsync();

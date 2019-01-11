@@ -82,8 +82,8 @@ namespace NPRFIDTool
 
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
-                resetAppStatus();
                 MessageBox.Show("websocket 连接失败");
+                resetAppStatus();
             };
             // websocket通知开始读入库端口
             NPWebSocket.startInStoreHandler += (wse) =>
@@ -142,15 +142,15 @@ namespace NPRFIDTool
 
             readerManager.failHandler += (ip, ex) =>
             {
-                resetAppStatus();
                 updateDataGridViewConnectStatusForIP(ip, "连接失败");
                 MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
+                resetAppStatus();
             };
             readerManager.portFailHandler += (ip, ex) =>
             {
-                resetAppStatus();
                 updateDataGridViewConnectStatusForIP(ip, "端口异常");
                 MessageBox.Show(ex);
+                resetAppStatus();
             };
             #endregion
         }
@@ -228,15 +228,15 @@ namespace NPRFIDTool
             #region 启动条件判断
             if (!validateCurrentConfiguration())
             {
-                resetAppStatus();
                 MessageBox.Show("请先完善配置");
+                resetAppStatus();
                 return;
             }
 
             if (hasError)
             {
-                resetAppStatus();
                 MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
+                resetAppStatus();
                 return;
             }
 
@@ -273,8 +273,8 @@ namespace NPRFIDTool
             }
             catch (Exception ex)
             {
-                resetAppStatus();
                 MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
+                resetAppStatus();
                 return;
             }
             // 清空数据库
@@ -418,8 +418,8 @@ namespace NPRFIDTool
 
             if (hasError)
             {
-                resetAppStatus();
                 MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
+                resetAppStatus();
                 return;
             }
 
