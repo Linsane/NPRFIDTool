@@ -29,6 +29,7 @@ namespace NPRFIDTool
         private CheckBox[] inStoreCheckBoxList;
         private ArrayList checkReaderInfos;
         private bool hasError;
+        private bool showError;
 
         private delegate void MainThreadMethod();
 
@@ -82,8 +83,12 @@ namespace NPRFIDTool
 
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
-                MessageBox.Show("websocket 连接失败");
-                resetAppStatus();
+                if (!showError)
+                {
+                    showError = true;
+                    MessageBox.Show("websocket 连接失败");
+                    resetAppStatus();
+                }
             };
             // websocket通知开始读入库端口
             NPWebSocket.startInStoreHandler += (wse) =>
@@ -142,15 +147,27 @@ namespace NPRFIDTool
 
             readerManager.failHandler += (ip, ex) =>
             {
-                updateDataGridViewConnectStatusForIP(ip, "连接失败");
-                MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
-                resetAppStatus();
+                
+                if(!showError)
+                {
+                    showError = true;
+                    updateDataGridViewConnectStatusForIP(ip, "连接失败");
+                    MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
+                    resetAppStatus();
+                }
+
             };
             readerManager.portFailHandler += (ip, ex) =>
             {
-                updateDataGridViewConnectStatusForIP(ip, "端口异常");
-                MessageBox.Show(ex);
-                resetAppStatus();
+                
+                if (!showError)
+                {
+                    showError = true;
+                    updateDataGridViewConnectStatusForIP(ip, "端口异常");
+                    MessageBox.Show(ex);
+                    resetAppStatus();
+                }
+
             };
             #endregion
         }
@@ -648,6 +665,8 @@ namespace NPRFIDTool
             readerManager.endReading(inStoreReader);
             stopCheckReading(true);
             readerManager.clear();
+            showError = false;
+            NPWebSocket.showError = false;
         }
    
         #region 控件输入校验
