@@ -1051,7 +1051,7 @@
             this.detailButton.Name = "detailButton";
             this.detailButton.Size = new System.Drawing.Size(53, 20);
             this.detailButton.TabIndex = 8;
-            this.detailButton.Text = "详细信息";
+            this.detailButton.Text = "修改配置";
             this.detailButton.UseVisualStyleBackColor = true;
             this.detailButton.Click += new System.EventHandler(this.detailButton_Click);
             // 
