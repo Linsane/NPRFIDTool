@@ -387,7 +387,13 @@ namespace NPRFIDTool
                 return;
             }else
             {
-                NPLogger.log("盘点设备准备完毕,开始首次盘点");
+                if (this.checkReaderInfos.Count <= 0) {
+                    NPLogger.log("准备完毕，不存在盘点设备");
+                } else 
+                {
+                    NPLogger.log("盘点设备准备完毕,开始首次盘点");
+                }
+                
             }
             // 开始盘点
             startCheckReading();
@@ -841,6 +847,11 @@ namespace NPRFIDTool
 
         private void startCheckReading()
         {
+            if (checkReaderInfos.Count <= 0)
+            {
+                NPLogger.log("不存在盘点设备，请进行设置!");
+                return;
+            }
             int index = 0;
             foreach(NPRFIDReaderInfo info in checkReaderInfos)
             {

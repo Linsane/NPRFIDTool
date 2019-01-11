@@ -410,6 +410,8 @@ namespace NPRFIDTool.NPKit
 
         public void startCheckReading(NPRFIDReaderInfo info, Action<string> callback)
         {
+            bool readerExist = isReaderExist(info);
+            if (!readerExist) return;
             Reader reader = null;
             WrapReader wrapReader = null;
             wrapReader = readerDict[info.readerIP];
@@ -424,6 +426,8 @@ namespace NPRFIDTool.NPKit
 
         public void stopCheckReading(NPRFIDReaderInfo info, Action<string> callback)
         {
+            bool readerExist = isReaderExist(info);
+            if (!readerExist) return;
             WrapReader wrapReader = readerDict[info.readerIP];
             Reader reader = wrapReader.reader;
             if (wrapReader.isReading)
