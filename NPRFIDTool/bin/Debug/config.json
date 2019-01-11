@@ -28,6 +28,20 @@
       "usedPorts": [
         1
       ]
+    },
+    {
+      "readerIP": "192.168.100.180",
+      "readerAntNum": 4,
+      "usedPorts": [
+        2
+      ]
+    },
+    {
+      "readerIP": "192.168.100.189",
+      "readerAntNum": 4,
+      "usedPorts": [
+        3
+      ]
     }
   ]
 }

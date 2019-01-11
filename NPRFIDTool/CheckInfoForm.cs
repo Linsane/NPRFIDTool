@@ -87,6 +87,7 @@ namespace NPRFIDTool
 
         private void comfirmButton_Click(object sender, EventArgs e)
         {
+            bool errorExist = false;
             foreach (NPCheckInfoControl control in this.checkControls)
             {
                 NPRFIDReaderInfo info = (NPRFIDReaderInfo)this.checkReaderInfos[control.index];
@@ -94,8 +95,15 @@ namespace NPRFIDTool
                 info.readerAntNum = control.getPortNum();
                 info.usedPorts = control.getUsedPort();
                 this.checkReaderInfos[control.index] = info;
-
+                if (control.hasError)
+                {
+                    MessageBox.Show("含有不正确的配置，请进行修改");
+                    errorExist = true;
+                    break;
+                }
             }
+            if (errorExist) return;
+            
             if (confirmHandler != null)
             {
                 confirmHandler(this.checkReaderInfos);
@@ -147,6 +155,19 @@ namespace NPRFIDTool
                 }
                 checkReaderInfos.RemoveAt(itemIndex);
                 drawItems();
+            };
+            checkControl.checkIPHandler = (ip) =>
+            {
+                bool exist = false;
+                foreach (NPRFIDReaderInfo readerInfo in checkReaderInfos)
+                {
+                    if(readerInfo.readerIP == ip)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+                return exist;
             };
             this.Controls.Add(checkControl);
             this.checkControls.Add(checkControl);
