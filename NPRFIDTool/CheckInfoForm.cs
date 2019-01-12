@@ -177,6 +177,10 @@ namespace NPRFIDTool
             };
             this.Controls.Add(checkControl);
             this.checkControls.Add(checkControl);
+            if (checkReaderInfos.Count - 1 == index)
+            {
+                checkControl._getFocus();
+            }
         }
 
         private ArrayList deepCopy(ArrayList array)
