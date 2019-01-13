@@ -72,6 +72,7 @@ namespace NPRFIDTool.NPKit
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                NPLogger.log(ex.Message);
             }
 
         }

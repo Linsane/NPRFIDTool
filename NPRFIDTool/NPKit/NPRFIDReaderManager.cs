@@ -265,6 +265,7 @@ namespace NPRFIDTool.NPKit
                 foreach(string tag in sendNeededTags)
                 {
                     Console.WriteLine(msg + tag);
+                    NPLogger.log(msg + tag);
                 }
             }
         }
@@ -281,6 +282,7 @@ namespace NPRFIDTool.NPKit
             Reader rdrtmp = (Reader)sender;
             //如果需要可在此处记录异常日志
             Console.WriteLine(rdrtmp.Address + "--异常信息:" + expArgs.ReaderException.ToString());
+            NPLogger.log(rdrtmp.Address + "--异常信息:" + expArgs.ReaderException.ToString());
         }
 
         #endregion
@@ -315,6 +317,7 @@ namespace NPRFIDTool.NPKit
             {
                 checkedDict.Add(tag.EPCString, tag.Time.ToString());
                 Console.WriteLine("记录盘点端口数据:" + tag.EPCString);
+                NPLogger.log("记录盘点端口数据:" + tag.EPCString);
             }
             else
             {

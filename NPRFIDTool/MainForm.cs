@@ -86,6 +86,8 @@ namespace NPRFIDTool
             #endregion
 
             #region 初始化各种组件
+            NPLogger.rtb = logTextBox;
+
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
                 MessageBox.Show("websocket 连接失败");
@@ -98,6 +100,7 @@ namespace NPRFIDTool
                 readerManager.beginReading(inStoreReader);
                 timingManager.startIOStoreTimer();
                 Console.WriteLine("开始入库");
+                NPLogger.log("开始入库");
             };
             // websocket通知开始读入库端口
             NPWebSocket.startOutStoreHandler += (wse) =>
@@ -106,6 +109,7 @@ namespace NPRFIDTool
                 readerManager.beginReading(inStoreReader);
                 timingManager.startIOStoreTimer();
                 Console.WriteLine("开始出库");
+                NPLogger.log("开始出库");
             };
             // websocket通知结束读出入库端口
             NPWebSocket.stopScanHandler += (wse) =>
@@ -113,6 +117,7 @@ namespace NPRFIDTool
                 readerManager.scanType = -1;
                 readerManager.endReading(inStoreReader);
                 Console.WriteLine("停止读出入库端口");
+                NPLogger.log("停止读出入库端口");
             };
             NPWebSocket.connectStopHandler += (wse) =>
             {
@@ -302,6 +307,7 @@ namespace NPRFIDTool
                 {
                     // 停止读盘点接口
                     Console.WriteLine("停止盘点");
+                    NPLogger.log("停止盘点");
                     readerManager.endReading(checkReader);
                     // 将盘点数据写入数据库
                     dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
@@ -310,12 +316,14 @@ namespace NPRFIDTool
                 {
                     // 开始读盘点接口
                     Console.WriteLine("开始盘点，读取盘点数据");
+                    NPLogger.log("开始盘点，读取盘点数据");
                     readerManager.beginReading(checkReader);
                 };
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
                 {
                     // 开始分析差异数据，上报分析结果
                     Console.WriteLine("分析盘点结果");
+                    NPLogger.log("分析盘点结果");
                     // 请求remain表数据，根据数据表进行盘点分析
 #pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
                     services.getStockInit((remainData) =>
@@ -327,11 +335,13 @@ namespace NPRFIDTool
                         {
                             services.reportCheckDiff(diffArray);
                             Console.WriteLine("盘点失败，上报差异结果" + diffArray.ToString());
+                            NPLogger.log("盘点失败，上报差异结果" + diffArray.ToString());
                         }
                         else
                         {
                             services.reportCheckSuccess(null);
                             Console.WriteLine("盘点成功");
+                            NPLogger.log("盘点成功");
                         }
                     });
 #pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
@@ -343,6 +353,7 @@ namespace NPRFIDTool
                         readerManager.scanType = -1;
                         readerManager.endReading(inStoreReader);
                         Console.WriteLine("出入库读取达到时限停止");
+                        NPLogger.log("出入库读取达到时限停止");
                     }
                 };
             }
@@ -350,6 +361,7 @@ namespace NPRFIDTool
             timingManager.startCycles();
             // 启动自动触发一次盘点
             Console.WriteLine("启动的第一次盘点");
+            NPLogger.log("启动的第一次盘点");
             readerManager.beginReading(checkReader);
             timingManager.readPortTimer.Enabled = true;
 

@@ -32,6 +32,9 @@
             this.systemConfigGroup = new System.Windows.Forms.GroupBox();
             this.systemConfigContainer = new System.Windows.Forms.SplitContainer();
             this.serverConfigGroup = new System.Windows.Forms.GroupBox();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label16 = new System.Windows.Forms.Label();
+            this.websocketTextBox = new System.Windows.Forms.TextBox();
             this.urlContainer = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.urlTextBox = new System.Windows.Forms.TextBox();
@@ -126,15 +129,17 @@
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.label16 = new System.Windows.Forms.Label();
-            this.websocketTextBox = new System.Windows.Forms.TextBox();
+            this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
             this.systemConfigContainer.Panel2.SuspendLayout();
             this.systemConfigContainer.SuspendLayout();
             this.serverConfigGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.urlContainer)).BeginInit();
             this.urlContainer.Panel1.SuspendLayout();
             this.urlContainer.Panel2.SuspendLayout();
@@ -169,10 +174,6 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // systemConfigGroup
@@ -229,6 +230,48 @@
             this.serverConfigGroup.TabStop = false;
             this.serverConfigGroup.Text = "服务器配置";
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 115);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 100);
+            this.splitContainer3.MaximumSize = new System.Drawing.Size(0, 50);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.label16);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.websocketTextBox);
+            this.splitContainer3.Size = new System.Drawing.Size(433, 50);
+            this.splitContainer3.SplitterDistance = 113;
+            this.splitContainer3.TabIndex = 2;
+            this.splitContainer3.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "websocket地址";
+            // 
+            // websocketTextBox
+            // 
+            this.websocketTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.websocketTextBox.Location = new System.Drawing.Point(3, 19);
+            this.websocketTextBox.Name = "websocketTextBox";
+            this.websocketTextBox.Size = new System.Drawing.Size(285, 21);
+            this.websocketTextBox.TabIndex = 0;
+            this.websocketTextBox.TabStop = false;
+            this.websocketTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
+            // 
             // urlContainer
             // 
             this.urlContainer.Dock = System.Windows.Forms.DockStyle.Top;
@@ -279,7 +322,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(486, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(492, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -307,7 +350,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(462, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(468, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -359,7 +402,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(271, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(277, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -367,7 +410,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(271, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(277, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -375,7 +418,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(271, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(277, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -383,7 +426,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(271, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(277, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -1464,53 +1507,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // splitContainer3
+            // logTextBox
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.IsSplitterFixed = true;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 115);
-            this.splitContainer3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 100);
-            this.splitContainer3.MaximumSize = new System.Drawing.Size(0, 50);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.label16);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.websocketTextBox);
-            this.splitContainer3.Size = new System.Drawing.Size(433, 50);
-            this.splitContainer3.SplitterDistance = 113;
-            this.splitContainer3.TabIndex = 2;
-            this.splitContainer3.TabStop = false;
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 12);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "websocket地址";
-            // 
-            // websocketTextBox
-            // 
-            this.websocketTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.websocketTextBox.Location = new System.Drawing.Point(3, 19);
-            this.websocketTextBox.Name = "websocketTextBox";
-            this.websocketTextBox.Size = new System.Drawing.Size(285, 21);
-            this.websocketTextBox.TabIndex = 0;
-            this.websocketTextBox.TabStop = false;
-            this.websocketTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
+            this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logTextBox.Location = new System.Drawing.Point(578, 611);
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.Size = new System.Drawing.Size(303, 41);
+            this.logTextBox.TabIndex = 7;
+            this.logTextBox.Text = "";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 655);
+            this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);
@@ -1527,6 +1540,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).EndInit();
             this.systemConfigContainer.ResumeLayout(false);
             this.serverConfigGroup.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.urlContainer.Panel1.ResumeLayout(false);
             this.urlContainer.Panel1.PerformLayout();
             this.urlContainer.Panel2.ResumeLayout(false);
@@ -1574,12 +1593,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            this.splitContainer3.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1686,6 +1699,7 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox websocketTextBox;
+        private System.Windows.Forms.RichTextBox logTextBox;
     }
 }
 

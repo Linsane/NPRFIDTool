@@ -48,18 +48,21 @@ namespace NPRFIDTool.NPKit
                     case "enter_scan":
                         {
                             Console.WriteLine("后台通知开始扫描入库标签");
+                            NPLogger.log("后台通知开始扫描入库标签");
                             startInStoreHandler(e);
                         }
                         break;
                     case "out_scan":
                         {
                             Console.WriteLine("后台通知开始扫描出库标签");
+                            NPLogger.log("后台通知开始扫描出库标签");
                             startOutStoreHandler(e);
                         }
                         break;
                     case "stop_scan":
                         {
                             Console.WriteLine("后台通知停止扫描出入库标签");
+                            NPLogger.log("后台通知停止扫描出入库标签");
                             stopScanHandler(e);
                         }
                         break;
@@ -69,12 +72,14 @@ namespace NPRFIDTool.NPKit
             ws.OnOpen += (sender, e) =>
             {
                 Console.WriteLine("Websocket Open");
+                NPLogger.log("Websocket Open");
                 initial();
             };
 
             ws.OnClose += (sender, e) =>
             {
                 Console.WriteLine("Websocket Close");
+                NPLogger.log("Websocket Close");
                 if (e.Reason != null && e.Reason != "")
                 {
                     MessageBox.Show(e.Reason);

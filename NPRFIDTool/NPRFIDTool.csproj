@@ -71,6 +71,7 @@
     <Compile Include="NPKit\NPBackendService.cs" />
     <Compile Include="NPKit\NPConfigManager.cs" />
     <Compile Include="NPKit\NPDBManager.cs" />
+    <Compile Include="NPKit\NPLogger.cs" />
     <Compile Include="NPKit\NPRFIDReaderInfo.cs" />
     <Compile Include="NPKit\NPRFIDReaderManager.cs" />
     <Compile Include="NPKit\NPTimingManager.cs" />
