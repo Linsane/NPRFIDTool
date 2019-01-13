@@ -44,7 +44,7 @@ namespace NPRFIDTool.NPKit
                 analyzeCycleStartHandler(src, e);
             };
 
-            ioStoreTimer = new Timer(0.5 * 60 * 1000);
+            ioStoreTimer = new Timer(10 * 60 * 1000);
             ioStoreTimer.AutoReset = false;
             ioStoreTimer.Elapsed += (src, e) =>
             {
