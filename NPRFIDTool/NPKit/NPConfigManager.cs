@@ -47,20 +47,29 @@ namespace NPRFIDTool.NPKit
         {
             if (!File.Exists("config.json")) return;
             string configString = File.ReadAllText("config.json");
-            JObject config = JObject.Parse(configString);
-            configURL = config["configURL"].ToString();
-            dbConfig = config["dbConfig"].ToObject<DBConfig>();
-            inStoreIP = config["inStoreIP"].ToString();
-            inStorePower = (ushort)config["inStorePower"];
-            inStoreAntNums = (int)config["inStoreAntNums"];
-            inStorePorts = (JArray)config["inStorePorts"];
-            checkIP = config["checkIP"].ToString();
-            checkAntNums = (int)config["checkAntNums"];
-            checkPorts = (JArray)config["checkPorts"];
-            readPortTime = (int)config["readPortTime"];
-            readPortCycle = (int)config["readPortCycle"];
-            analyzeCycle = (int)config["analyzeCycle"];
-            wsAddress = config["wsAddress"].ToString();
+            if (configString == null || configString == "") return;
+            try
+            {
+                JObject config = JObject.Parse(configString);
+                configURL = config["configURL"].ToString();
+                dbConfig = config["dbConfig"].ToObject<DBConfig>();
+                inStoreIP = config["inStoreIP"].ToString();
+                inStorePower = (ushort)config["inStorePower"];
+                inStoreAntNums = (int)config["inStoreAntNums"];
+                inStorePorts = (JArray)config["inStorePorts"];
+                checkIP = config["checkIP"].ToString();
+                checkAntNums = (int)config["checkAntNums"];
+                checkPorts = (JArray)config["checkPorts"];
+                readPortTime = (int)config["readPortTime"];
+                readPortCycle = (int)config["readPortCycle"];
+                analyzeCycle = (int)config["analyzeCycle"];
+                wsAddress = config["wsAddress"].ToString();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
         public void markDownConfiguration()
