@@ -45,7 +45,11 @@ namespace NPRFIDTool.NPKit
 
         private void loadUpConfiguration()
         {
-            if (!File.Exists("config.json")) return;
+            if (!File.Exists("config.json"))
+            {
+                File.Create("config.json");
+                return;
+            }
             string configString = File.ReadAllText("config.json");
             if (configString == null || configString == "") return;
             try
