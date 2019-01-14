@@ -319,6 +319,8 @@ namespace NPRFIDTool
                     // 开始读盘点接口
                     Console.WriteLine("开始盘点，读取盘点数据");
                     NPLogger.log("开始盘点，读取盘点数据");
+                    readerManager.clearCheck(); // 开始新盘点 删除旧的盘点数
+                    dbManager.clearDataBase(TableType.TableTypeCheck);
                     readerManager.beginReading(checkReader);
                 };
                 timingManager.analyzeCycleStartHandler += (src, ee) =>

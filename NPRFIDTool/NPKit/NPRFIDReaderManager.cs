@@ -345,5 +345,10 @@ namespace NPRFIDTool.NPKit
             checkedDict.RemoveAll();
             inStoreDict.RemoveAll();
         }
+
+        public void clearCheck()
+        {
+            checkedDict.RemoveAll();
+        }
     }
 }
