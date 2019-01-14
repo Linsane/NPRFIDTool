@@ -55,7 +55,6 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.readTimeTextBox = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.analyzeCycleTextBox = new System.Windows.Forms.TextBox();
             this.scanCycleTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -153,7 +152,6 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
             this.networkConfigGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.networkConfigContrainer)).BeginInit();
             this.networkConfigContrainer.Panel1.SuspendLayout();
@@ -322,7 +320,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(492, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(495, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -350,7 +348,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(468, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(471, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -402,7 +400,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(280, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -410,7 +408,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(280, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -418,7 +416,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(280, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -426,14 +424,14 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(280, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.updateButton.Location = new System.Drawing.Point(325, 620);
+            this.updateButton.Location = new System.Drawing.Point(325, 579);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(115, 23);
             this.updateButton.TabIndex = 1;
@@ -448,9 +446,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.portsConfigGroupBox.Controls.Add(this.scanConfigGroupBox);
             this.portsConfigGroupBox.Controls.Add(this.networkConfigGroupBox);
-            this.portsConfigGroupBox.Location = new System.Drawing.Point(3, 238);
+            this.portsConfigGroupBox.Location = new System.Drawing.Point(3, 228);
             this.portsConfigGroupBox.Name = "portsConfigGroupBox";
-            this.portsConfigGroupBox.Size = new System.Drawing.Size(884, 376);
+            this.portsConfigGroupBox.Size = new System.Drawing.Size(884, 335);
             this.portsConfigGroupBox.TabIndex = 5;
             this.portsConfigGroupBox.TabStop = false;
             this.portsConfigGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.portsConfigGroupBox_Paint);
@@ -461,9 +459,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.scanConfigGroupBox.Controls.Add(this.splitContainer1);
             this.scanConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.scanConfigGroupBox.Location = new System.Drawing.Point(3, 255);
+            this.scanConfigGroupBox.Location = new System.Drawing.Point(3, 214);
             this.scanConfigGroupBox.Name = "scanConfigGroupBox";
-            this.scanConfigGroupBox.Size = new System.Drawing.Size(875, 112);
+            this.scanConfigGroupBox.Size = new System.Drawing.Size(875, 121);
             this.scanConfigGroupBox.TabIndex = 1;
             this.scanConfigGroupBox.TabStop = false;
             this.scanConfigGroupBox.Text = "扫描配置";
@@ -480,8 +478,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel8);
-            this.splitContainer1.Size = new System.Drawing.Size(869, 92);
+            this.splitContainer1.Panel2.Controls.Add(this.logTextBox);
+            this.splitContainer1.Size = new System.Drawing.Size(869, 101);
             this.splitContainer1.SplitterDistance = 432;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
@@ -489,73 +487,59 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Controls.Add(this.analyzeCycleTextBox, 1, 2);
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.scanCycleTextBox, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.readTimeTextBox, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label13, 0, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(432, 92);
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(432, 101);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 17);
+            this.label12.Location = new System.Drawing.Point(3, 10);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 12);
+            this.label12.Size = new System.Drawing.Size(136, 12);
             this.label12.TabIndex = 0;
             this.label12.Text = "扫描天线时长(秒)";
             // 
             // readTimeTextBox
             // 
             this.readTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.readTimeTextBox.Location = new System.Drawing.Point(123, 12);
+            this.readTimeTextBox.Location = new System.Drawing.Point(145, 6);
             this.readTimeTextBox.Name = "readTimeTextBox";
-            this.readTimeTextBox.Size = new System.Drawing.Size(286, 21);
+            this.readTimeTextBox.Size = new System.Drawing.Size(264, 21);
             this.readTimeTextBox.TabIndex = 1;
             this.readTimeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Controls.Add(this.analyzeCycleTextBox, 1, 1);
-            this.tableLayoutPanel8.Controls.Add(this.scanCycleTextBox, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.label13, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.label14, 0, 1);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(433, 92);
-            this.tableLayoutPanel8.TabIndex = 0;
             // 
             // analyzeCycleTextBox
             // 
             this.analyzeCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.analyzeCycleTextBox.Location = new System.Drawing.Point(147, 58);
+            this.analyzeCycleTextBox.Location = new System.Drawing.Point(145, 73);
             this.analyzeCycleTextBox.Name = "analyzeCycleTextBox";
-            this.analyzeCycleTextBox.Size = new System.Drawing.Size(263, 21);
+            this.analyzeCycleTextBox.Size = new System.Drawing.Size(264, 21);
             this.analyzeCycleTextBox.TabIndex = 3;
             this.analyzeCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
             // 
             // scanCycleTextBox
             // 
             this.scanCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.scanCycleTextBox.Location = new System.Drawing.Point(147, 12);
+            this.scanCycleTextBox.Location = new System.Drawing.Point(145, 39);
             this.scanCycleTextBox.Name = "scanCycleTextBox";
-            this.scanCycleTextBox.Size = new System.Drawing.Size(263, 21);
+            this.scanCycleTextBox.Size = new System.Drawing.Size(264, 21);
             this.scanCycleTextBox.TabIndex = 2;
             this.scanCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
             // 
@@ -563,9 +547,9 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 17);
+            this.label13.Location = new System.Drawing.Point(3, 43);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(138, 12);
+            this.label13.Size = new System.Drawing.Size(136, 12);
             this.label13.TabIndex = 1;
             this.label13.Text = "定时扫描周期(分)";
             // 
@@ -573,9 +557,9 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 63);
+            this.label14.Location = new System.Drawing.Point(3, 77);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(138, 12);
+            this.label14.Size = new System.Drawing.Size(136, 12);
             this.label14.TabIndex = 2;
             this.label14.Text = "盘点结果发送周期(分)";
             // 
@@ -586,9 +570,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.networkConfigGroupBox.Controls.Add(this.networkConfigContrainer);
             this.networkConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.networkConfigGroupBox.Location = new System.Drawing.Point(3, 17);
+            this.networkConfigGroupBox.Location = new System.Drawing.Point(3, 14);
             this.networkConfigGroupBox.Name = "networkConfigGroupBox";
-            this.networkConfigGroupBox.Size = new System.Drawing.Size(875, 359);
+            this.networkConfigGroupBox.Size = new System.Drawing.Size(875, 315);
             this.networkConfigGroupBox.TabIndex = 0;
             this.networkConfigGroupBox.TabStop = false;
             this.networkConfigGroupBox.Text = "网络配置";
@@ -609,7 +593,7 @@
             // networkConfigContrainer.Panel2
             // 
             this.networkConfigContrainer.Panel2.Controls.Add(this.outStoreConfigGroupBox);
-            this.networkConfigContrainer.Size = new System.Drawing.Size(866, 214);
+            this.networkConfigContrainer.Size = new System.Drawing.Size(866, 170);
             this.networkConfigContrainer.SplitterDistance = 432;
             this.networkConfigContrainer.TabIndex = 0;
             // 
@@ -620,7 +604,7 @@
             this.inStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.inStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
             this.inStoreConfigGroupBox.Name = "inStoreConfigGroupBox";
-            this.inStoreConfigGroupBox.Size = new System.Drawing.Size(432, 214);
+            this.inStoreConfigGroupBox.Size = new System.Drawing.Size(432, 170);
             this.inStoreConfigGroupBox.TabIndex = 0;
             this.inStoreConfigGroupBox.TabStop = false;
             this.inStoreConfigGroupBox.Text = "出入库天线配置";
@@ -645,7 +629,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 194);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 150);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label9
@@ -654,7 +638,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 38);
+            this.label9.Size = new System.Drawing.Size(87, 30);
             this.label9.TabIndex = 0;
             this.label9.Text = "入库天线IP:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -663,9 +647,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 38);
+            this.label10.Location = new System.Drawing.Point(3, 30);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 38);
+            this.label10.Size = new System.Drawing.Size(87, 30);
             this.label10.TabIndex = 1;
             this.label10.Text = "天线端口数";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -674,10 +658,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(3, 76);
+            this.label11.Location = new System.Drawing.Point(3, 60);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label11.Size = new System.Drawing.Size(87, 118);
+            this.label11.Size = new System.Drawing.Size(87, 90);
             this.label11.TabIndex = 2;
             this.label11.Text = "使用端口";
             // 
@@ -706,22 +690,22 @@
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(96, 79);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(96, 63);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 112);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 84);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // inStoreCheckBox16
             // 
             this.inStoreCheckBox16.AutoSize = true;
-            this.inStoreCheckBox16.Location = new System.Drawing.Point(189, 87);
+            this.inStoreCheckBox16.Location = new System.Drawing.Point(189, 66);
             this.inStoreCheckBox16.Name = "inStoreCheckBox16";
-            this.inStoreCheckBox16.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox16.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox16.TabIndex = 15;
             this.inStoreCheckBox16.Text = "16";
             this.inStoreCheckBox16.UseVisualStyleBackColor = true;
@@ -731,9 +715,9 @@
             // inStoreCheckBox15
             // 
             this.inStoreCheckBox15.AutoSize = true;
-            this.inStoreCheckBox15.Location = new System.Drawing.Point(127, 87);
+            this.inStoreCheckBox15.Location = new System.Drawing.Point(127, 66);
             this.inStoreCheckBox15.Name = "inStoreCheckBox15";
-            this.inStoreCheckBox15.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox15.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox15.TabIndex = 14;
             this.inStoreCheckBox15.Text = "15";
             this.inStoreCheckBox15.UseVisualStyleBackColor = true;
@@ -743,9 +727,9 @@
             // inStoreCheckBox14
             // 
             this.inStoreCheckBox14.AutoSize = true;
-            this.inStoreCheckBox14.Location = new System.Drawing.Point(65, 87);
+            this.inStoreCheckBox14.Location = new System.Drawing.Point(65, 66);
             this.inStoreCheckBox14.Name = "inStoreCheckBox14";
-            this.inStoreCheckBox14.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox14.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox14.TabIndex = 13;
             this.inStoreCheckBox14.Text = "14";
             this.inStoreCheckBox14.UseVisualStyleBackColor = true;
@@ -755,9 +739,9 @@
             // inStoreCheckBox13
             // 
             this.inStoreCheckBox13.AutoSize = true;
-            this.inStoreCheckBox13.Location = new System.Drawing.Point(3, 87);
+            this.inStoreCheckBox13.Location = new System.Drawing.Point(3, 66);
             this.inStoreCheckBox13.Name = "inStoreCheckBox13";
-            this.inStoreCheckBox13.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox13.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox13.TabIndex = 12;
             this.inStoreCheckBox13.Text = "13";
             this.inStoreCheckBox13.UseVisualStyleBackColor = true;
@@ -767,9 +751,9 @@
             // inStoreCheckBox12
             // 
             this.inStoreCheckBox12.AutoSize = true;
-            this.inStoreCheckBox12.Location = new System.Drawing.Point(189, 59);
+            this.inStoreCheckBox12.Location = new System.Drawing.Point(189, 45);
             this.inStoreCheckBox12.Name = "inStoreCheckBox12";
-            this.inStoreCheckBox12.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox12.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox12.TabIndex = 11;
             this.inStoreCheckBox12.Text = "12";
             this.inStoreCheckBox12.UseVisualStyleBackColor = true;
@@ -779,9 +763,9 @@
             // inStoreCheckBox11
             // 
             this.inStoreCheckBox11.AutoSize = true;
-            this.inStoreCheckBox11.Location = new System.Drawing.Point(127, 59);
+            this.inStoreCheckBox11.Location = new System.Drawing.Point(127, 45);
             this.inStoreCheckBox11.Name = "inStoreCheckBox11";
-            this.inStoreCheckBox11.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox11.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox11.TabIndex = 10;
             this.inStoreCheckBox11.Text = "11";
             this.inStoreCheckBox11.UseVisualStyleBackColor = true;
@@ -791,9 +775,9 @@
             // inStoreCheckBox10
             // 
             this.inStoreCheckBox10.AutoSize = true;
-            this.inStoreCheckBox10.Location = new System.Drawing.Point(65, 59);
+            this.inStoreCheckBox10.Location = new System.Drawing.Point(65, 45);
             this.inStoreCheckBox10.Name = "inStoreCheckBox10";
-            this.inStoreCheckBox10.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox10.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox10.TabIndex = 9;
             this.inStoreCheckBox10.Text = "10";
             this.inStoreCheckBox10.UseVisualStyleBackColor = true;
@@ -803,9 +787,9 @@
             // inStoreCheckBox9
             // 
             this.inStoreCheckBox9.AutoSize = true;
-            this.inStoreCheckBox9.Location = new System.Drawing.Point(3, 59);
+            this.inStoreCheckBox9.Location = new System.Drawing.Point(3, 45);
             this.inStoreCheckBox9.Name = "inStoreCheckBox9";
-            this.inStoreCheckBox9.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox9.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox9.TabIndex = 8;
             this.inStoreCheckBox9.Text = "09";
             this.inStoreCheckBox9.UseVisualStyleBackColor = true;
@@ -815,9 +799,9 @@
             // inStoreCheckBox8
             // 
             this.inStoreCheckBox8.AutoSize = true;
-            this.inStoreCheckBox8.Location = new System.Drawing.Point(189, 31);
+            this.inStoreCheckBox8.Location = new System.Drawing.Point(189, 24);
             this.inStoreCheckBox8.Name = "inStoreCheckBox8";
-            this.inStoreCheckBox8.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox8.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox8.TabIndex = 7;
             this.inStoreCheckBox8.Text = "08";
             this.inStoreCheckBox8.UseVisualStyleBackColor = true;
@@ -827,9 +811,9 @@
             // inStoreCheckBox7
             // 
             this.inStoreCheckBox7.AutoSize = true;
-            this.inStoreCheckBox7.Location = new System.Drawing.Point(127, 31);
+            this.inStoreCheckBox7.Location = new System.Drawing.Point(127, 24);
             this.inStoreCheckBox7.Name = "inStoreCheckBox7";
-            this.inStoreCheckBox7.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox7.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox7.TabIndex = 6;
             this.inStoreCheckBox7.Text = "07";
             this.inStoreCheckBox7.UseVisualStyleBackColor = true;
@@ -839,9 +823,9 @@
             // inStoreCheckBox6
             // 
             this.inStoreCheckBox6.AutoSize = true;
-            this.inStoreCheckBox6.Location = new System.Drawing.Point(65, 31);
+            this.inStoreCheckBox6.Location = new System.Drawing.Point(65, 24);
             this.inStoreCheckBox6.Name = "inStoreCheckBox6";
-            this.inStoreCheckBox6.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox6.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox6.TabIndex = 5;
             this.inStoreCheckBox6.Text = "06";
             this.inStoreCheckBox6.UseVisualStyleBackColor = true;
@@ -851,9 +835,9 @@
             // inStoreCheckBox5
             // 
             this.inStoreCheckBox5.AutoSize = true;
-            this.inStoreCheckBox5.Location = new System.Drawing.Point(3, 31);
+            this.inStoreCheckBox5.Location = new System.Drawing.Point(3, 24);
             this.inStoreCheckBox5.Name = "inStoreCheckBox5";
-            this.inStoreCheckBox5.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox5.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox5.TabIndex = 4;
             this.inStoreCheckBox5.Text = "05";
             this.inStoreCheckBox5.UseVisualStyleBackColor = true;
@@ -865,7 +849,7 @@
             this.inStoreCheckBox4.AutoSize = true;
             this.inStoreCheckBox4.Location = new System.Drawing.Point(189, 3);
             this.inStoreCheckBox4.Name = "inStoreCheckBox4";
-            this.inStoreCheckBox4.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox4.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox4.TabIndex = 3;
             this.inStoreCheckBox4.Text = "04";
             this.inStoreCheckBox4.UseVisualStyleBackColor = true;
@@ -877,7 +861,7 @@
             this.inStoreCheckBox3.AutoSize = true;
             this.inStoreCheckBox3.Location = new System.Drawing.Point(127, 3);
             this.inStoreCheckBox3.Name = "inStoreCheckBox3";
-            this.inStoreCheckBox3.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox3.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox3.TabIndex = 2;
             this.inStoreCheckBox3.Text = "03";
             this.inStoreCheckBox3.UseVisualStyleBackColor = true;
@@ -889,7 +873,7 @@
             this.inStoreCheckBox2.AutoSize = true;
             this.inStoreCheckBox2.Location = new System.Drawing.Point(65, 3);
             this.inStoreCheckBox2.Name = "inStoreCheckBox2";
-            this.inStoreCheckBox2.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox2.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox2.TabIndex = 1;
             this.inStoreCheckBox2.Text = "02";
             this.inStoreCheckBox2.UseVisualStyleBackColor = true;
@@ -901,7 +885,7 @@
             this.inStoreCheckBox1.AutoSize = true;
             this.inStoreCheckBox1.Location = new System.Drawing.Point(3, 3);
             this.inStoreCheckBox1.Name = "inStoreCheckBox1";
-            this.inStoreCheckBox1.Size = new System.Drawing.Size(38, 16);
+            this.inStoreCheckBox1.Size = new System.Drawing.Size(38, 15);
             this.inStoreCheckBox1.TabIndex = 0;
             this.inStoreCheckBox1.Text = "01";
             this.inStoreCheckBox1.UseVisualStyleBackColor = true;
@@ -914,10 +898,10 @@
             this.portsCountGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox1.Enabled = false;
             this.portsCountGroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox1.Location = new System.Drawing.Point(96, 41);
+            this.portsCountGroupBox1.Location = new System.Drawing.Point(96, 33);
             this.portsCountGroupBox1.Name = "portsCountGroupBox1";
             this.portsCountGroupBox1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox1.Size = new System.Drawing.Size(307, 32);
+            this.portsCountGroupBox1.Size = new System.Drawing.Size(307, 24);
             this.portsCountGroupBox1.TabIndex = 6;
             this.portsCountGroupBox1.TabStop = false;
             this.portsCountGroupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox1_Paint);
@@ -938,7 +922,7 @@
             this.tableLayoutPanel3.Controls.Add(this.inStoreRadio3, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.inStoreRadio2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.inStoreRadio1, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 5);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1039,7 +1023,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.portPowerTextBox);
             this.splitContainer2.Panel2.Controls.Add(this.label15);
-            this.splitContainer2.Size = new System.Drawing.Size(307, 32);
+            this.splitContainer2.Size = new System.Drawing.Size(307, 24);
             this.splitContainer2.SplitterDistance = 143;
             this.splitContainer2.TabIndex = 7;
             this.splitContainer2.TabStop = false;
@@ -1047,7 +1031,7 @@
             // inStoreIPTextBox
             // 
             this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStoreIPTextBox.Location = new System.Drawing.Point(0, 7);
+            this.inStoreIPTextBox.Location = new System.Drawing.Point(0, 3);
             this.inStoreIPTextBox.Name = "inStoreIPTextBox";
             this.inStoreIPTextBox.Size = new System.Drawing.Size(128, 21);
             this.inStoreIPTextBox.TabIndex = 3;
@@ -1057,7 +1041,7 @@
             // portPowerTextBox
             // 
             this.portPowerTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.portPowerTextBox.Location = new System.Drawing.Point(73, 7);
+            this.portPowerTextBox.Location = new System.Drawing.Point(73, 3);
             this.portPowerTextBox.Name = "portPowerTextBox";
             this.portPowerTextBox.Size = new System.Drawing.Size(63, 21);
             this.portPowerTextBox.TabIndex = 1;
@@ -1067,7 +1051,7 @@
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 10);
+            this.label15.Location = new System.Drawing.Point(3, 6);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 12);
             this.label15.TabIndex = 0;
@@ -1080,7 +1064,7 @@
             this.outStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.outStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
             this.outStoreConfigGroupBox.Name = "outStoreConfigGroupBox";
-            this.outStoreConfigGroupBox.Size = new System.Drawing.Size(430, 214);
+            this.outStoreConfigGroupBox.Size = new System.Drawing.Size(430, 170);
             this.outStoreConfigGroupBox.TabIndex = 0;
             this.outStoreConfigGroupBox.TabStop = false;
             this.outStoreConfigGroupBox.Text = "仓库天线配置";
@@ -1104,7 +1088,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 194);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 150);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // portsCountGroupBox2
@@ -1113,10 +1097,10 @@
             this.portsCountGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox2.Enabled = false;
             this.portsCountGroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox2.Location = new System.Drawing.Point(95, 41);
+            this.portsCountGroupBox2.Location = new System.Drawing.Point(95, 33);
             this.portsCountGroupBox2.Name = "portsCountGroupBox2";
             this.portsCountGroupBox2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox2.Size = new System.Drawing.Size(306, 32);
+            this.portsCountGroupBox2.Size = new System.Drawing.Size(306, 24);
             this.portsCountGroupBox2.TabIndex = 7;
             this.portsCountGroupBox2.TabStop = false;
             this.portsCountGroupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox2_Paint);
@@ -1137,7 +1121,7 @@
             this.tableLayoutPanel6.Controls.Add(this.checkRadio3, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.checkRadio2, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.checkRadio1, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 5);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 1);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1228,7 +1212,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 38);
+            this.label6.Size = new System.Drawing.Size(86, 30);
             this.label6.TabIndex = 0;
             this.label6.Text = "盘点天线IP:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1237,9 +1221,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 38);
+            this.label7.Location = new System.Drawing.Point(3, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 38);
+            this.label7.Size = new System.Drawing.Size(86, 30);
             this.label7.TabIndex = 1;
             this.label7.Text = "天线端口数";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1248,17 +1232,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 76);
+            this.label8.Location = new System.Drawing.Point(3, 60);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label8.Size = new System.Drawing.Size(86, 118);
+            this.label8.Size = new System.Drawing.Size(86, 90);
             this.label8.TabIndex = 2;
             this.label8.Text = "使用端口";
             // 
             // checkIPTextBox
             // 
             this.checkIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkIPTextBox.Location = new System.Drawing.Point(95, 8);
+            this.checkIPTextBox.Location = new System.Drawing.Point(95, 4);
             this.checkIPTextBox.Name = "checkIPTextBox";
             this.checkIPTextBox.Size = new System.Drawing.Size(306, 21);
             this.checkIPTextBox.TabIndex = 3;
@@ -1290,22 +1274,22 @@
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox3, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox1, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(95, 79);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(95, 63);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(249, 112);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(249, 84);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // checkCheckBox16
             // 
             this.checkCheckBox16.AutoSize = true;
-            this.checkCheckBox16.Location = new System.Drawing.Point(189, 87);
+            this.checkCheckBox16.Location = new System.Drawing.Point(189, 66);
             this.checkCheckBox16.Name = "checkCheckBox16";
-            this.checkCheckBox16.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox16.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox16.TabIndex = 15;
             this.checkCheckBox16.Text = "16";
             this.checkCheckBox16.UseVisualStyleBackColor = true;
@@ -1315,9 +1299,9 @@
             // checkCheckBox15
             // 
             this.checkCheckBox15.AutoSize = true;
-            this.checkCheckBox15.Location = new System.Drawing.Point(127, 87);
+            this.checkCheckBox15.Location = new System.Drawing.Point(127, 66);
             this.checkCheckBox15.Name = "checkCheckBox15";
-            this.checkCheckBox15.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox15.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox15.TabIndex = 14;
             this.checkCheckBox15.Text = "15";
             this.checkCheckBox15.UseVisualStyleBackColor = true;
@@ -1327,9 +1311,9 @@
             // checkCheckBox14
             // 
             this.checkCheckBox14.AutoSize = true;
-            this.checkCheckBox14.Location = new System.Drawing.Point(65, 87);
+            this.checkCheckBox14.Location = new System.Drawing.Point(65, 66);
             this.checkCheckBox14.Name = "checkCheckBox14";
-            this.checkCheckBox14.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox14.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox14.TabIndex = 13;
             this.checkCheckBox14.Text = "14";
             this.checkCheckBox14.UseVisualStyleBackColor = true;
@@ -1339,9 +1323,9 @@
             // checkCheckBox13
             // 
             this.checkCheckBox13.AutoSize = true;
-            this.checkCheckBox13.Location = new System.Drawing.Point(3, 87);
+            this.checkCheckBox13.Location = new System.Drawing.Point(3, 66);
             this.checkCheckBox13.Name = "checkCheckBox13";
-            this.checkCheckBox13.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox13.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox13.TabIndex = 12;
             this.checkCheckBox13.Text = "13";
             this.checkCheckBox13.UseVisualStyleBackColor = true;
@@ -1351,9 +1335,9 @@
             // checkCheckBox12
             // 
             this.checkCheckBox12.AutoSize = true;
-            this.checkCheckBox12.Location = new System.Drawing.Point(189, 59);
+            this.checkCheckBox12.Location = new System.Drawing.Point(189, 45);
             this.checkCheckBox12.Name = "checkCheckBox12";
-            this.checkCheckBox12.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox12.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox12.TabIndex = 11;
             this.checkCheckBox12.Text = "12";
             this.checkCheckBox12.UseVisualStyleBackColor = true;
@@ -1363,9 +1347,9 @@
             // checkCheckBox11
             // 
             this.checkCheckBox11.AutoSize = true;
-            this.checkCheckBox11.Location = new System.Drawing.Point(127, 59);
+            this.checkCheckBox11.Location = new System.Drawing.Point(127, 45);
             this.checkCheckBox11.Name = "checkCheckBox11";
-            this.checkCheckBox11.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox11.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox11.TabIndex = 10;
             this.checkCheckBox11.Text = "11";
             this.checkCheckBox11.UseVisualStyleBackColor = true;
@@ -1375,9 +1359,9 @@
             // checkCheckBox10
             // 
             this.checkCheckBox10.AutoSize = true;
-            this.checkCheckBox10.Location = new System.Drawing.Point(65, 59);
+            this.checkCheckBox10.Location = new System.Drawing.Point(65, 45);
             this.checkCheckBox10.Name = "checkCheckBox10";
-            this.checkCheckBox10.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox10.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox10.TabIndex = 9;
             this.checkCheckBox10.Text = "10";
             this.checkCheckBox10.UseVisualStyleBackColor = true;
@@ -1387,9 +1371,9 @@
             // checkCheckBox9
             // 
             this.checkCheckBox9.AutoSize = true;
-            this.checkCheckBox9.Location = new System.Drawing.Point(3, 59);
+            this.checkCheckBox9.Location = new System.Drawing.Point(3, 45);
             this.checkCheckBox9.Name = "checkCheckBox9";
-            this.checkCheckBox9.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox9.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox9.TabIndex = 8;
             this.checkCheckBox9.Text = "09";
             this.checkCheckBox9.UseVisualStyleBackColor = true;
@@ -1399,9 +1383,9 @@
             // checkCheckBox8
             // 
             this.checkCheckBox8.AutoSize = true;
-            this.checkCheckBox8.Location = new System.Drawing.Point(189, 31);
+            this.checkCheckBox8.Location = new System.Drawing.Point(189, 24);
             this.checkCheckBox8.Name = "checkCheckBox8";
-            this.checkCheckBox8.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox8.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox8.TabIndex = 7;
             this.checkCheckBox8.Text = "08";
             this.checkCheckBox8.UseVisualStyleBackColor = true;
@@ -1411,9 +1395,9 @@
             // checkCheckBox7
             // 
             this.checkCheckBox7.AutoSize = true;
-            this.checkCheckBox7.Location = new System.Drawing.Point(127, 31);
+            this.checkCheckBox7.Location = new System.Drawing.Point(127, 24);
             this.checkCheckBox7.Name = "checkCheckBox7";
-            this.checkCheckBox7.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox7.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox7.TabIndex = 6;
             this.checkCheckBox7.Text = "07";
             this.checkCheckBox7.UseVisualStyleBackColor = true;
@@ -1423,9 +1407,9 @@
             // checkCheckBox6
             // 
             this.checkCheckBox6.AutoSize = true;
-            this.checkCheckBox6.Location = new System.Drawing.Point(65, 31);
+            this.checkCheckBox6.Location = new System.Drawing.Point(65, 24);
             this.checkCheckBox6.Name = "checkCheckBox6";
-            this.checkCheckBox6.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox6.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox6.TabIndex = 5;
             this.checkCheckBox6.Text = "06";
             this.checkCheckBox6.UseVisualStyleBackColor = true;
@@ -1435,9 +1419,9 @@
             // checkCheckBox5
             // 
             this.checkCheckBox5.AutoSize = true;
-            this.checkCheckBox5.Location = new System.Drawing.Point(3, 31);
+            this.checkCheckBox5.Location = new System.Drawing.Point(3, 24);
             this.checkCheckBox5.Name = "checkCheckBox5";
-            this.checkCheckBox5.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox5.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox5.TabIndex = 4;
             this.checkCheckBox5.Text = "05";
             this.checkCheckBox5.UseVisualStyleBackColor = true;
@@ -1449,7 +1433,7 @@
             this.checkCheckBox4.AutoSize = true;
             this.checkCheckBox4.Location = new System.Drawing.Point(189, 3);
             this.checkCheckBox4.Name = "checkCheckBox4";
-            this.checkCheckBox4.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox4.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox4.TabIndex = 3;
             this.checkCheckBox4.Text = "04";
             this.checkCheckBox4.UseVisualStyleBackColor = true;
@@ -1461,7 +1445,7 @@
             this.checkCheckBox3.AutoSize = true;
             this.checkCheckBox3.Location = new System.Drawing.Point(127, 3);
             this.checkCheckBox3.Name = "checkCheckBox3";
-            this.checkCheckBox3.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox3.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox3.TabIndex = 2;
             this.checkCheckBox3.Text = "03";
             this.checkCheckBox3.UseVisualStyleBackColor = true;
@@ -1473,7 +1457,7 @@
             this.checkCheckBox2.AutoSize = true;
             this.checkCheckBox2.Location = new System.Drawing.Point(65, 3);
             this.checkCheckBox2.Name = "checkCheckBox2";
-            this.checkCheckBox2.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox2.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox2.TabIndex = 1;
             this.checkCheckBox2.Text = "02";
             this.checkCheckBox2.UseVisualStyleBackColor = true;
@@ -1485,7 +1469,7 @@
             this.checkCheckBox1.AutoSize = true;
             this.checkCheckBox1.Location = new System.Drawing.Point(3, 3);
             this.checkCheckBox1.Name = "checkCheckBox1";
-            this.checkCheckBox1.Size = new System.Drawing.Size(38, 16);
+            this.checkCheckBox1.Size = new System.Drawing.Size(38, 15);
             this.checkCheckBox1.TabIndex = 0;
             this.checkCheckBox1.Text = "01";
             this.checkCheckBox1.UseVisualStyleBackColor = true;
@@ -1495,7 +1479,7 @@
             // controlButton
             // 
             this.controlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.controlButton.Location = new System.Drawing.Point(444, 620);
+            this.controlButton.Location = new System.Drawing.Point(444, 579);
             this.controlButton.Name = "controlButton";
             this.controlButton.Size = new System.Drawing.Size(115, 23);
             this.controlButton.TabIndex = 6;
@@ -1509,12 +1493,11 @@
             // 
             // logTextBox
             // 
-            this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.logTextBox.Location = new System.Drawing.Point(578, 611);
+            this.logTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logTextBox.Location = new System.Drawing.Point(0, 0);
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
-            this.logTextBox.Size = new System.Drawing.Size(303, 41);
+            this.logTextBox.Size = new System.Drawing.Size(433, 101);
             this.logTextBox.TabIndex = 7;
             this.logTextBox.Text = "";
             // 
@@ -1522,14 +1505,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 655);
-            this.Controls.Add(this.logTextBox);
+            this.ClientSize = new System.Drawing.Size(893, 614);
             this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.systemConfigGroup);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(842, 642);
+            this.MinimumSize = new System.Drawing.Size(842, 645);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RFID桌面管理器";
@@ -1563,8 +1545,6 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
             this.networkConfigGroupBox.ResumeLayout(false);
             this.networkConfigContrainer.Panel1.ResumeLayout(false);
             this.networkConfigContrainer.Panel2.ResumeLayout(false);
@@ -1676,7 +1656,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox readTimeTextBox;
