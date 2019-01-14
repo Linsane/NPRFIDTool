@@ -129,6 +129,7 @@
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.logTextBox = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -1501,11 +1502,22 @@
             this.logTextBox.TabIndex = 7;
             this.logTextBox.Text = "";
             // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(792, 584);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(89, 12);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "版本号：v1.0.0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 614);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);
@@ -1574,6 +1586,7 @@
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1679,6 +1692,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox websocketTextBox;
         private System.Windows.Forms.RichTextBox logTextBox;
+        private System.Windows.Forms.Label label17;
     }
 }
 
