@@ -4,78 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace NPRFIDTool.NPKit
 {
     class NPBackendService
     {
-        /// <summary>
-        /// 微信企业号操作
-        /// </summary>
-        public class WXQYHHelper
+        public static HttpClient client = new HttpClient();
+        public static void configHttpClient()
         {
-            private WXQYHHelper() { }
+            client.BaseAddress = new Uri("http://rfidv2.radeit.cn");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
 
-            static string CORPID;
-            static string SECRET;
-
-            /// <summary>
-            /// .Ctor
-            /// </summary>
-            static WXQYHHelper()
+        // 云库存接口 获取Remain表数据
+        public static async Task<string> getStockInit()
+        {
+            // 5941e58d8d04afd0cb6f33df4aed15b3
+            var values = new Dictionary<string, string>
             {
-                CORPID = ConfigurationManager.AppSettings["CorpID"];
-                SECRET = ConfigurationManager.AppSettings["Secret"];
-            }
-
-            /// <summary>
-            /// ACCESS_TOKEN最后一次更新时间
-            /// </summary>
-            static DateTime _lastGetTimeOfAccessToken = DateTime.Now.AddSeconds(-7201);
-
-            /// <summary>
-            /// 存储微信访问凭证
-            /// </summary>
-            static string _AccessToken;
-
-            /// <summary>
-            /// 获取微信访问凭证
-            /// </summary>
-            public static string GetAccessToken()
-            {
-                try
-                {
-                    if (_lastGetTimeOfAccessToken < DateTime.Now)
-                    {
-
-                        string url = string.Format("https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={0}&corpsecret={1}", CORPID, SECRET);
-                        string responseText = HttpHelper.Instance.get(url); // 封装的get请求
-                                                                            /*
-                                                                                API：http://qydev.weixin.qq.com/wiki/index.php?title=%E4%B8%BB%E5%8A%A8%E8%B0%83%E7%94%A8#.E8.8E.B7.E5.8F.96AccessToken
-                                                                                正确的Json返回示例:
-                                                                                {
-                                                                                   "access_token": "accesstoken000001",
-                                                                                   "expires_in": 7200
-                                                                                }
-                                                                                错误的Json返回示例:
-                                                                                {
-                                                                                   "errcode": 43003,
-                                                                                   "errmsg": "require https"
-                                                                                }
-                                                                            */
-                        var rsEntity = new { access_token = "", expires_in = 0, errcode = 0, errmsg = "" };
-                        dynamic en = Newtonsoft.Json.JsonConvert.DeserializeAnonymousType<object>(responseText, rsEntity); // Newtonsoft.Json提供的匿名类反序列化
-                        _lastGetTimeOfAccessToken = DateTime.Now.AddSeconds((double)en.expires_in - 1);
-                        _AccessToken = en.access_token;
-                    }
-                    return _AccessToken;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
+                {"token","5941e58d8d04afd0cb6f33df4aed15b3" },
+                {"action","init"},
+                {"device","5941e58d8d04afd0cb6f33df4aed15b3" },
+                {"ip","192.168.100.188"}
+            };
+            var param = new FormUrlEncodedContent(values);
+            HttpResponseMessage response = await client.PostAsync(
+                "api/rwapp/getStockInit", param);
+            string responseString = await response.Content.ReadAsStringAsync();
+            return responseString;
         }
     }
 }

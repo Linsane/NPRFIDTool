@@ -11,3 +11,17 @@ C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\mysql.data
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csproj.CopyComplete
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\ModuleAPI.dll
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.MainForm.resources
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\NPRFIDTool.exe.config
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\NPRFIDTool.exe
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\NPRFIDTool.pdb
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\ModuleAPI.dll
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\mysql.data.dll
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\Newtonsoft.Json.dll
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csprojAssemblyReference.cache
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.MainForm.resources
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.Properties.Resources.resources
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csproj.GenerateResource.cache
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csproj.CoreCompileInputs.cache
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csproj.CopyComplete
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.exe
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.pdb

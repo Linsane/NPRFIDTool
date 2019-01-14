@@ -34,12 +34,14 @@ namespace NPRFIDTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            manager = new NPRFIDReaderManager(); 
+            manager = new NPRFIDReaderManager();
             // 检查配置
 
             // 启动读取周期
 
             // 数据库
+            NPBackendService.configHttpClient();
+            NPBackendService.getStockInit();
         }
 
         private void button1_Click(object sender, EventArgs e)
