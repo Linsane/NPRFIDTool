@@ -82,7 +82,7 @@ namespace NPRFIDTool.NPKit
                 NPLogger.log("Websocket Close");
                 if (e.Reason != null && e.Reason != "")
                 {
-                    MessageBox.Show(e.Reason);
+                    MessageBox.Show("websocket close" + e.Reason);
                 }
                 connectStopHandler(e);
             };
