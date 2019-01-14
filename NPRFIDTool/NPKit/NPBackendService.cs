@@ -112,11 +112,11 @@ namespace NPRFIDTool.NPKit
         // 上报盘点成功
         public async Task<JObject> reportCheckSuccess(TagReadData tagData)
         {
+            JArray emptyArray = new JArray();
             JObject obj = new JObject();
             obj.Add("action", "check");
-            //obj.Add("antenna", String.Format("天线{0}", tagData.Antenna));
-            //obj.Add("antenna_param", "");
             obj.Add("check", "ok");
+            obj.Add("label", emptyArray);
 
             obj.Merge(commonParams);
 
