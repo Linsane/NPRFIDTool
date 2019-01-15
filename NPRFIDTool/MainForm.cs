@@ -319,8 +319,6 @@ namespace NPRFIDTool
                     // 开始读盘点接口
                     Console.WriteLine("开始盘点，读取盘点数据");
                     NPLogger.log("开始盘点，读取盘点数据");
-                    readerManager.clearCheck(); // 开始新盘点 删除旧的盘点数
-                    dbManager.clearDataBase(TableType.TableTypeCheck);
                     readerManager.beginReading(checkReader);
                 };
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
@@ -347,6 +345,8 @@ namespace NPRFIDTool
                             Console.WriteLine("盘点成功");
                             NPLogger.log("盘点成功");
                         }
+                        readerManager.clearCheck(); // 开始新盘点 删除旧的盘点数
+                        dbManager.clearDataBase(TableType.TableTypeCheck);
                     });
 #pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
                 };
