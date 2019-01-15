@@ -40,8 +40,11 @@ namespace NPRFIDTool
             // 启动读取周期
 
             // 数据库
+            /*
             NPBackendService.configHttpClient();
             NPBackendService.getStockInit();
+            */
+            NPBackendService.WebSocketConnect();
         }
 
         private void button1_Click(object sender, EventArgs e)
