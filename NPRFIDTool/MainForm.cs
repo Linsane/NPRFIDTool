@@ -230,6 +230,7 @@ namespace NPRFIDTool
             systemConfigGroup.Enabled = false;
             portsConfigGroupBox.Enabled = false;
             updateButton.Enabled = false;
+            this.ControlBox = false;
 
             #region 启动条件判断
             if (!validateCurrentConfiguration())
@@ -745,6 +746,7 @@ namespace NPRFIDTool
             {
                 resetControlButton();
             }
+            this.ControlBox = true;
             if (dbManager != null) dbManager.disconnectDataBase();
             if (timingManager != null) timingManager.stopCycles();
             timingManager = null;
