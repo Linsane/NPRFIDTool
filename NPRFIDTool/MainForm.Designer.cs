@@ -53,12 +53,13 @@
             this.scanConfigGroupBox = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.readTimeTextBox = new System.Windows.Forms.TextBox();
             this.analyzeCycleTextBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.scanCycleTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.readTimeTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.networkConfigGroupBox = new System.Windows.Forms.GroupBox();
             this.networkConfigContrainer = new System.Windows.Forms.SplitContainer();
             this.inStoreConfigGroupBox = new System.Windows.Forms.GroupBox();
@@ -128,7 +129,6 @@
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
@@ -150,7 +150,6 @@
             this.scanConfigGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.networkConfigGroupBox.SuspendLayout();
@@ -321,7 +320,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(495, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(498, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -349,7 +348,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(471, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(474, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -401,7 +400,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(280, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(283, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -409,7 +408,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(280, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(283, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -417,7 +416,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(280, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(283, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -425,7 +424,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(280, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(283, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -476,10 +475,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel7);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.logTextBox);
             this.splitContainer1.Size = new System.Drawing.Size(869, 101);
             this.splitContainer1.SplitterDistance = 432;
             this.splitContainer1.TabIndex = 0;
@@ -507,6 +502,15 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(432, 101);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
+            // analyzeCycleTextBox
+            // 
+            this.analyzeCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.analyzeCycleTextBox.Location = new System.Drawing.Point(145, 73);
+            this.analyzeCycleTextBox.Name = "analyzeCycleTextBox";
+            this.analyzeCycleTextBox.Size = new System.Drawing.Size(264, 21);
+            this.analyzeCycleTextBox.TabIndex = 3;
+            this.analyzeCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
+            // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -517,6 +521,15 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "扫描天线时长(秒)";
             // 
+            // scanCycleTextBox
+            // 
+            this.scanCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.scanCycleTextBox.Location = new System.Drawing.Point(145, 39);
+            this.scanCycleTextBox.Name = "scanCycleTextBox";
+            this.scanCycleTextBox.Size = new System.Drawing.Size(264, 21);
+            this.scanCycleTextBox.TabIndex = 2;
+            this.scanCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
+            // 
             // readTimeTextBox
             // 
             this.readTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -526,23 +539,15 @@
             this.readTimeTextBox.TabIndex = 1;
             this.readTimeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
             // 
-            // analyzeCycleTextBox
+            // label14
             // 
-            this.analyzeCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.analyzeCycleTextBox.Location = new System.Drawing.Point(145, 73);
-            this.analyzeCycleTextBox.Name = "analyzeCycleTextBox";
-            this.analyzeCycleTextBox.Size = new System.Drawing.Size(264, 21);
-            this.analyzeCycleTextBox.TabIndex = 3;
-            this.analyzeCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
-            // 
-            // scanCycleTextBox
-            // 
-            this.scanCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.scanCycleTextBox.Location = new System.Drawing.Point(145, 39);
-            this.scanCycleTextBox.Name = "scanCycleTextBox";
-            this.scanCycleTextBox.Size = new System.Drawing.Size(264, 21);
-            this.scanCycleTextBox.TabIndex = 2;
-            this.scanCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 77);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(136, 12);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "盘点结果发送周期(分)";
             // 
             // label13
             // 
@@ -554,15 +559,15 @@
             this.label13.TabIndex = 1;
             this.label13.Text = "定时扫描周期(分)";
             // 
-            // label14
+            // logTextBox
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 77);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(136, 12);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "盘点结果发送周期(分)";
+            this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.logTextBox.Location = new System.Drawing.Point(444, 458);
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.Size = new System.Drawing.Size(433, 101);
+            this.logTextBox.TabIndex = 7;
+            this.logTextBox.Text = "";
             // 
             // networkConfigGroupBox
             // 
@@ -1492,16 +1497,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // logTextBox
-            // 
-            this.logTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logTextBox.Location = new System.Drawing.Point(0, 0);
-            this.logTextBox.Name = "logTextBox";
-            this.logTextBox.ReadOnly = true;
-            this.logTextBox.Size = new System.Drawing.Size(433, 101);
-            this.logTextBox.TabIndex = 7;
-            this.logTextBox.Text = "";
-            // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1517,6 +1512,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 614);
+            this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
@@ -1552,7 +1548,6 @@
             this.portsConfigGroupBox.ResumeLayout(false);
             this.scanConfigGroupBox.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
