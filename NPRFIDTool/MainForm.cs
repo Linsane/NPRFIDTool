@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using NPRFIDTool.NPKit;
 using System.Collections;
+using Newtonsoft.Json.Linq;
 
 namespace NPRFIDTool
 {
@@ -40,11 +36,17 @@ namespace NPRFIDTool
             // 启动读取周期
 
             // 数据库
-            /*
-            NPBackendService.configHttpClient();
-            NPBackendService.getStockInit();
-            */
+
             NPBackendService.WebSocketConnect();
+
+            NPBackendService service = new NPBackendService("192.168.100.188", "RFID0012");
+            //RspHandler handler = new RspHandler(getStockInitHandler);
+            //service.getStockInit(handler);
+        }
+
+        void getStockInitHandler(JObject obj)
+        {
+            MessageBox.Show("success" + obj.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)

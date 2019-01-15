@@ -28,3 +28,5 @@ C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.pdb
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\Newtonsoft.Json.dll
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\websocket-sharp.dll
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\websocket-sharp.xml
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\websocket-sharp.dll
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\websocket-sharp.xml

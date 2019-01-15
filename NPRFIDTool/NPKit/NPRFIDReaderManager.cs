@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ModuleTech;
-using ModuleTech.Gen2;
-using ModuleLibrary;
-using System.Timers;
-using NPRFIDTool.NPKit;
 using System.Collections;
-using System.Windows.Forms;
 
 namespace NPRFIDTool.NPKit
 {
