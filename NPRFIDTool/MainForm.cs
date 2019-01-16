@@ -34,6 +34,16 @@ namespace NPRFIDTool
             e.Graphics.DrawString(title, systemConfigGroup.Font, Brushes.Black, (systemConfigGroup.Width - fontSize.Width) / 2, 1);
         }
 
+        private void portsCountGroupBox1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(this.BackColor);
+        }
+
+        private void portsCountGroupBox2_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(this.BackColor);
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -107,49 +117,6 @@ namespace NPRFIDTool
         private void button2_Click(object sender, EventArgs e)
         {
             manager.stopReading(inStoreInfo);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (checkInfo == null)
-            {
-                NPRFIDReaderInfo info = new NPRFIDReaderInfo();
-                info.readerIP = "192.168.100.188";
-                info.readerAntNum = 4;
-                info.portType = PortType.PortTypeCheck;
-                info.usedPorts = new ArrayList();
-                info.usedPorts.Add(2);
-                checkInfo = info;
-            }
-
-            try
-            {
-                manager.startReading(checkInfo);
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show("连接读写器失败:" + ex.ToString());
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            manager.stopReading(checkInfo);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

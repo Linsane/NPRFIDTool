@@ -61,7 +61,7 @@ namespace NPRFIDTool.NPKit
 
             ws.OnOpen += (sender, e) =>
             {
-                MessageBox.Show("Websocket Open");
+                
             };
 
             ws.OnClose += (sender, e) =>
