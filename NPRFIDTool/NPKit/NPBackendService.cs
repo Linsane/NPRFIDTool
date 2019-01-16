@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System.Collections;
 using WebSocketSharp;
 using ModuleTech;
@@ -17,6 +18,7 @@ namespace NPRFIDTool.NPKit
     {
         private HttpClient client;
         private JObject commonParams;
+        private static WebSocket ws;
 
         public NPBackendService(string ip, string device)
         {
@@ -49,31 +51,30 @@ namespace NPRFIDTool.NPKit
         // 建立长链接
         static public void WebSocketConnect()
         {
-            using (var ws = new WebSocket("ws://123.207.54.83:1349"))
+            ws = new WebSocket("ws://123.207.54.83:1359/");
+
+            ws.OnMessage += (sender, e) =>
             {
-                ws.OnMessage += (sender, e) =>
-                {
-                    Console.WriteLine("Websocket says: " + e.Data);
-                };
+                Console.WriteLine("Websocket says: " + e.Data);
+            };
                     
 
-                ws.OnOpen += (sender, e) =>
-                {
-                    MessageBox.Show("Websocket Open");
-                };
+            ws.OnOpen += (sender, e) =>
+            {
+                MessageBox.Show("Websocket Open");
+            };
 
-                ws.OnClose += (sender, e) =>
-                {
-                    MessageBox.Show("Websocket Close" + e.Reason);
-                };
+            ws.OnClose += (sender, e) =>
+            {
+                MessageBox.Show("Websocket Close" + e.Reason);
+            };
 
-                ws.OnError += (sender, e) =>
-                {
-                    MessageBox.Show("Websocket Err:" + e.Message);
-                };
+            ws.OnError += (sender, e) =>
+            {
+                MessageBox.Show("Websocket Err:" + e.Message);
+            };
 
-                ws.Connect();
-            }
+            ws.Connect();
         }
 
         // 上报入库数据
@@ -162,6 +163,20 @@ namespace NPRFIDTool.NPKit
             string responseString = await response.Content.ReadAsStringAsync();
             JObject resultObj = JObject.Parse(responseString);
             return resultObj;
+        }
+
+        public static void testSend()
+        {
+            JObject obj = new JObject();
+            obj.Add("act", "scan_elabel");
+            obj.Add("client_type", "app");
+            JArray arry = new JArray();
+            arry.Add("300833B2DDD9014AB0001013");
+            arry.Add("300833B2DDD9014AB0001015");
+            obj.Add("data", arry);
+            obj.Add("status", "1");
+            string json = obj.ToString(Formatting.None);
+            ws.Send(json);
         }
     }
 }
