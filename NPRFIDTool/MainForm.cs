@@ -27,6 +27,13 @@ namespace NPRFIDTool
             e.Graphics.DrawString(title, systemConfigGroup.Font, Brushes.Black, (systemConfigGroup.Width - fontSize.Width) / 2, 1);
         }
 
+        private void portsConfigGroupBox_Paint(object sender, PaintEventArgs e)
+        {
+            string title = "天线配置";
+            SizeF fontSize = e.Graphics.MeasureString(title, systemConfigGroup.Font);
+            e.Graphics.DrawString(title, systemConfigGroup.Font, Brushes.Black, (systemConfigGroup.Width - fontSize.Width) / 2, 1);
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -37,7 +44,7 @@ namespace NPRFIDTool
 
             // 数据库
 
-            NPBackendService.WebSocketConnect();
+            //NPBackendService.WebSocketConnect();
 
             NPBackendService service = new NPBackendService("192.168.100.188", "RFID0012");
             //RspHandler handler = new RspHandler(getStockInitHandler);
@@ -104,6 +111,21 @@ namespace NPRFIDTool
         private void button4_Click(object sender, EventArgs e)
         {
             manager.stopReading(checkInfo);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
