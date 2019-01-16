@@ -1,0 +1,10 @@
+{
+  "configURL": "www.baidu.com",
+  "dbConfig": {
+    "dbAddress": "localhost:3306",
+    "dbName": "RFIDdb",
+    "username": "root",
+    "password": "123456"
+  },
+  "inStoreIP": "192.168.100.188"
+}

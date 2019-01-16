@@ -37,7 +37,6 @@ namespace NPRFIDTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            manager = new NPRFIDReaderManager();
             // 检查配置
 
             // 启动读取周期
@@ -46,9 +45,12 @@ namespace NPRFIDTool
 
             //NPBackendService.WebSocketConnect();
 
-            NPBackendService service = new NPBackendService("192.168.100.188", "RFID0012");
+            //NPBackendService service = new NPBackendService("192.168.100.188", "RFID0012");
             //RspHandler handler = new RspHandler(getStockInitHandler);
             //service.getStockInit(handler);
+            NPConfigManager manager = new NPConfigManager();
+            JObject obj = manager.loadUpConfiguration();
+            MessageBox.Show(obj.ToString());
         }
 
         void getStockInitHandler(JObject obj)
