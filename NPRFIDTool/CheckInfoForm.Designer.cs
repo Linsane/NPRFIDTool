@@ -28,7 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.comfirmButton = new System.Windows.Forms.Button();
+            this.space = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cancelButton.Location = new System.Drawing.Point(361, 539);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 0;
+            this.cancelButton.TabStop = false;
+            this.cancelButton.Text = "取消";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // comfirmButton
+            // 
+            this.comfirmButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comfirmButton.Location = new System.Drawing.Point(449, 539);
+            this.comfirmButton.Name = "comfirmButton";
+            this.comfirmButton.Size = new System.Drawing.Size(75, 23);
+            this.comfirmButton.TabIndex = 1;
+            this.comfirmButton.TabStop = false;
+            this.comfirmButton.Text = "确认";
+            this.comfirmButton.UseVisualStyleBackColor = true;
+            this.comfirmButton.Click += new System.EventHandler(this.comfirmButton_Click);
+            // 
+            // space
+            // 
+            this.space.AutoSize = true;
+            this.space.Location = new System.Drawing.Point(531, 556);
+            this.space.Name = "space";
+            this.space.Size = new System.Drawing.Size(17, 12);
+            this.space.TabIndex = 2;
+            this.space.Text = "  ";
             // 
             // CheckInfoForm
             // 
@@ -36,14 +72,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(887, 574);
+            this.Controls.Add(this.space);
+            this.Controls.Add(this.comfirmButton);
+            this.Controls.Add(this.cancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CheckInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CheckInfoForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button comfirmButton;
+        private System.Windows.Forms.Label space;
     }
 }

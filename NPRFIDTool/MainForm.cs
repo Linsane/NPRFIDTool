@@ -946,10 +946,16 @@ namespace NPRFIDTool
             NPRFIDReaderInfo info3 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.102", 4, new JArray(new int[] { 2, 3 }), "盘点器3");
             NPRFIDReaderInfo info4 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.103", 4, new JArray(new int[] { 3, 4 }), "盘点器4");
             NPRFIDReaderInfo info5 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.104", 4, new JArray(new int[] { 1, 3 }), "盘点器5");
-            NPRFIDReaderInfo[] infoArray = new NPRFIDReaderInfo[]
-            {
-                info1, info2, info3, info4, info5, info1, info1,info1, info1
-            };
+            ArrayList infoArray = new ArrayList();
+            infoArray.Add(info1);
+            infoArray.Add(info2);
+            infoArray.Add(info3);
+            infoArray.Add(info4);
+            infoArray.Add(info5);
+            infoArray.Add(info2);
+            infoArray.Add(info3);
+            infoArray.Add(info5);
+            infoArray.Add(info4);
             checkForm.setUpCheckReaderInfos(infoArray);
             checkForm.ShowDialog();
      
