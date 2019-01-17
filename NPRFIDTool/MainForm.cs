@@ -16,6 +16,10 @@ namespace NPRFIDTool
 
         private NPConfigManager configManager;
         private NPDBManager dbManager;
+        private NPRFIDReaderManager readerManager;
+        NPRFIDReaderInfo inStoreReader;
+        NPRFIDReaderInfo checkReader;
+
         private RadioButton[] inStoreRadioList;
         private CheckBox[] inStoreCheckBoxList;
         private RadioButton[] checkRadioList;
@@ -71,23 +75,6 @@ namespace NPRFIDTool
             #region 配置加载
             configManager = new NPConfigManager();
             loadUpLocalConfiguration(configManager);
-            #endregion
-
-            #region 数据库连接
-            dbManager = new NPDBManager(configManager.dbConfig);
-            try
-            {
-                dbManager.connectDataBase();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
-                return;
-            }
-            #endregion
-
-            #region RFID硬件连接
-
             #endregion
         }
 
@@ -150,7 +137,7 @@ namespace NPRFIDTool
             analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : manager.analyzeCycle.ToString();
         }
 
-        // 保存当前控件的值到本地
+        // 点击更新配置按钮
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (!validateCurrentConfiguration())
@@ -158,6 +145,8 @@ namespace NPRFIDTool
                 MessageBox.Show("请完善配置信息");
                 return;
             }
+
+            #region 更新配置信息
             configManager.configURL = urlTextBox.Text;
             configManager.dbConfig.dbAddress = dbAddressTextBox.Text;
             configManager.dbConfig.dbName = dbNameTextBox.Text;
@@ -206,6 +195,40 @@ namespace NPRFIDTool
             configManager.analyzeCycle = int.Parse(analyzeCycleTextBox.Text);
 
             configManager.markDownConfiguration();
+            #endregion
+
+            #region 数据库连接
+            if (dbManager != null) dbManager.disconnectDataBase();
+            dbManager = new NPDBManager(configManager.dbConfig);
+            try
+            {
+                dbManager.connectDataBase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
+                return;
+            }
+            #endregion
+
+            #region RFID硬件信息
+            // 入库
+            inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts);
+            // 盘点
+            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts);
+            #endregion
+
+            #region WebSocket连接
+            NPWebSocket ws = new NPWebSocket();
+            ws.errorHandler += (err) => {
+
+            };
+            ws.openHandler += (ee) =>
+            {
+                MessageBox.Show("Connect success");
+            };
+            ws.connect();
+            #endregion
         }
 
         // 校验配置
@@ -270,6 +293,7 @@ namespace NPRFIDTool
             return true;
         }
 
+        // 入库端口数选择
         private void inStoreRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
@@ -277,6 +301,7 @@ namespace NPRFIDTool
             showPartOfCheckBoxs(PortType.PortTypeInStore, int.Parse(rb.Text));
         }
 
+        // 盘点端口数选择
         private void checkRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
@@ -284,6 +309,7 @@ namespace NPRFIDTool
             showPartOfCheckBoxs(PortType.PortTypeCheck, int.Parse(rb.Text));
         }
 
+        // 控制端口选项显示个数
         private void showPartOfCheckBoxs(PortType type , int portNum)
         {
             CheckBox[] checkBoxList = type == PortType.PortTypeInStore ? inStoreCheckBoxList : checkCheckBoxList;
@@ -294,6 +320,7 @@ namespace NPRFIDTool
             }
         }
 
+        // 清空端口选择状态
         private void clearCheckBoxs(PortType type)
         {
             CheckBox[] checkBoxList = type == PortType.PortTypeInStore ? inStoreCheckBoxList : checkCheckBoxList;

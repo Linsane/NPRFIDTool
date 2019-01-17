@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ModuleTech;
 using System.Collections;
+using Newtonsoft.Json.Linq;
 
 namespace NPRFIDTool.NPKit
 {
@@ -10,7 +11,7 @@ namespace NPRFIDTool.NPKit
     class WrapReader
     {
         public Reader reader;
-        public ArrayList checkPorts;
+        public JArray checkPorts;
         public bool isReading;
     }
 
@@ -18,11 +19,10 @@ namespace NPRFIDTool.NPKit
     {
         private System.Timers.Timer cycleTimer = null;
         private System.Timers.Timer readPortTimer = null;
-        private bool handleInStorePort = false;
-        private Dictionary<string, string> checkedDict = new Dictionary<string, string>();
-        private ArrayList inStoreTags = new ArrayList();
+        private JObject checkedDict = new JObject();
+        private JArray inStoreTags = new JArray();
 
-        public Dictionary<string, WrapReader> readerDict = new Dictionary<string, WrapReader>();
+        public JObject readerDict = new JObject();
 
         public void startReading(NPRFIDReaderInfo readerInfo)
         {
@@ -32,17 +32,16 @@ namespace NPRFIDTool.NPKit
             bool readerExist = isReaderExist(readerInfo);
             if (!readerExist)
             {
-
                 reader = createRFIDReader(readerInfo);
                 wrapReader = new WrapReader();
                 wrapReader.reader = reader;
-                wrapReader.checkPorts = new ArrayList();
+                wrapReader.checkPorts = new JArray();
                 wrapReader.isReading = false;
-                readerDict.Add(readerInfo.readerIP, wrapReader);
+                readerDict.Add(readerInfo.readerIP, JObject.FromObject(wrapReader));
             }
             else
             {
-                wrapReader = readerDict[readerInfo.readerIP];
+                wrapReader = readerDict[readerInfo.readerIP].ToObject<WrapReader>();
                 reader = wrapReader.reader;
                 // 判断正在使用的端口，更新正在使用端口信息
                 SimpleReadPlan readPlan = (SimpleReadPlan)reader.ParamGet("ReadPlan");
@@ -63,7 +62,7 @@ namespace NPRFIDTool.NPKit
             ArrayList arrayList = null;
             if (readerInfo.portType == PortType.PortTypeCheck)
             {
-                wrapReader.checkPorts = new ArrayList(readerInfo.usedPorts);
+                wrapReader.checkPorts = new JArray(readerInfo.usedPorts);
             }
 
             if (!wrapReader.isReading)
@@ -77,7 +76,7 @@ namespace NPRFIDTool.NPKit
         public void stopReading(NPRFIDReaderInfo readerInfo)
         {
             // 当需要停的时候，判断下是否还有其它Reader的端口在，有的话移除自己的端口即可，不用停止读取RFID，否则停止停止读取RFID
-            WrapReader wrapReader = readerDict[readerInfo.readerIP];
+            WrapReader wrapReader = readerDict[readerInfo.readerIP].ToObject<WrapReader>();
             Reader reader = wrapReader.reader;
 
             SimpleReadPlan readPlan = (SimpleReadPlan)reader.ParamGet("ReadPlan");
@@ -103,9 +102,9 @@ namespace NPRFIDTool.NPKit
         private bool isReaderExist(NPRFIDReaderInfo readerInfo)
         {
             bool exist = false;
-            foreach (string key in readerDict.Keys)
+            foreach (var item in readerDict)
             {
-                if (key == readerInfo.readerIP)
+                if (readerInfo.readerIP == item.Key)
                 {
                     exist = true;
                 }
@@ -141,7 +140,7 @@ namespace NPRFIDTool.NPKit
             //如果要使用其它天线可以在数组useants中放置其它多个天线编号，本例中是使用天线1
 
             //int[] useants = new int[] { 1 };
-            int[] useants = (int[])readerInfo.usedPorts.ToArray(typeof(int));
+            int[] useants = readerInfo.usedPorts.ToObject<int[]>();
             reader.ParamSet("ReadPlan", new SimpleReadPlan(TagProtocol.GEN2, useants));
             #endregion
 
@@ -185,7 +184,8 @@ namespace NPRFIDTool.NPKit
         delegate void DataFromPortDelegate(TagReadData[] tags, Reader reader);
         private void processTagData(TagReadData[] tags, Reader reader)
         {
-            ArrayList checkPorts = readerDict[reader.Address].checkPorts;
+            WrapReader wrapReader = readerDict[reader.Address].ToObject<WrapReader>();
+            JArray checkPorts = wrapReader.checkPorts;
             foreach (TagReadData tag in tags)
             {   
                 if (checkPorts.Contains(tag.Antenna)) // 盘点端口数据

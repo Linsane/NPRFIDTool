@@ -4,21 +4,21 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using System.Collections;
 using WebSocketSharp;
 using ModuleTech;
-using System.Windows.Forms;
 
 
 namespace NPRFIDTool.NPKit
 {
     delegate void RspHandler(JObject obj);
+    delegate void WebSocketErrorHandler(ErrorEventArgs err);
+    delegate void WebSocketOpenHandler(EventArgs e);
     class NPBackendService
     {
         private HttpClient client;
         private JObject commonParams;
-        private static WebSocket ws;
+
 
         public NPBackendService(string ip, string device)
         {
@@ -46,35 +46,6 @@ namespace NPRFIDTool.NPKit
             JObject resultObj = JObject.Parse(responseString);
             handler(resultObj);
             return resultObj;
-        }
-
-        // 建立长链接
-        static public void WebSocketConnect()
-        {
-            ws = new WebSocket("ws://123.207.54.83:1359/");
-
-            ws.OnMessage += (sender, e) =>
-            {
-                Console.WriteLine("Websocket says: " + e.Data);
-            };
-                    
-
-            ws.OnOpen += (sender, e) =>
-            {
-                
-            };
-
-            ws.OnClose += (sender, e) =>
-            {
-                MessageBox.Show("Websocket Close" + e.Reason);
-            };
-
-            ws.OnError += (sender, e) =>
-            {
-                MessageBox.Show("Websocket Err:" + e.Message);
-            };
-
-            ws.Connect();
         }
 
         // 上报入库数据
@@ -163,20 +134,6 @@ namespace NPRFIDTool.NPKit
             string responseString = await response.Content.ReadAsStringAsync();
             JObject resultObj = JObject.Parse(responseString);
             return resultObj;
-        }
-
-        public static void testSend()
-        {
-            JObject obj = new JObject();
-            obj.Add("act", "scan_elabel");
-            obj.Add("client_type", "app");
-            JArray arry = new JArray();
-            arry.Add("300833B2DDD9014AB0001013");
-            arry.Add("300833B2DDD9014AB0001015");
-            obj.Add("data", arry);
-            obj.Add("status", "1");
-            string json = obj.ToString(Formatting.None);
-            ws.Send(json);
         }
     }
 }

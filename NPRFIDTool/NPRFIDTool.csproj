@@ -73,6 +73,7 @@
     <Compile Include="NPKit\NPDBManager.cs" />
     <Compile Include="NPKit\NPRFIDReaderInfo.cs" />
     <Compile Include="NPKit\NPRFIDReaderManager.cs" />
+    <Compile Include="NPKit\NPWebSocket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
