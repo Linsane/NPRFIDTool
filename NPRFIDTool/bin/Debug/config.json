@@ -4,18 +4,17 @@
     "dbAddress": "localhost:3306",
     "dbName": "mysql",
     "username": "root",
-    "password": "123456"
+    "password": "910123"
   },
   "inStoreIP": "192.168.100.188",
-  "inStoreAntNums": 4,
+  "inStoreAntNums": 1,
   "inStorePorts": [
     1
   ],
   "checkIP": "192.168.100.188",
-  "checkAntNums": 4,
+  "checkAntNums": 1,
   "checkPorts": [
-    2,
-    3
+    1
   ],
   "readPortTime": 5,
   "readPortCycle": 5,
