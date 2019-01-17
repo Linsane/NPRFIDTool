@@ -38,9 +38,10 @@ namespace NPRFIDTool.NPKit
         public NPConfigManager()
         {
             dbConfig = new DBConfig();
+            loadUpConfiguration();
         }
 
-        public void loadUpConfiguration()
+        private void loadUpConfiguration()
         {
             string configString = File.ReadAllText("config.json");
             JObject config = JObject.Parse(configString);

@@ -9,17 +9,18 @@ namespace NPRFIDTool
 {
     public partial class MainForm : Form
     {
-        private NPDBManager dbManager = null;
-        NPRFIDReaderInfo inStoreInfo = null;
-        NPRFIDReaderInfo checkInfo = null;
-        NPRFIDReaderManager manager = null;
-
         public MainForm()
         {
             InitializeComponent();
         }
 
+        private NPConfigManager configManager;
+        private RadioButton[] inStoreRadioList;
+        private CheckBox[] inStoreCheckBoxList;
+        private RadioButton[] checkRadioList;
+        private CheckBox[] checkCheckBoxList;
 
+        #region 界面改动
         private void systemConfigGroup_Paint(object sender, PaintEventArgs e)
         {
             string title = "系统环境配置";
@@ -43,11 +44,33 @@ namespace NPRFIDTool
         {
             e.Graphics.Clear(this.BackColor);
         }
-
+        #endregion
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // 检查配置
+            #region 控件管理
+            inStoreRadioList = new RadioButton[]
+            {
+                inStoreRadio1,inStoreRadio2,inStoreRadio3,inStoreRadio4,inStoreRadio5,inStoreRadio6
+            };
+            inStoreCheckBoxList = new CheckBox[]
+            {
+                inStoreCheckBox1,inStoreCheckBox2,inStoreCheckBox3,inStoreCheckBox4,inStoreCheckBox5,inStoreCheckBox6,inStoreCheckBox7,inStoreCheckBox8,inStoreCheckBox9,inStoreCheckBox10,inStoreCheckBox11,inStoreCheckBox12,inStoreCheckBox13,inStoreCheckBox14,inStoreCheckBox15,inStoreCheckBox16
+            };
+            checkRadioList = new RadioButton[]
+{
+                checkRadio1,checkRadio2,checkRadio3,checkRadio4,checkRadio5,checkRadio6
+};
+            checkCheckBoxList = new CheckBox[]
+            {
+                checkCheckBox1,checkCheckBox2,checkCheckBox3,checkCheckBox4,checkCheckBox5,checkCheckBox6,checkCheckBox7,checkCheckBox8,checkCheckBox9,checkCheckBox10,checkCheckBox11,checkCheckBox12,checkCheckBox13,checkCheckBox14,checkCheckBox15,checkCheckBox16
+            };
+            #endregion
+
+            #region 配置加载
+            configManager = new NPConfigManager();
+            loadUpLocalConfiguration(configManager);
+            #endregion
 
             // 启动读取周期
 
@@ -83,40 +106,33 @@ namespace NPRFIDTool
             */
         }
 
-        void getStockInitHandler(JObject obj)
+        private void loadUpLocalConfiguration(NPConfigManager manager)
         {
-            MessageBox.Show("success" + obj.ToString());
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            NPBackendService.testSend();
-            /*
-            if (inStoreInfo == null)
+            urlTextBox.Text = manager.configURL == null ? "" : manager.configURL;
+            dbAddressTextBox.Text = manager.dbConfig.dbAddress == null ? "" : manager.dbConfig.dbAddress;
+            dbNameTextBox.Text = manager.dbConfig.dbName == null ? "" : manager.dbConfig.username;
+            dbPasswordTextBox.Text = manager.dbConfig.password == null ? "" : manager.dbConfig.password;
+            inStoreIP.Text = manager.inStoreIP == null ? "" : manager.inStoreIP;
+            if(manager.inStoreAntNums > 0)
             {
-                NPRFIDReaderInfo info = new NPRFIDReaderInfo();
-                info.readerIP = "192.168.100.188";
-                info.readerAntNum = 4;
-                info.portType = PortType.PortTypeInStore;
-                info.usedPorts = new ArrayList();
-                info.usedPorts.Add(1);
-                inStoreInfo = info;
+                foreach (RadioButton rb in inStoreRadioList)
+                {
+                    if (rb.TabIndex + 1 == manager.inStoreAntNums)
+                    {
+                        rb.Checked = true;
+                    }
+                }
             }
-            
-            try
+            if(manager.inStorePorts.Count > 0)
             {
-                manager.startReading(inStoreInfo);
+                foreach (CheckBox cb in inStoreCheckBoxList)
+                {
+                    if (manager.inStorePorts.Contains(cb.TabIndex + 1))
+                    {
+                        cb.Checked = true;
+                    }
+                }
             }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show("连接读写器失败:" + ex.ToString());
-            }
-            */
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            manager.stopReading(inStoreInfo);
         }
     }
 }
