@@ -15,6 +15,7 @@ namespace NPRFIDTool
         }
 
         private NPConfigManager configManager;
+        private NPDBManager dbManager;
         private RadioButton[] inStoreRadioList;
         private CheckBox[] inStoreCheckBoxList;
         private RadioButton[] checkRadioList;
@@ -72,35 +73,21 @@ namespace NPRFIDTool
             loadUpLocalConfiguration(configManager);
             #endregion
 
-            #region Test Code
-            NPBackendService.WebSocketConnect();
+            #region 数据库连接
+            dbManager = new NPDBManager(configManager.dbConfig);
+            try
+            {
+                dbManager.connectDataBase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
+                return;
+            }
+            #endregion
 
-            //NPBackendService service = new NPBackendService("192.168.100.188", "RFID0012");
-            //RspHandler handler = new RspHandler(getStockInitHandler);
-            //service.getStockInit(handler);
-            //NPConfigManager manager = new NPConfigManager();
-            /*
-            manager.configURL = "www.baidu.com";
-            manager.dbConfig.dbAddress = "localhost:3306";
-            manager.dbConfig.dbName = "mysql";
-            manager.dbConfig.username = "root";
-            manager.dbConfig.password = "123456";
-            manager.inStoreIP = "192.168.100.188";
-            manager.inStoreAntNums = 4;
-            JArray instorePorts = new JArray();
-            instorePorts.Add(1);
-            manager.inStorePorts = instorePorts;
-            manager.checkIP = "192.168.100.188";
-            manager.checkAntNums = 4;
-            JArray checkPorts = new JArray();
-            checkPorts.Add(2);
-            checkPorts.Add(3);
-            manager.checkPorts = checkPorts;
-            manager.readPortTime = 5;
-            manager.readPortCycle = 5;
-            manager.analyzeCycle = 10;
-            manager.markDownConfiguration();
-            */
+            #region RFID硬件连接
+
             #endregion
         }
 

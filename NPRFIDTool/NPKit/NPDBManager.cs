@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MySql.Data;
+using Newtonsoft.Json.Linq;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -12,23 +10,33 @@ namespace NPRFIDTool.NPKit
 
     class NPDBManager
     {
-       
         private MySqlConnection conn;
         private MySqlCommand cmd;
-        private Dictionary<string,string> remindData;
-        private Dictionary<string,string> checkedData;
+        private JObject remindData;
+        private JObject checkedData;
+        private string server;
+        private string database;
+        private string user;
+        private string password;
+        private string port;
+
+        public NPDBManager(DBConfig dbConfig)
+        {
+            string[] adArray = dbConfig.dbAddress.Split(':');
+            this.server = adArray[0];
+            this.port = adArray[1];
+            this.database = dbConfig.dbName;
+            this.user = dbConfig.username;
+            this.password = dbConfig.password;
+        }
 
         // 连接本地数据库
         public void connectDataBase()
         {
-            string connStr = "server = localhost; user = root; database = rfid_db; port = 3306; password = 910123";
+            //dbname = rfid_db
+            string connStr = String.Format("server = {0}; user = {1}; database = {2}; port = {3}; password = {4}",server,user,database,port,password);
             conn = new MySqlConnection(connStr);
-            try {
-                conn.Open();
-                Console.WriteLine("Connect DB success");
-            }catch (Exception ex) {
-                Console.WriteLine(ex.ToString());
-            }
+            conn.Open();
         }
 
         // 断开数据库连接
@@ -38,7 +46,7 @@ namespace NPRFIDTool.NPKit
         }
 
         // 根据类型查询数据库中对应表的数据
-        public Dictionary<string,string> queryDataBase( TableType type )
+        public JObject queryDataBase( TableType type )
         {
             string tableName = type == TableType.TableTypeRemain ? "remain" : "check";
             string queryStr = String.Format("SELECT * FROM {0}", tableName);
@@ -46,12 +54,12 @@ namespace NPRFIDTool.NPKit
             MySqlCommandBuilder cmdBuilder = new MySqlCommandBuilder(adapter);
             DataSet tableData = new DataSet();
             adapter.Fill(tableData, tableName);
-            Dictionary<string, string> tableDict = processTableDataSet(tableData);
+            JObject tableDict = processTableDataSet(tableData);
             return tableDict;
         }
 
         // 往数据库中插入数据
-        public void appendDataToDataBase ( TableType type, Dictionary<string,string> dataDict )
+        public void appendDataToDataBase ( TableType type, JObject dataDict )
         {
             if (dataDict == null) return;
             string tableName = type == TableType.TableTypeRemain ? "remain" : "checked";
@@ -61,14 +69,14 @@ namespace NPRFIDTool.NPKit
             DataSet tableData = new DataSet();
             adapter.Fill(tableData, tableName);
             DataTable table = tableData.Tables[0];
-            foreach (string key in dataDict.Keys)
+            foreach (var item in dataDict)
             {
-                bool isNew = !updateTableIfNeeded(table, key, dataDict[key]);
+                bool isNew = !updateTableIfNeeded(table, item.Key, item.Value.ToString());
                 if (isNew)
                 {
                     DataRow row = table.NewRow();
-                    row[0] = key;
-                    row[1] = dataDict[key];
+                    row[0] = item.Key;
+                    row[1] = item.Value.ToString();
                     table.Rows.Add(row);
                 }
             }
@@ -85,15 +93,15 @@ namespace NPRFIDTool.NPKit
         }
 
         // 处理数据库返回的数据
-        private Dictionary<string, string> processTableDataSet( DataSet dataset )
+        private JObject processTableDataSet( DataSet dataset )
         {
             if (dataset == null) return null;
-            Dictionary<string, string> dict = new Dictionary<string, string>();
+            JObject obj = new JObject();
             foreach (DataRow row in dataset.Tables[0].Rows)
             {
-                dict.Add(row[0].ToString(), row[1].ToString());
+                obj.Add(row[0].ToString(), row[1].ToString());
             }
-            return dict;
+            return obj;
         }
 
         // 判断table中是否已包含制定数据,若包含则更新，更新成功返回true
