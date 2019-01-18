@@ -12,8 +12,6 @@ using ModuleTech;
 namespace NPRFIDTool.NPKit
 {
     delegate void RspHandler(JObject obj);
-    delegate void WebSocketErrorHandler(ErrorEventArgs err);
-    delegate void WebSocketOpenHandler(EventArgs e);
     class NPBackendService
     {
         private HttpClient client;

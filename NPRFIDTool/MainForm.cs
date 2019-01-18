@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using NPRFIDTool.NPKit;
 using System.Collections;
 using Newtonsoft.Json.Linq;
+using System.Timers;
 
 namespace NPRFIDTool
 {
@@ -219,16 +220,30 @@ namespace NPRFIDTool
             #endregion
 
             #region WebSocket连接
-            NPWebSocket ws = new NPWebSocket();
-            ws.errorHandler += (err) => {
+            NPWebSocket.errorHandler += (err) => {
+                MessageBox.Show("websocket 连接失败");
+                dbManager.disconnectDataBase();
+            };
+            // websocket通知开始读入库端口
+            NPWebSocket.startInStoreHandler += (wse) =>
+            {
 
             };
-            ws.openHandler += (ee) =>
+            // websocket通知结束读入库端口
+            NPWebSocket.stopInStoreHandler += (wse) =>
             {
-                MessageBox.Show("Connect success");
+
             };
-            ws.connect();
+            NPWebSocket.connect();
             #endregion
+
+            // test timer;
+            NPTimingManager timingManager = new NPTimingManager(2, 240, 600);
+            timingManager.readPortTimesUpHandler += (src, ee) =>
+            {
+                MessageBox.Show("timeout");
+            };
+            timingManager.startCycles();
         }
 
         // 校验配置

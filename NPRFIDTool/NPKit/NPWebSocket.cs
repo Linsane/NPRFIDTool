@@ -6,14 +6,18 @@ using Newtonsoft.Json;
 
 namespace NPRFIDTool.NPKit
 {
+    delegate void WebSocketErrorHandler(ErrorEventArgs err);
+    delegate void WebSocketStartInStoreHandler(EventArgs e); // 通知开始读入库端口
+    delegate void WebSocketStopInStoreHandler(EventArgs e); // 通知结束读入库端口
     class NPWebSocket
     {
-        private WebSocket ws;
-        public WebSocketErrorHandler errorHandler;
-        public WebSocketOpenHandler openHandler;
+        private static WebSocket ws;
+        public static WebSocketErrorHandler errorHandler;
+        public static WebSocketStartInStoreHandler startInStoreHandler;
+        public static WebSocketStopInStoreHandler stopInStoreHandler;
 
         // 建立长链接
-        public void connect()
+        public static void connect()
         {
             ws = new WebSocket("ws://123.207.54.83:1359/");
 
@@ -22,15 +26,14 @@ namespace NPRFIDTool.NPKit
                 Console.WriteLine("Websocket says: " + e.Data);
             };
 
-
             ws.OnOpen += (sender, e) =>
             {
-                openHandler(e);
+                Console.WriteLine("Websocket Open");
             };
 
             ws.OnClose += (sender, e) =>
             {
-                MessageBox.Show("Websocket Close" + e.Reason);
+                Console.WriteLine("Websocket Close");
             };
 
             ws.OnError += (sender, e) =>

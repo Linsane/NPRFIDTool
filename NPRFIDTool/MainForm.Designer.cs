@@ -247,6 +247,7 @@
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(400, 21);
             this.urlTextBox.TabIndex = 0;
+            this.urlTextBox.TabStop = false;
             // 
             // localConfigGroup
             // 
