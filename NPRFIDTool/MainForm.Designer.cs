@@ -120,6 +120,7 @@
             this.checkCheckBox3 = new System.Windows.Forms.CheckBox();
             this.checkCheckBox2 = new System.Windows.Forms.CheckBox();
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.controlButton = new System.Windows.Forms.Button();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -365,7 +366,7 @@
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.updateButton.Location = new System.Drawing.Point(374, 628);
+            this.updateButton.Location = new System.Drawing.Point(340, 628);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(115, 23);
             this.updateButton.TabIndex = 1;
@@ -1339,11 +1340,23 @@
             this.checkCheckBox1.UseVisualStyleBackColor = true;
             this.checkCheckBox1.Visible = false;
             // 
+            // controlButton
+            // 
+            this.controlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.controlButton.Location = new System.Drawing.Point(460, 628);
+            this.controlButton.Name = "controlButton";
+            this.controlButton.Size = new System.Drawing.Size(115, 23);
+            this.controlButton.TabIndex = 6;
+            this.controlButton.Text = "启动";
+            this.controlButton.UseVisualStyleBackColor = true;
+            this.controlButton.Click += new System.EventHandler(this.controlButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 663);
+            this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.systemConfigGroup);
@@ -1495,6 +1508,7 @@
         private System.Windows.Forms.RadioButton checkRadio3;
         private System.Windows.Forms.RadioButton checkRadio2;
         private System.Windows.Forms.RadioButton checkRadio1;
+        private System.Windows.Forms.Button controlButton;
     }
 }
 

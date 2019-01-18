@@ -22,23 +22,38 @@ namespace NPRFIDTool.NPKit
         {
             readPortTimer = new Timer(readPortTime * 1000);
             readPortTimer.AutoReset = false;
-            readPortTimer.Elapsed += (src,ee) =>
+            readPortTimer.Elapsed += (src,e) =>
             {
-                readPortTimesUpHandler(src, ee);
+                readPortTimesUpHandler(src, e);
             };
 
             scanCycleTimer = new Timer(scanCycleTime * 60 * 1000);
             scanCycleTimer.AutoReset = true;
-            scanCycleTimer.Elapsed += scanCycleStartHandler;
+            scanCycleTimer.Elapsed += (src, e) =>
+            {
+                readPortTimer.Enabled = true;
+                scanCycleStartHandler(src, e);
+            };
 
             analyzeCycleTimer = new Timer(analyzeCycleTime * 60 * 1000);
             analyzeCycleTimer.AutoReset = true;
-            analyzeCycleTimer.Elapsed += analyzeCycleStartHandler;
+            analyzeCycleTimer.Elapsed += (src, e) =>
+            {
+                analyzeCycleStartHandler(src, e);
+            };
         }
 
         public void startCycles()
         {
-            readPortTimer.Enabled = true;
+            scanCycleTimer.Enabled = true;
+            analyzeCycleTimer.Enabled = true;
+        }
+
+        public void stopCycles()
+        {
+            scanCycleTimer.Enabled = false;
+            analyzeCycleTimer.Enabled = false;
+            readPortTimer.Enabled = false;
         }
     }
 }

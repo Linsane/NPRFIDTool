@@ -18,6 +18,7 @@ namespace NPRFIDTool
         private NPConfigManager configManager;
         private NPDBManager dbManager;
         private NPRFIDReaderManager readerManager;
+        private NPTimingManager timingManager;
         NPRFIDReaderInfo inStoreReader;
         NPRFIDReaderInfo checkReader;
 
@@ -138,6 +139,75 @@ namespace NPRFIDTool
             analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : manager.analyzeCycle.ToString();
         }
 
+        // 点击启动/停止按钮
+        private void controlButton_Click(object sender, EventArgs e)
+        {
+            resetAppStatus();
+            controlButton.Text = "停止";
+            controlButton.Enabled = false;
+            #region 数据库连接
+            if (dbManager != null) dbManager.disconnectDataBase();
+            dbManager = new NPDBManager(configManager.dbConfig);
+            try
+            {
+                dbManager.connectDataBase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
+                resetAppStatus();
+                return;
+            }
+            #endregion
+
+            #region RFID硬件信息
+            // 入库
+            inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts);
+            // 盘点
+            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts);
+            #endregion
+
+            #region WebSocket连接
+            NPWebSocket.errorHandler += (err) => {
+                MessageBox.Show("websocket 连接失败");
+                resetAppStatus();
+            };
+            // websocket通知开始读入库端口
+            NPWebSocket.startInStoreHandler += (wse) =>
+            {
+
+            };
+            // websocket通知结束读入库端口
+            NPWebSocket.stopInStoreHandler += (wse) =>
+            {
+                
+            };
+            NPWebSocket.connectStopHandler += (wse) =>
+            {
+                MessageBox.Show("websocket 连接断开");
+                resetAppStatus();
+            };
+            NPWebSocket.connect();
+            #endregion
+
+            // Timing 控制
+            timingManager = new NPTimingManager(2, 240, 600);
+            timingManager.readPortTimesUpHandler += (src, ee) =>
+            {
+                // 停止读盘点接口
+            };
+            timingManager.scanCycleStartHandler += (src, ee) =>
+            {
+                // 开始读盘点接口
+
+            };
+            timingManager.analyzeCycleStartHandler += (src, ee) =>
+            {
+                // 开始分析差异数据，上报分析结果
+            };
+            timingManager.startCycles();
+        }
+
         // 点击更新配置按钮
         private void updateButton_Click(object sender, EventArgs e)
         {
@@ -197,53 +267,6 @@ namespace NPRFIDTool
 
             configManager.markDownConfiguration();
             #endregion
-
-            #region 数据库连接
-            if (dbManager != null) dbManager.disconnectDataBase();
-            dbManager = new NPDBManager(configManager.dbConfig);
-            try
-            {
-                dbManager.connectDataBase();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("连接数据库失败，请填写正确数据库信息 err:" + ex.Message);
-                return;
-            }
-            #endregion
-
-            #region RFID硬件信息
-            // 入库
-            inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts);
-            // 盘点
-            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts);
-            #endregion
-
-            #region WebSocket连接
-            NPWebSocket.errorHandler += (err) => {
-                MessageBox.Show("websocket 连接失败");
-                dbManager.disconnectDataBase();
-            };
-            // websocket通知开始读入库端口
-            NPWebSocket.startInStoreHandler += (wse) =>
-            {
-
-            };
-            // websocket通知结束读入库端口
-            NPWebSocket.stopInStoreHandler += (wse) =>
-            {
-
-            };
-            NPWebSocket.connect();
-            #endregion
-
-            // test timer;
-            NPTimingManager timingManager = new NPTimingManager(2, 240, 600);
-            timingManager.readPortTimesUpHandler += (src, ee) =>
-            {
-                MessageBox.Show("timeout");
-            };
-            timingManager.startCycles();
         }
 
         // 校验配置
@@ -343,6 +366,16 @@ namespace NPRFIDTool
             {
                 cb.Checked = false;
             }
+        }
+
+        // 重设程序状态
+        private void resetAppStatus()
+        {
+            controlButton.Text = "启动";
+            controlButton.Enabled = true;
+            if (dbManager != null) dbManager.disconnectDataBase();
+            if (timingManager != null) timingManager.stopCycles();
+            NPWebSocket.disconnect();
         }
     }
 }
