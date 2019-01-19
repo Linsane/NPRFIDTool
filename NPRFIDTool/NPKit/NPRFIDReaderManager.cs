@@ -6,6 +6,7 @@ using ModuleTech.Gen2;
 using ModuleLibrary;
 using System.Collections;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace NPRFIDTool.NPKit
 {
@@ -23,10 +24,10 @@ namespace NPRFIDTool.NPKit
         public JObject checkedDict = new JObject();
         public JArray inStoreTags = new JArray();
 
-        public JObject readerDict = new JObject();
+        public Dictionary<string,WrapReader> readerDict = new Dictionary<string, WrapReader>();
         public CreatReaderFailHandler failHandler;
 
-        public void startReading(NPRFIDReaderInfo readerInfo)
+        public void beginReading(NPRFIDReaderInfo readerInfo)
         {
             Reader reader = null;
             WrapReader wrapReader = null;
@@ -41,7 +42,7 @@ namespace NPRFIDTool.NPKit
                     wrapReader.reader = reader;
                     wrapReader.checkPorts = new JArray();
                     wrapReader.isReading = false;
-                    readerDict.Add(readerInfo.readerIP, JObject.FromObject(wrapReader));
+                    readerDict.Add(readerInfo.readerIP, wrapReader);
                 }
                 catch (Exception ex)
                 {
@@ -50,11 +51,11 @@ namespace NPRFIDTool.NPKit
             }
             else
             {
-                wrapReader = readerDict[readerInfo.readerIP].ToObject<WrapReader>();
+                wrapReader = readerDict[readerInfo.readerIP];
                 reader = wrapReader.reader;
                 // 判断正在使用的端口，更新正在使用端口信息
                 SimpleReadPlan readPlan = (SimpleReadPlan)reader.ParamGet("ReadPlan");
-                ArrayList list = new ArrayList(readerInfo.usedPorts);
+                List<int> list = readerInfo.usedPorts.ToObject<List<int>>();
                 int[] usedAnts = readPlan.Antennas;
                 foreach (int ant in usedAnts)
                 {
@@ -63,7 +64,7 @@ namespace NPRFIDTool.NPKit
                         list.Add(ant);
                     }
                 }
-                int[] useants = (int[])list.ToArray(typeof(int));
+                int[] useants = list.ToArray();
                 reader.ParamSet("ReadPlan", new SimpleReadPlan(TagProtocol.GEN2, useants));
             }
 
@@ -84,10 +85,10 @@ namespace NPRFIDTool.NPKit
             
         }
 
-        public void stopReading(NPRFIDReaderInfo readerInfo)
+        public void endReading(NPRFIDReaderInfo readerInfo)
         {
             // 当需要停的时候，判断下是否还有其它Reader的端口在，有的话移除自己的端口即可，不用停止读取RFID，否则停止停止读取RFID
-            WrapReader wrapReader = readerDict[readerInfo.readerIP].ToObject<WrapReader>();
+            WrapReader wrapReader = readerDict[readerInfo.readerIP];
             Reader reader = wrapReader.reader;
 
             SimpleReadPlan readPlan = (SimpleReadPlan)reader.ParamGet("ReadPlan");
@@ -201,14 +202,13 @@ namespace NPRFIDTool.NPKit
         delegate void DataFromPortDelegate(TagReadData[] tags, Reader reader);
         private void processTagData(TagReadData[] tags, Reader reader)
         {
-            WrapReader wrapReader = readerDict[reader.Address].ToObject<WrapReader>();
-            JArray checkPorts = wrapReader.checkPorts;
+            WrapReader wrapReader = readerDict[reader.Address];
+            List<int> checkPorts = wrapReader.checkPorts.ToObject<List<int>>(); ;
             JArray sendNeededTags = new JArray();
             foreach (TagReadData tag in tags)
             {   
                 if (checkPorts.Contains(tag.Antenna)) // 盘点端口数据
                 {
-                    Console.WriteLine(tag.EPCString + "盤點端口");
                     // 判断是否已经存在这个数据，没有记录checkDict
                     updateCheckedData(tag);
                 }
@@ -260,17 +260,18 @@ namespace NPRFIDTool.NPKit
         // 更新checked数据记录
         private void updateCheckedData(TagReadData tag)
         {
-            bool isNew = false;
+            bool isNew = true;
             foreach (var item in checkedDict)
             {
                 if (tag.EPCString == item.Key)
                 {
-                    isNew = true;
+                    isNew = false;
                 }
             }
             if (isNew)
             {
                 checkedDict.Add(tag.EPCString, tag.Time.ToString());
+                Console.WriteLine("盘点端口:" + tag.EPCString);
             }
             else
             {

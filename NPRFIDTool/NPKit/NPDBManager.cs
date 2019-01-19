@@ -111,7 +111,7 @@ namespace NPRFIDTool.NPKit
             bool contain = false;
             foreach (DataRow row in table.Rows)
             {
-                if (row[0] == key)
+                if (row[0].ToString() == key)
                 {
                     contain = true;
                     row[1] = value;

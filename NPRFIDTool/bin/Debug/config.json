@@ -12,11 +12,11 @@
     1
   ],
   "checkIP": "192.168.100.188",
-  "checkAntNums": 1,
+  "checkAntNums": 4,
   "checkPorts": [
-    1
+    3
   ],
-  "readPortTime": 5,
-  "readPortCycle": 5,
+  "readPortTime": 3,
+  "readPortCycle": 10,
   "analyzeCycle": 10
 }

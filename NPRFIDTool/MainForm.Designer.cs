@@ -190,7 +190,7 @@
             // 
             this.systemConfigContainer.Panel2.Controls.Add(this.localConfigGroup);
             this.systemConfigContainer.Size = new System.Drawing.Size(887, 195);
-            this.systemConfigContainer.SplitterDistance = 440;
+            this.systemConfigContainer.SplitterDistance = 439;
             this.systemConfigContainer.SplitterWidth = 1;
             this.systemConfigContainer.TabIndex = 0;
             this.systemConfigContainer.TabStop = false;
@@ -205,7 +205,7 @@
             this.serverConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.serverConfigGroup.Name = "serverConfigGroup";
             this.serverConfigGroup.Padding = new System.Windows.Forms.Padding(3, 50, 3, 3);
-            this.serverConfigGroup.Size = new System.Drawing.Size(440, 195);
+            this.serverConfigGroup.Size = new System.Drawing.Size(439, 195);
             this.serverConfigGroup.TabIndex = 0;
             this.serverConfigGroup.TabStop = false;
             this.serverConfigGroup.Text = "服务器配置";
@@ -226,7 +226,7 @@
             // urlContainer.Panel2
             // 
             this.urlContainer.Panel2.Controls.Add(this.urlTextBox);
-            this.urlContainer.Size = new System.Drawing.Size(434, 50);
+            this.urlContainer.Size = new System.Drawing.Size(433, 50);
             this.urlContainer.SplitterDistance = 60;
             this.urlContainer.TabIndex = 1;
             this.urlContainer.TabStop = false;
@@ -246,7 +246,7 @@
             this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.urlTextBox.Location = new System.Drawing.Point(3, 19);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(388, 21);
+            this.urlTextBox.Size = new System.Drawing.Size(387, 21);
             this.urlTextBox.TabIndex = 0;
             this.urlTextBox.TabStop = false;
             // 
@@ -258,7 +258,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(446, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(447, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -284,7 +284,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(440, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(441, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -336,7 +336,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(289, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(290, 21);
             this.dbAddressTextBox.TabIndex = 6;
             // 
             // dbNameTextBox
@@ -344,7 +344,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(289, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(290, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -352,7 +352,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(289, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(290, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -360,7 +360,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(289, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(290, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // updateButton
@@ -495,7 +495,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(138, 12);
             this.label13.TabIndex = 1;
-            this.label13.Text = "定时扫描周期(秒)";
+            this.label13.Text = "定时扫描周期(分)";
             // 
             // label14
             // 
@@ -505,7 +505,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(138, 12);
             this.label14.TabIndex = 2;
-            this.label14.Text = "盘点结果发送周期(秒)";
+            this.label14.Text = "盘点结果发送周期(分)";
             // 
             // networkConfigGroupBox
             // 

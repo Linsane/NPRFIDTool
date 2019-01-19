@@ -27,7 +27,7 @@ namespace NPRFIDTool.NPKit
                 readPortTimesUpHandler(src, e);
             };
 
-            scanCycleTimer = new Timer(scanCycleTime * 60 * 1000);
+            scanCycleTimer = new Timer(scanCycleTime * 1000);
             scanCycleTimer.AutoReset = true;
             scanCycleTimer.Elapsed += (src, e) =>
             {
@@ -35,7 +35,7 @@ namespace NPRFIDTool.NPKit
                 scanCycleStartHandler(src, e);
             };
 
-            analyzeCycleTimer = new Timer(analyzeCycleTime * 60 * 1000);
+            analyzeCycleTimer = new Timer(analyzeCycleTime * 1000);
             analyzeCycleTimer.AutoReset = true;
             analyzeCycleTimer.Elapsed += (src, e) =>
             {

@@ -220,30 +220,34 @@ namespace NPRFIDTool
             // Timing 控制
             if (timingManager == null)
             {
-                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle * 60, configManager.analyzeCycle * 60);
+                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle, configManager.analyzeCycle * 60);
                 timingManager.readPortTimesUpHandler += (src, ee) =>
                 {
                     // 停止读盘点接口
-                    readerManager.stopReading(checkReader);
+                    Console.WriteLine("停止盘点");
+                    readerManager.endReading(checkReader);
                     // 将盘点数据写入数据库
                     dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
                 };
                 timingManager.scanCycleStartHandler += (src, ee) =>
                 {
                     // 开始读盘点接口
-                    readerManager.startReading(checkReader);
+                    Console.WriteLine("开始盘点");
+                    readerManager.beginReading(checkReader);
                 };
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
                 {
                     // 开始分析差异数据，上报分析结果
+                    Console.WriteLine("分析盘点结果");
                     JObject remainData = dbManager.queryDataBase(TableType.TableTypeRemain);
                     JArray diffArray = readerManager.getDiffTagsArray(remainData);
                     services.reportCheckDiff(diffArray);
                 };
             }
             timingManager.startCycles();
-            readerManager.startReading(checkReader);
-
+            // 启动自动触发一次盘点
+            readerManager.beginReading(checkReader);
+            timingManager.readPortTimer.Enabled = true;
 
             controlButton.Enabled = true;
         }
