@@ -190,7 +190,7 @@
             // 
             this.systemConfigContainer.Panel2.Controls.Add(this.localConfigGroup);
             this.systemConfigContainer.Size = new System.Drawing.Size(887, 195);
-            this.systemConfigContainer.SplitterDistance = 452;
+            this.systemConfigContainer.SplitterDistance = 440;
             this.systemConfigContainer.SplitterWidth = 1;
             this.systemConfigContainer.TabIndex = 0;
             this.systemConfigContainer.TabStop = false;
@@ -205,7 +205,7 @@
             this.serverConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.serverConfigGroup.Name = "serverConfigGroup";
             this.serverConfigGroup.Padding = new System.Windows.Forms.Padding(3, 50, 3, 3);
-            this.serverConfigGroup.Size = new System.Drawing.Size(452, 195);
+            this.serverConfigGroup.Size = new System.Drawing.Size(440, 195);
             this.serverConfigGroup.TabIndex = 0;
             this.serverConfigGroup.TabStop = false;
             this.serverConfigGroup.Text = "服务器配置";
@@ -226,7 +226,7 @@
             // urlContainer.Panel2
             // 
             this.urlContainer.Panel2.Controls.Add(this.urlTextBox);
-            this.urlContainer.Size = new System.Drawing.Size(446, 50);
+            this.urlContainer.Size = new System.Drawing.Size(434, 50);
             this.urlContainer.SplitterDistance = 60;
             this.urlContainer.TabIndex = 1;
             this.urlContainer.TabStop = false;
@@ -246,7 +246,7 @@
             this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.urlTextBox.Location = new System.Drawing.Point(3, 19);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(400, 21);
+            this.urlTextBox.Size = new System.Drawing.Size(388, 21);
             this.urlTextBox.TabIndex = 0;
             this.urlTextBox.TabStop = false;
             // 
@@ -258,7 +258,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(434, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(446, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -284,7 +284,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(428, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(440, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -336,7 +336,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbAddressTextBox.TabIndex = 6;
             // 
             // dbNameTextBox
@@ -344,7 +344,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -352,7 +352,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -360,13 +360,13 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(277, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.updateButton.Location = new System.Drawing.Point(329, 628);
+            this.updateButton.Location = new System.Drawing.Point(325, 628);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(115, 23);
             this.updateButton.TabIndex = 1;
@@ -415,7 +415,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel8);
             this.splitContainer1.Size = new System.Drawing.Size(869, 92);
-            this.splitContainer1.SplitterDistance = 446;
+            this.splitContainer1.SplitterDistance = 432;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
@@ -432,7 +432,7 @@
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(446, 92);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(432, 92);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // label12
@@ -450,7 +450,7 @@
             this.readTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.readTimeTextBox.Location = new System.Drawing.Point(123, 12);
             this.readTimeTextBox.Name = "readTimeTextBox";
-            this.readTimeTextBox.Size = new System.Drawing.Size(320, 21);
+            this.readTimeTextBox.Size = new System.Drawing.Size(306, 21);
             this.readTimeTextBox.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -468,7 +468,7 @@
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(419, 92);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(433, 92);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // analyzeCycleTextBox
@@ -476,7 +476,7 @@
             this.analyzeCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.analyzeCycleTextBox.Location = new System.Drawing.Point(147, 58);
             this.analyzeCycleTextBox.Name = "analyzeCycleTextBox";
-            this.analyzeCycleTextBox.Size = new System.Drawing.Size(269, 21);
+            this.analyzeCycleTextBox.Size = new System.Drawing.Size(283, 21);
             this.analyzeCycleTextBox.TabIndex = 3;
             // 
             // scanCycleTextBox
@@ -484,7 +484,7 @@
             this.scanCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.scanCycleTextBox.Location = new System.Drawing.Point(147, 12);
             this.scanCycleTextBox.Name = "scanCycleTextBox";
-            this.scanCycleTextBox.Size = new System.Drawing.Size(269, 21);
+            this.scanCycleTextBox.Size = new System.Drawing.Size(283, 21);
             this.scanCycleTextBox.TabIndex = 2;
             // 
             // label13
@@ -527,6 +527,7 @@
             this.networkConfigContrainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.networkConfigContrainer.IsSplitterFixed = true;
             this.networkConfigContrainer.Location = new System.Drawing.Point(3, 22);
             this.networkConfigContrainer.Name = "networkConfigContrainer";
             // 
@@ -538,7 +539,7 @@
             // 
             this.networkConfigContrainer.Panel2.Controls.Add(this.outStoreConfigGroupBox);
             this.networkConfigContrainer.Size = new System.Drawing.Size(866, 222);
-            this.networkConfigContrainer.SplitterDistance = 444;
+            this.networkConfigContrainer.SplitterDistance = 432;
             this.networkConfigContrainer.TabIndex = 0;
             // 
             // inStoreConfigGroupBox
@@ -548,7 +549,7 @@
             this.inStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.inStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
             this.inStoreConfigGroupBox.Name = "inStoreConfigGroupBox";
-            this.inStoreConfigGroupBox.Size = new System.Drawing.Size(444, 222);
+            this.inStoreConfigGroupBox.Size = new System.Drawing.Size(432, 222);
             this.inStoreConfigGroupBox.TabIndex = 0;
             this.inStoreConfigGroupBox.TabStop = false;
             this.inStoreConfigGroupBox.Text = "出入库天线配置";
@@ -572,7 +573,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 202);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 202);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label9
@@ -581,7 +582,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 40);
+            this.label9.Size = new System.Drawing.Size(91, 40);
             this.label9.TabIndex = 0;
             this.label9.Text = "入库天线IP:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -592,7 +593,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 40);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 40);
+            this.label10.Size = new System.Drawing.Size(91, 40);
             this.label10.TabIndex = 1;
             this.label10.Text = "天线端口数";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -604,16 +605,16 @@
             this.label11.Location = new System.Drawing.Point(3, 80);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label11.Size = new System.Drawing.Size(94, 122);
+            this.label11.Size = new System.Drawing.Size(91, 122);
             this.label11.TabIndex = 2;
             this.label11.Text = "使用端口";
             // 
             // inStoreIPTextBox
             // 
             this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStoreIPTextBox.Location = new System.Drawing.Point(103, 9);
+            this.inStoreIPTextBox.Location = new System.Drawing.Point(100, 9);
             this.inStoreIPTextBox.Name = "inStoreIPTextBox";
-            this.inStoreIPTextBox.Size = new System.Drawing.Size(332, 21);
+            this.inStoreIPTextBox.Size = new System.Drawing.Size(323, 21);
             this.inStoreIPTextBox.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -641,7 +642,7 @@
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(103, 83);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(100, 83);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -832,10 +833,10 @@
             this.portsCountGroupBox1.Controls.Add(this.tableLayoutPanel3);
             this.portsCountGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox1.Location = new System.Drawing.Point(103, 43);
+            this.portsCountGroupBox1.Location = new System.Drawing.Point(100, 43);
             this.portsCountGroupBox1.Name = "portsCountGroupBox1";
             this.portsCountGroupBox1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox1.Size = new System.Drawing.Size(332, 34);
+            this.portsCountGroupBox1.Size = new System.Drawing.Size(323, 34);
             this.portsCountGroupBox1.TabIndex = 6;
             this.portsCountGroupBox1.TabStop = false;
             this.portsCountGroupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox1_Paint);
@@ -860,16 +861,16 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(308, 21);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(299, 21);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // inStoreRadio6
             // 
             this.inStoreRadio6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio6.AutoSize = true;
-            this.inStoreRadio6.Location = new System.Drawing.Point(258, 3);
+            this.inStoreRadio6.Location = new System.Drawing.Point(248, 3);
             this.inStoreRadio6.Name = "inStoreRadio6";
-            this.inStoreRadio6.Size = new System.Drawing.Size(47, 15);
+            this.inStoreRadio6.Size = new System.Drawing.Size(48, 15);
             this.inStoreRadio6.TabIndex = 5;
             this.inStoreRadio6.TabStop = true;
             this.inStoreRadio6.Text = "16";
@@ -880,9 +881,9 @@
             // 
             this.inStoreRadio5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio5.AutoSize = true;
-            this.inStoreRadio5.Location = new System.Drawing.Point(207, 3);
+            this.inStoreRadio5.Location = new System.Drawing.Point(199, 3);
             this.inStoreRadio5.Name = "inStoreRadio5";
-            this.inStoreRadio5.Size = new System.Drawing.Size(45, 15);
+            this.inStoreRadio5.Size = new System.Drawing.Size(43, 15);
             this.inStoreRadio5.TabIndex = 4;
             this.inStoreRadio5.TabStop = true;
             this.inStoreRadio5.Text = "8";
@@ -893,9 +894,9 @@
             // 
             this.inStoreRadio4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio4.AutoSize = true;
-            this.inStoreRadio4.Location = new System.Drawing.Point(156, 3);
+            this.inStoreRadio4.Location = new System.Drawing.Point(150, 3);
             this.inStoreRadio4.Name = "inStoreRadio4";
-            this.inStoreRadio4.Size = new System.Drawing.Size(45, 15);
+            this.inStoreRadio4.Size = new System.Drawing.Size(43, 15);
             this.inStoreRadio4.TabIndex = 3;
             this.inStoreRadio4.TabStop = true;
             this.inStoreRadio4.Text = "4";
@@ -906,9 +907,9 @@
             // 
             this.inStoreRadio3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio3.AutoSize = true;
-            this.inStoreRadio3.Location = new System.Drawing.Point(105, 3);
+            this.inStoreRadio3.Location = new System.Drawing.Point(101, 3);
             this.inStoreRadio3.Name = "inStoreRadio3";
-            this.inStoreRadio3.Size = new System.Drawing.Size(45, 15);
+            this.inStoreRadio3.Size = new System.Drawing.Size(43, 15);
             this.inStoreRadio3.TabIndex = 2;
             this.inStoreRadio3.TabStop = true;
             this.inStoreRadio3.Text = "3";
@@ -919,9 +920,9 @@
             // 
             this.inStoreRadio2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio2.AutoSize = true;
-            this.inStoreRadio2.Location = new System.Drawing.Point(54, 3);
+            this.inStoreRadio2.Location = new System.Drawing.Point(52, 3);
             this.inStoreRadio2.Name = "inStoreRadio2";
-            this.inStoreRadio2.Size = new System.Drawing.Size(45, 15);
+            this.inStoreRadio2.Size = new System.Drawing.Size(43, 15);
             this.inStoreRadio2.TabIndex = 1;
             this.inStoreRadio2.TabStop = true;
             this.inStoreRadio2.Text = "2";
@@ -934,7 +935,7 @@
             this.inStoreRadio1.AutoSize = true;
             this.inStoreRadio1.Location = new System.Drawing.Point(3, 3);
             this.inStoreRadio1.Name = "inStoreRadio1";
-            this.inStoreRadio1.Size = new System.Drawing.Size(45, 15);
+            this.inStoreRadio1.Size = new System.Drawing.Size(43, 15);
             this.inStoreRadio1.TabIndex = 0;
             this.inStoreRadio1.TabStop = true;
             this.inStoreRadio1.Text = "1";
@@ -948,7 +949,7 @@
             this.outStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.outStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
             this.outStoreConfigGroupBox.Name = "outStoreConfigGroupBox";
-            this.outStoreConfigGroupBox.Size = new System.Drawing.Size(418, 222);
+            this.outStoreConfigGroupBox.Size = new System.Drawing.Size(430, 222);
             this.outStoreConfigGroupBox.TabIndex = 0;
             this.outStoreConfigGroupBox.TabStop = false;
             this.outStoreConfigGroupBox.Text = "仓库天线配置";
@@ -971,7 +972,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(412, 202);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 202);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // portsCountGroupBox2
@@ -979,10 +980,10 @@
             this.portsCountGroupBox2.Controls.Add(this.tableLayoutPanel6);
             this.portsCountGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox2.Location = new System.Drawing.Point(97, 43);
+            this.portsCountGroupBox2.Location = new System.Drawing.Point(100, 43);
             this.portsCountGroupBox2.Name = "portsCountGroupBox2";
             this.portsCountGroupBox2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox2.Size = new System.Drawing.Size(312, 34);
+            this.portsCountGroupBox2.Size = new System.Drawing.Size(321, 34);
             this.portsCountGroupBox2.TabIndex = 7;
             this.portsCountGroupBox2.TabStop = false;
             this.portsCountGroupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox2_Paint);
@@ -1007,16 +1008,16 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(325, 21);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(334, 21);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // checkRadio6
             // 
             this.checkRadio6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio6.AutoSize = true;
-            this.checkRadio6.Location = new System.Drawing.Point(273, 3);
+            this.checkRadio6.Location = new System.Drawing.Point(278, 3);
             this.checkRadio6.Name = "checkRadio6";
-            this.checkRadio6.Size = new System.Drawing.Size(49, 15);
+            this.checkRadio6.Size = new System.Drawing.Size(53, 15);
             this.checkRadio6.TabIndex = 5;
             this.checkRadio6.TabStop = true;
             this.checkRadio6.Text = "16";
@@ -1027,9 +1028,9 @@
             // 
             this.checkRadio5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio5.AutoSize = true;
-            this.checkRadio5.Location = new System.Drawing.Point(219, 3);
+            this.checkRadio5.Location = new System.Drawing.Point(223, 3);
             this.checkRadio5.Name = "checkRadio5";
-            this.checkRadio5.Size = new System.Drawing.Size(48, 15);
+            this.checkRadio5.Size = new System.Drawing.Size(49, 15);
             this.checkRadio5.TabIndex = 4;
             this.checkRadio5.TabStop = true;
             this.checkRadio5.Text = "8";
@@ -1040,9 +1041,9 @@
             // 
             this.checkRadio4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio4.AutoSize = true;
-            this.checkRadio4.Location = new System.Drawing.Point(165, 3);
+            this.checkRadio4.Location = new System.Drawing.Point(168, 3);
             this.checkRadio4.Name = "checkRadio4";
-            this.checkRadio4.Size = new System.Drawing.Size(48, 15);
+            this.checkRadio4.Size = new System.Drawing.Size(49, 15);
             this.checkRadio4.TabIndex = 3;
             this.checkRadio4.TabStop = true;
             this.checkRadio4.Text = "4";
@@ -1053,9 +1054,9 @@
             // 
             this.checkRadio3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio3.AutoSize = true;
-            this.checkRadio3.Location = new System.Drawing.Point(111, 3);
+            this.checkRadio3.Location = new System.Drawing.Point(113, 3);
             this.checkRadio3.Name = "checkRadio3";
-            this.checkRadio3.Size = new System.Drawing.Size(48, 15);
+            this.checkRadio3.Size = new System.Drawing.Size(49, 15);
             this.checkRadio3.TabIndex = 2;
             this.checkRadio3.TabStop = true;
             this.checkRadio3.Text = "3";
@@ -1066,9 +1067,9 @@
             // 
             this.checkRadio2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio2.AutoSize = true;
-            this.checkRadio2.Location = new System.Drawing.Point(57, 3);
+            this.checkRadio2.Location = new System.Drawing.Point(58, 3);
             this.checkRadio2.Name = "checkRadio2";
-            this.checkRadio2.Size = new System.Drawing.Size(48, 15);
+            this.checkRadio2.Size = new System.Drawing.Size(49, 15);
             this.checkRadio2.TabIndex = 1;
             this.checkRadio2.TabStop = true;
             this.checkRadio2.Text = "2";
@@ -1081,7 +1082,7 @@
             this.checkRadio1.AutoSize = true;
             this.checkRadio1.Location = new System.Drawing.Point(3, 3);
             this.checkRadio1.Name = "checkRadio1";
-            this.checkRadio1.Size = new System.Drawing.Size(48, 15);
+            this.checkRadio1.Size = new System.Drawing.Size(49, 15);
             this.checkRadio1.TabIndex = 0;
             this.checkRadio1.TabStop = true;
             this.checkRadio1.Text = "1";
@@ -1094,7 +1095,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 40);
+            this.label6.Size = new System.Drawing.Size(91, 40);
             this.label6.TabIndex = 0;
             this.label6.Text = "盘点天线IP:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1105,7 +1106,7 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Location = new System.Drawing.Point(3, 40);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 40);
+            this.label7.Size = new System.Drawing.Size(91, 40);
             this.label7.TabIndex = 1;
             this.label7.Text = "天线端口数";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1117,16 +1118,16 @@
             this.label8.Location = new System.Drawing.Point(3, 80);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label8.Size = new System.Drawing.Size(88, 122);
+            this.label8.Size = new System.Drawing.Size(91, 122);
             this.label8.TabIndex = 2;
             this.label8.Text = "使用端口";
             // 
             // checkIPTextBox
             // 
             this.checkIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkIPTextBox.Location = new System.Drawing.Point(97, 9);
+            this.checkIPTextBox.Location = new System.Drawing.Point(100, 9);
             this.checkIPTextBox.Name = "checkIPTextBox";
-            this.checkIPTextBox.Size = new System.Drawing.Size(312, 21);
+            this.checkIPTextBox.Size = new System.Drawing.Size(321, 21);
             this.checkIPTextBox.TabIndex = 3;
             // 
             // tableLayoutPanel5
@@ -1154,7 +1155,7 @@
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox3, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox1, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(97, 83);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(100, 83);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -1343,7 +1344,7 @@
             // controlButton
             // 
             this.controlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.controlButton.Location = new System.Drawing.Point(449, 628);
+            this.controlButton.Location = new System.Drawing.Point(444, 628);
             this.controlButton.Name = "controlButton";
             this.controlButton.Size = new System.Drawing.Size(115, 23);
             this.controlButton.TabIndex = 6;
