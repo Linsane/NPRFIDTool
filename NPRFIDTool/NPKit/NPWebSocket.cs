@@ -21,7 +21,7 @@ namespace NPRFIDTool.NPKit
         // 建立长链接
         public static void connect()
         {
-            if (ws != null)
+            if (ws != null && (ws.ReadyState != WebSocketState.Connecting || ws.ReadyState != WebSocketState.Open))
             {
                 ws.Connect();
                 return;
@@ -56,7 +56,7 @@ namespace NPRFIDTool.NPKit
         // 断开长连接
         public static void disconnect()
         {
-            if(ws != null && ws.ReadyState == WebSocketState.Connecting)
+            if(ws != null && (ws.ReadyState == WebSocketState.Connecting || ws.ReadyState == WebSocketState.Open))
             {
                 ws.Close();
             }

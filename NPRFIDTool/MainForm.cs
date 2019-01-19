@@ -83,6 +83,31 @@ namespace NPRFIDTool
 
             #region 初始化各种组件
             services = new NPBackendService("", "RFID0012");
+            readerManager = new NPRFIDReaderManager();
+            NPWebSocket.errorHandler += (err) => {
+                MessageBox.Show("websocket 连接失败");
+                resetAppStatus();
+            };
+            // websocket通知开始读入库端口
+            NPWebSocket.startInStoreHandler += (wse) =>
+            {
+
+            };
+            // websocket通知结束读入库端口
+            NPWebSocket.stopInStoreHandler += (wse) =>
+            {
+
+            };
+            NPWebSocket.connectStopHandler += (wse) =>
+            {
+                MessageBox.Show("websocket 连接断开");
+                resetAppStatus();
+            };
+            readerManager.failHandler += (ex) =>
+            {
+                MessageBox.Show("连接读写器失败:" + ex.ToString());
+                resetAppStatus();
+            };
             #endregion
         }
 
@@ -156,7 +181,6 @@ namespace NPRFIDTool
                 return;
             }
 
-
             // 处理开始逻辑
             if (!validateCurrentConfiguration())
             {
@@ -190,50 +214,37 @@ namespace NPRFIDTool
             #endregion
 
             #region WebSocket连接
-            NPWebSocket.errorHandler += (err) => {
-                MessageBox.Show("websocket 连接失败");
-                resetAppStatus();
-            };
-            // websocket通知开始读入库端口
-            NPWebSocket.startInStoreHandler += (wse) =>
-            {
-
-            };
-            // websocket通知结束读入库端口
-            NPWebSocket.stopInStoreHandler += (wse) =>
-            {
-                
-            };
-            NPWebSocket.connectStopHandler += (wse) =>
-            {
-                MessageBox.Show("websocket 连接断开");
-                resetAppStatus();
-            };
             NPWebSocket.connect();
             #endregion
 
             // Timing 控制
-            timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle*60, configManager.analyzeCycle*60);
-            timingManager.readPortTimesUpHandler += (src, ee) =>
+            if (timingManager == null)
             {
-                // 停止读盘点接口
-                readerManager.stopReading(checkReader);
-                // 将盘点数据写入数据库
-                dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
-            };
-            timingManager.scanCycleStartHandler += (src, ee) =>
-            {
-                // 开始读盘点接口
-                readerManager.startReading(checkReader);
-            };
-            timingManager.analyzeCycleStartHandler += (src, ee) =>
-            {
-                // 开始分析差异数据，上报分析结果
-                JObject remainData = dbManager.queryDataBase(TableType.TableTypeRemain);
-                JArray diffArray = readerManager.getDiffTagsArray(remainData);
-                services.reportCheckDiff(diffArray);
-            };
+                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle * 60, configManager.analyzeCycle * 60);
+                timingManager.readPortTimesUpHandler += (src, ee) =>
+                {
+                    // 停止读盘点接口
+                    readerManager.stopReading(checkReader);
+                    // 将盘点数据写入数据库
+                    dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
+                };
+                timingManager.scanCycleStartHandler += (src, ee) =>
+                {
+                    // 开始读盘点接口
+                    readerManager.startReading(checkReader);
+                };
+                timingManager.analyzeCycleStartHandler += (src, ee) =>
+                {
+                    // 开始分析差异数据，上报分析结果
+                    JObject remainData = dbManager.queryDataBase(TableType.TableTypeRemain);
+                    JArray diffArray = readerManager.getDiffTagsArray(remainData);
+                    services.reportCheckDiff(diffArray);
+                };
+            }
             timingManager.startCycles();
+            readerManager.startReading(checkReader);
+
+
             controlButton.Enabled = true;
         }
 

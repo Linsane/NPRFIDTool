@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections;
 using WebSocketSharp;
 using ModuleTech;
+using System.Net;
 
 
 namespace NPRFIDTool.NPKit
@@ -27,7 +28,7 @@ namespace NPRFIDTool.NPKit
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             commonParams.Add("token", "5941e58d8d04afd0cb6f33df4aed15b3");
-            commonParams.Add("ip", ip);
+            commonParams.Add("ip", GetIpAddress());
             commonParams.Add("device", device); //"RFID0012"
         }
 
@@ -131,6 +132,15 @@ namespace NPRFIDTool.NPKit
             string responseString = await response.Content.ReadAsStringAsync();
             JObject resultObj = JObject.Parse(responseString);
             return resultObj;
+        }
+
+        // 获取IP地址
+        private string GetIpAddress()
+        {
+            string hostName = Dns.GetHostName();   //获取本机名
+            IPHostEntry localhost = Dns.GetHostByName(hostName);    //方法已过期，可以获取IPv4的地址
+            IPAddress localaddr = localhost.AddressList[0];
+            return localaddr.ToString();
         }
     }
 }

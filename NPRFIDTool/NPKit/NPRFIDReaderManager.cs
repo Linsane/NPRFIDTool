@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using ModuleTech;
+using ModuleTech.Gen2;
+using ModuleLibrary;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 
 namespace NPRFIDTool.NPKit
 {
     enum ReaderStatus { readerStatusStop, readerStatusReading };
+    delegate void CreatReaderFailHandler(Exception ex);
     class WrapReader
     {
         public Reader reader;
@@ -21,21 +24,29 @@ namespace NPRFIDTool.NPKit
         public JArray inStoreTags = new JArray();
 
         public JObject readerDict = new JObject();
+        public CreatReaderFailHandler failHandler;
 
         public void startReading(NPRFIDReaderInfo readerInfo)
         {
-            Reader reader;
+            Reader reader = null;
             WrapReader wrapReader = null;
 
             bool readerExist = isReaderExist(readerInfo);
             if (!readerExist)
             {
-                reader = createRFIDReader(readerInfo);
-                wrapReader = new WrapReader();
-                wrapReader.reader = reader;
-                wrapReader.checkPorts = new JArray();
-                wrapReader.isReading = false;
-                readerDict.Add(readerInfo.readerIP, JObject.FromObject(wrapReader));
+                try
+                {
+                    reader = createRFIDReader(readerInfo);
+                    wrapReader = new WrapReader();
+                    wrapReader.reader = reader;
+                    wrapReader.checkPorts = new JArray();
+                    wrapReader.isReading = false;
+                    readerDict.Add(readerInfo.readerIP, JObject.FromObject(wrapReader));
+                }
+                catch (Exception ex)
+                {
+                    failHandler(ex);
+                }
             }
             else
             {
@@ -55,6 +66,8 @@ namespace NPRFIDTool.NPKit
                 int[] useants = (int[])list.ToArray(typeof(int));
                 reader.ParamSet("ReadPlan", new SimpleReadPlan(TagProtocol.GEN2, useants));
             }
+
+            if (reader == null) return;
 
             // 如果是盘点Reader，则记录好盘点所用的端口
             ArrayList arrayList = null;
