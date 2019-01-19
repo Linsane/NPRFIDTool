@@ -53,23 +53,22 @@ namespace NPRFIDTool.NPKit
             
         }
 
+        // 断开长连接
         public static void disconnect()
         {
-            if(ws != null)
+            if(ws != null && ws.ReadyState == WebSocketState.Connecting)
             {
                 ws.Close();
             }
         }
 
-        public void testSend()
+        // 发送入库数据
+        public static void sendTagData(JArray tags)
         {
             JObject obj = new JObject();
             obj.Add("act", "scan_elabel");
             obj.Add("client_type", "app");
-            JArray arry = new JArray();
-            arry.Add("300833B2DDD9014AB0001013");
-            arry.Add("300833B2DDD9014AB0001015");
-            obj.Add("data", arry);
+            obj.Add("data", tags);
             obj.Add("status", "1");
             string json = obj.ToString(Formatting.None);
             ws.Send(json);

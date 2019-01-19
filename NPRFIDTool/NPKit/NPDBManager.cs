@@ -42,6 +42,7 @@ namespace NPRFIDTool.NPKit
         // 断开数据库连接
         public void disconnectDataBase()
         {
+            if (conn.State != ConnectionState.Connecting) return;
             conn.Close();
         }
 

@@ -366,7 +366,7 @@
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.updateButton.Location = new System.Drawing.Point(340, 628);
+            this.updateButton.Location = new System.Drawing.Point(329, 628);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(115, 23);
             this.updateButton.TabIndex = 1;
@@ -1343,7 +1343,7 @@
             // controlButton
             // 
             this.controlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.controlButton.Location = new System.Drawing.Point(460, 628);
+            this.controlButton.Location = new System.Drawing.Point(449, 628);
             this.controlButton.Name = "controlButton";
             this.controlButton.Size = new System.Drawing.Size(115, 23);
             this.controlButton.TabIndex = 6;

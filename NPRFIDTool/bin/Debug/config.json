@@ -2,7 +2,7 @@
   "configURL": "www.baidu.com",
   "dbConfig": {
     "dbAddress": "localhost:3306",
-    "dbName": "mysql",
+    "dbName": "rfid_db",
     "username": "root",
     "password": "910123"
   },

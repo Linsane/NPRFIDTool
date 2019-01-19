@@ -19,6 +19,8 @@ namespace NPRFIDTool
         private NPDBManager dbManager;
         private NPRFIDReaderManager readerManager;
         private NPTimingManager timingManager;
+        private NPBackendService services;
+
         NPRFIDReaderInfo inStoreReader;
         NPRFIDReaderInfo checkReader;
 
@@ -77,6 +79,10 @@ namespace NPRFIDTool
             #region 配置加载
             configManager = new NPConfigManager();
             loadUpLocalConfiguration(configManager);
+            #endregion
+
+            #region 初始化各种组件
+            services = new NPBackendService("", "RFID0012");
             #endregion
         }
 
@@ -142,6 +148,22 @@ namespace NPRFIDTool
         // 点击启动/停止按钮
         private void controlButton_Click(object sender, EventArgs e)
         {
+
+            Button button = (Button)sender;
+            if (button.Text == "停止") // 处理停止逻辑
+            {
+                resetAppStatus();
+                return;
+            }
+
+
+            // 处理开始逻辑
+            if (!validateCurrentConfiguration())
+            {
+                MessageBox.Show("完善配置后请先点击更新配置");
+                return;
+            }
+
             resetAppStatus();
             controlButton.Text = "停止";
             controlButton.Enabled = false;
@@ -191,21 +213,28 @@ namespace NPRFIDTool
             #endregion
 
             // Timing 控制
-            timingManager = new NPTimingManager(2, 240, 600);
+            timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle*60, configManager.analyzeCycle*60);
             timingManager.readPortTimesUpHandler += (src, ee) =>
             {
                 // 停止读盘点接口
+                readerManager.stopReading(checkReader);
+                // 将盘点数据写入数据库
+                dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
             };
             timingManager.scanCycleStartHandler += (src, ee) =>
             {
                 // 开始读盘点接口
-
+                readerManager.startReading(checkReader);
             };
             timingManager.analyzeCycleStartHandler += (src, ee) =>
             {
                 // 开始分析差异数据，上报分析结果
+                JObject remainData = dbManager.queryDataBase(TableType.TableTypeRemain);
+                JArray diffArray = readerManager.getDiffTagsArray(remainData);
+                services.reportCheckDiff(diffArray);
             };
             timingManager.startCycles();
+            controlButton.Enabled = true;
         }
 
         // 点击更新配置按钮

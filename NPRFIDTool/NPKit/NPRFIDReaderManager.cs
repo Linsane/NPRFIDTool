@@ -17,10 +17,8 @@ namespace NPRFIDTool.NPKit
 
     class NPRFIDReaderManager
     {
-        private System.Timers.Timer cycleTimer = null;
-        private System.Timers.Timer readPortTimer = null;
-        private JObject checkedDict = new JObject();
-        private JArray inStoreTags = new JArray();
+        public JObject checkedDict = new JObject();
+        public JArray inStoreTags = new JArray();
 
         public JObject readerDict = new JObject();
 
@@ -96,6 +94,12 @@ namespace NPRFIDTool.NPKit
             }
 
             reader.ParamSet("ReadPlan", new SimpleReadPlan(TagProtocol.GEN2, arr.ToArray()));
+
+            // 如果是停止入库端口读取，要清除已记录的入库tags数据
+            if (readerInfo.portType == PortType.PortTypeCheck)
+            {
+                inStoreTags.Clear();
+            }
         }
 
         // 根据IP判断是否已经存在对应Reader
@@ -186,18 +190,30 @@ namespace NPRFIDTool.NPKit
         {
             WrapReader wrapReader = readerDict[reader.Address].ToObject<WrapReader>();
             JArray checkPorts = wrapReader.checkPorts;
+            JArray sendNeededTags = new JArray();
             foreach (TagReadData tag in tags)
             {   
                 if (checkPorts.Contains(tag.Antenna)) // 盘点端口数据
                 {
                     Console.WriteLine(tag.EPCString + "盤點端口");
+                    // 判断是否已经存在这个数据，没有记录checkDict
+                    updateCheckedData(tag);
                 }
                 else // 入库端口数据
                 {
                     Console.WriteLine(tag.EPCString + "入庫端口");
+                    // 判断是否已经存在这个数据，没有记录到inStoreTags并上报
+                    if (!isTagExist(tag.EPCString))
+                    {
+                        inStoreTags.Add(tag.EPCString);
+                        sendNeededTags.Add(tag.EPCString);
+                    }
                 }
             }
-
+            if(sendNeededTags.Count > 0)
+            {
+                NPWebSocket.sendTagData(sendNeededTags);
+            }
         }
 
         private void OnTagsRead(object sender, Reader.TagsReadEventArgs tagsArgs)
@@ -216,49 +232,25 @@ namespace NPRFIDTool.NPKit
 
         #endregion
 
-        /*
-        // 启动定时扫描周期
-        private void startCycleTimer()
+        // 判断当前是否已记录并处理这个tag
+        private bool isTagExist(string tag)
         {
-            if (cycleTimer == null)
+            bool exist = false;
+            string[] tags = inStoreTags.ToObject<string[]>();
+            if (tags.Contains(tag))
             {
-                cycleTimer = new System.Timers.Timer();
-                cycleTimer.Enabled = true;
-                cycleTimer.AutoReset = false;
-                cycleTimer.Interval = 180000; // 可配置参数：定时扫描周期
-                cycleTimer.Elapsed += new System.Timers.ElapsedEventHandler(this.startRFIDReading);
+                exist = true;
             }
-
-            cycleTimer.Start();
-        }
-
-        // 启动读取RFID端口周期，周期结束重新启动定时扫描周期
-        private void startRFIDReading(object source, ElapsedEventArgs e)
-        {
-            if (readPortTimer == null)
-            {
-                readPortTimer = new System.Timers.Timer();
-                readPortTimer.Enabled = true;
-                readPortTimer.AutoReset = false;
-                readPortTimer.Interval = 5000; // 可配置参数：扫描天线周期
-                readPortTimer.Elapsed += new System.Timers.ElapsedEventHandler(stopRFIDReading);
-            }
-            readPortTimer.Start();
-            reader.StartReading();
-        }
-        // 上传入库端口数据
-
-        // 将盘点数据写入数据库
-        dbManager.appendDataToDataBase(TableType.TableTypeCheck, checkedDict);
+            return exist;
         }
 
         // 更新checked数据记录
         private void updateCheckedData(TagReadData tag)
         {
             bool isNew = false;
-            foreach (string key in checkedDict.Keys)
+            foreach (var item in checkedDict)
             {
-                if (tag.EPCString == key)
+                if (tag.EPCString == item.Key)
                 {
                     isNew = true;
                 }
@@ -272,6 +264,20 @@ namespace NPRFIDTool.NPKit
                 checkedDict[tag.EPCString] = tag.Time.ToString();
             }
         }
-        */
+
+        // 返回盘点结果
+        public JArray getDiffTagsArray(JObject remainData)
+        {
+
+            JArray diffArray = new JArray();
+            foreach(var item in remainData)
+            {
+                if (!checkedDict.ContainsKey(item.Key))
+                {
+                    diffArray.Add(item.Key);
+                }
+            }
+            return diffArray;
+        }
     }
 }

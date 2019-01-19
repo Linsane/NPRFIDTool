@@ -116,13 +116,12 @@ namespace NPRFIDTool.NPKit
         }
 
         // 上报盘点差异数据
-        public async Task<JObject> reportCheckDiff(ArrayList tagsList, TagReadData tagData)
+        public async Task<JObject> reportCheckDiff(JArray diffArray)
         {
             JObject obj = new JObject();
             obj.Add("action", "utscan");
-            obj.Add("antenna", String.Format("天线{0}", tagData.Antenna));
-            obj.Add("antenna_param", "");
             obj.Add("check", "err");
+            obj.Add("label", diffArray);
 
             obj.Merge(commonParams);
 
