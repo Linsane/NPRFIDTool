@@ -29,6 +29,8 @@ namespace NPRFIDTool
         private RadioButton[] checkRadioList;
         private CheckBox[] checkCheckBoxList;
 
+        private delegate void MainThreadMethod();
+
         #region 界面改动
         private void systemConfigGroup_Paint(object sender, PaintEventArgs e)
         {
@@ -412,11 +414,23 @@ namespace NPRFIDTool
             }
         }
 
-        // 重设程序状态
-        private void resetAppStatus()
+        private void resetControlButton()
         {
             controlButton.Text = "启动";
             controlButton.Enabled = true;
+        }
+
+        // 重设程序状态
+        private void resetAppStatus()
+        {
+            if (controlButton.InvokeRequired)
+            {
+                this.BeginInvoke(new MainThreadMethod(resetControlButton), null);
+            }
+            else
+            {
+                resetControlButton();
+            }
             if (dbManager != null) dbManager.disconnectDataBase();
             if (timingManager != null) timingManager.stopCycles();
             NPWebSocket.disconnect();

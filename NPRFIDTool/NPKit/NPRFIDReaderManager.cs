@@ -223,7 +223,7 @@ namespace NPRFIDTool.NPKit
                     }
                 }
             }
-            if(sendNeededTags.Count > 0)
+            if (sendNeededTags.Count > 0)
             {
                 NPWebSocket.sendTagData(sendNeededTags);
             }
