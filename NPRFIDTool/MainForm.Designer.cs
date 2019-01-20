@@ -41,10 +41,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dbAddressTextBox = new System.Windows.Forms.TextBox();
             this.dbNameTextBox = new System.Windows.Forms.TextBox();
             this.dbUserNameTextBox = new System.Windows.Forms.TextBox();
             this.dbPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.dbAddressTextBox = new System.Windows.Forms.TextBox();
             this.updateButton = new System.Windows.Forms.Button();
             this.portsConfigGroupBox = new System.Windows.Forms.GroupBox();
             this.scanConfigGroupBox = new System.Windows.Forms.GroupBox();
@@ -265,7 +265,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(447, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(450, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -293,7 +293,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(423, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(426, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -340,21 +340,12 @@
             this.label5.Text = "数据库密码";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dbAddressTextBox
-            // 
-            this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
-            this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(252, 21);
-            this.dbAddressTextBox.TabIndex = 6;
-            this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
-            // 
             // dbNameTextBox
             // 
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(252, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(255, 21);
             this.dbNameTextBox.TabIndex = 7;
             this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -363,7 +354,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(252, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(255, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -372,9 +363,18 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(252, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(255, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
+            // 
+            // dbAddressTextBox
+            // 
+            this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
+            this.dbAddressTextBox.Name = "dbAddressTextBox";
+            this.dbAddressTextBox.Size = new System.Drawing.Size(255, 21);
+            this.dbAddressTextBox.TabIndex = 6;
+            this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // updateButton
             // 
@@ -581,6 +581,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -595,7 +596,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 40);
+            this.label9.Size = new System.Drawing.Size(87, 40);
             this.label9.TabIndex = 0;
             this.label9.Text = "入库天线IP:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -606,7 +607,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(3, 40);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(91, 40);
+            this.label10.Size = new System.Drawing.Size(87, 40);
             this.label10.TabIndex = 1;
             this.label10.Text = "天线端口数";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -618,17 +619,18 @@
             this.label11.Location = new System.Drawing.Point(3, 80);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label11.Size = new System.Drawing.Size(91, 122);
+            this.label11.Size = new System.Drawing.Size(87, 122);
             this.label11.TabIndex = 2;
             this.label11.Text = "使用端口";
             // 
             // inStoreIPTextBox
             // 
             this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStoreIPTextBox.Location = new System.Drawing.Point(100, 9);
+            this.inStoreIPTextBox.Location = new System.Drawing.Point(96, 9);
             this.inStoreIPTextBox.Name = "inStoreIPTextBox";
-            this.inStoreIPTextBox.Size = new System.Drawing.Size(323, 21);
+            this.inStoreIPTextBox.Size = new System.Drawing.Size(307, 21);
             this.inStoreIPTextBox.TabIndex = 3;
+            this.inStoreIPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IPTextBox_Validating);
             // 
             // tableLayoutPanel2
             // 
@@ -655,7 +657,7 @@
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(100, 83);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(96, 83);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -846,10 +848,10 @@
             this.portsCountGroupBox1.Controls.Add(this.tableLayoutPanel3);
             this.portsCountGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox1.Location = new System.Drawing.Point(100, 43);
+            this.portsCountGroupBox1.Location = new System.Drawing.Point(96, 43);
             this.portsCountGroupBox1.Name = "portsCountGroupBox1";
             this.portsCountGroupBox1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox1.Size = new System.Drawing.Size(323, 34);
+            this.portsCountGroupBox1.Size = new System.Drawing.Size(307, 34);
             this.portsCountGroupBox1.TabIndex = 6;
             this.portsCountGroupBox1.TabStop = false;
             this.portsCountGroupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox1_Paint);
@@ -874,16 +876,16 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(299, 21);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(283, 21);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // inStoreRadio6
             // 
             this.inStoreRadio6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio6.AutoSize = true;
-            this.inStoreRadio6.Location = new System.Drawing.Point(248, 3);
+            this.inStoreRadio6.Location = new System.Drawing.Point(238, 3);
             this.inStoreRadio6.Name = "inStoreRadio6";
-            this.inStoreRadio6.Size = new System.Drawing.Size(48, 15);
+            this.inStoreRadio6.Size = new System.Drawing.Size(42, 15);
             this.inStoreRadio6.TabIndex = 5;
             this.inStoreRadio6.TabStop = true;
             this.inStoreRadio6.Text = "16";
@@ -894,9 +896,9 @@
             // 
             this.inStoreRadio5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio5.AutoSize = true;
-            this.inStoreRadio5.Location = new System.Drawing.Point(199, 3);
+            this.inStoreRadio5.Location = new System.Drawing.Point(191, 3);
             this.inStoreRadio5.Name = "inStoreRadio5";
-            this.inStoreRadio5.Size = new System.Drawing.Size(43, 15);
+            this.inStoreRadio5.Size = new System.Drawing.Size(41, 15);
             this.inStoreRadio5.TabIndex = 4;
             this.inStoreRadio5.TabStop = true;
             this.inStoreRadio5.Text = "8";
@@ -907,9 +909,9 @@
             // 
             this.inStoreRadio4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio4.AutoSize = true;
-            this.inStoreRadio4.Location = new System.Drawing.Point(150, 3);
+            this.inStoreRadio4.Location = new System.Drawing.Point(144, 3);
             this.inStoreRadio4.Name = "inStoreRadio4";
-            this.inStoreRadio4.Size = new System.Drawing.Size(43, 15);
+            this.inStoreRadio4.Size = new System.Drawing.Size(41, 15);
             this.inStoreRadio4.TabIndex = 3;
             this.inStoreRadio4.TabStop = true;
             this.inStoreRadio4.Text = "4";
@@ -920,9 +922,9 @@
             // 
             this.inStoreRadio3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio3.AutoSize = true;
-            this.inStoreRadio3.Location = new System.Drawing.Point(101, 3);
+            this.inStoreRadio3.Location = new System.Drawing.Point(97, 3);
             this.inStoreRadio3.Name = "inStoreRadio3";
-            this.inStoreRadio3.Size = new System.Drawing.Size(43, 15);
+            this.inStoreRadio3.Size = new System.Drawing.Size(41, 15);
             this.inStoreRadio3.TabIndex = 2;
             this.inStoreRadio3.TabStop = true;
             this.inStoreRadio3.Text = "3";
@@ -933,9 +935,9 @@
             // 
             this.inStoreRadio2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.inStoreRadio2.AutoSize = true;
-            this.inStoreRadio2.Location = new System.Drawing.Point(52, 3);
+            this.inStoreRadio2.Location = new System.Drawing.Point(50, 3);
             this.inStoreRadio2.Name = "inStoreRadio2";
-            this.inStoreRadio2.Size = new System.Drawing.Size(43, 15);
+            this.inStoreRadio2.Size = new System.Drawing.Size(41, 15);
             this.inStoreRadio2.TabIndex = 1;
             this.inStoreRadio2.TabStop = true;
             this.inStoreRadio2.Text = "2";
@@ -948,7 +950,7 @@
             this.inStoreRadio1.AutoSize = true;
             this.inStoreRadio1.Location = new System.Drawing.Point(3, 3);
             this.inStoreRadio1.Name = "inStoreRadio1";
-            this.inStoreRadio1.Size = new System.Drawing.Size(43, 15);
+            this.inStoreRadio1.Size = new System.Drawing.Size(41, 15);
             this.inStoreRadio1.TabIndex = 0;
             this.inStoreRadio1.TabStop = true;
             this.inStoreRadio1.Text = "1";
@@ -981,6 +983,7 @@
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -993,10 +996,10 @@
             this.portsCountGroupBox2.Controls.Add(this.tableLayoutPanel6);
             this.portsCountGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox2.Location = new System.Drawing.Point(100, 43);
+            this.portsCountGroupBox2.Location = new System.Drawing.Point(95, 43);
             this.portsCountGroupBox2.Name = "portsCountGroupBox2";
             this.portsCountGroupBox2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox2.Size = new System.Drawing.Size(321, 34);
+            this.portsCountGroupBox2.Size = new System.Drawing.Size(306, 34);
             this.portsCountGroupBox2.TabIndex = 7;
             this.portsCountGroupBox2.TabStop = false;
             this.portsCountGroupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox2_Paint);
@@ -1021,16 +1024,16 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(334, 21);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(319, 21);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // checkRadio6
             // 
             this.checkRadio6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio6.AutoSize = true;
-            this.checkRadio6.Location = new System.Drawing.Point(278, 3);
+            this.checkRadio6.Location = new System.Drawing.Point(268, 3);
             this.checkRadio6.Name = "checkRadio6";
-            this.checkRadio6.Size = new System.Drawing.Size(53, 15);
+            this.checkRadio6.Size = new System.Drawing.Size(48, 15);
             this.checkRadio6.TabIndex = 5;
             this.checkRadio6.TabStop = true;
             this.checkRadio6.Text = "16";
@@ -1041,9 +1044,9 @@
             // 
             this.checkRadio5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio5.AutoSize = true;
-            this.checkRadio5.Location = new System.Drawing.Point(223, 3);
+            this.checkRadio5.Location = new System.Drawing.Point(215, 3);
             this.checkRadio5.Name = "checkRadio5";
-            this.checkRadio5.Size = new System.Drawing.Size(49, 15);
+            this.checkRadio5.Size = new System.Drawing.Size(47, 15);
             this.checkRadio5.TabIndex = 4;
             this.checkRadio5.TabStop = true;
             this.checkRadio5.Text = "8";
@@ -1054,9 +1057,9 @@
             // 
             this.checkRadio4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio4.AutoSize = true;
-            this.checkRadio4.Location = new System.Drawing.Point(168, 3);
+            this.checkRadio4.Location = new System.Drawing.Point(162, 3);
             this.checkRadio4.Name = "checkRadio4";
-            this.checkRadio4.Size = new System.Drawing.Size(49, 15);
+            this.checkRadio4.Size = new System.Drawing.Size(47, 15);
             this.checkRadio4.TabIndex = 3;
             this.checkRadio4.TabStop = true;
             this.checkRadio4.Text = "4";
@@ -1067,9 +1070,9 @@
             // 
             this.checkRadio3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio3.AutoSize = true;
-            this.checkRadio3.Location = new System.Drawing.Point(113, 3);
+            this.checkRadio3.Location = new System.Drawing.Point(109, 3);
             this.checkRadio3.Name = "checkRadio3";
-            this.checkRadio3.Size = new System.Drawing.Size(49, 15);
+            this.checkRadio3.Size = new System.Drawing.Size(47, 15);
             this.checkRadio3.TabIndex = 2;
             this.checkRadio3.TabStop = true;
             this.checkRadio3.Text = "3";
@@ -1080,9 +1083,9 @@
             // 
             this.checkRadio2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkRadio2.AutoSize = true;
-            this.checkRadio2.Location = new System.Drawing.Point(58, 3);
+            this.checkRadio2.Location = new System.Drawing.Point(56, 3);
             this.checkRadio2.Name = "checkRadio2";
-            this.checkRadio2.Size = new System.Drawing.Size(49, 15);
+            this.checkRadio2.Size = new System.Drawing.Size(47, 15);
             this.checkRadio2.TabIndex = 1;
             this.checkRadio2.TabStop = true;
             this.checkRadio2.Text = "2";
@@ -1095,7 +1098,7 @@
             this.checkRadio1.AutoSize = true;
             this.checkRadio1.Location = new System.Drawing.Point(3, 3);
             this.checkRadio1.Name = "checkRadio1";
-            this.checkRadio1.Size = new System.Drawing.Size(49, 15);
+            this.checkRadio1.Size = new System.Drawing.Size(47, 15);
             this.checkRadio1.TabIndex = 0;
             this.checkRadio1.TabStop = true;
             this.checkRadio1.Text = "1";
@@ -1108,7 +1111,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 40);
+            this.label6.Size = new System.Drawing.Size(86, 40);
             this.label6.TabIndex = 0;
             this.label6.Text = "盘点天线IP:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1119,7 +1122,7 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Location = new System.Drawing.Point(3, 40);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 40);
+            this.label7.Size = new System.Drawing.Size(86, 40);
             this.label7.TabIndex = 1;
             this.label7.Text = "天线端口数";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1131,17 +1134,18 @@
             this.label8.Location = new System.Drawing.Point(3, 80);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label8.Size = new System.Drawing.Size(91, 122);
+            this.label8.Size = new System.Drawing.Size(86, 122);
             this.label8.TabIndex = 2;
             this.label8.Text = "使用端口";
             // 
             // checkIPTextBox
             // 
             this.checkIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkIPTextBox.Location = new System.Drawing.Point(100, 9);
+            this.checkIPTextBox.Location = new System.Drawing.Point(95, 9);
             this.checkIPTextBox.Name = "checkIPTextBox";
-            this.checkIPTextBox.Size = new System.Drawing.Size(321, 21);
+            this.checkIPTextBox.Size = new System.Drawing.Size(306, 21);
             this.checkIPTextBox.TabIndex = 3;
+            this.checkIPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IPTextBox_Validating);
             // 
             // tableLayoutPanel5
             // 
@@ -1168,7 +1172,7 @@
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox3, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox1, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(100, 83);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(95, 83);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));

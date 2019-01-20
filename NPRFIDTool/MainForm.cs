@@ -457,6 +457,10 @@ namespace NPRFIDTool
             {
                 errorProvider1.SetError(textBox, "请输入有效的URL地址");
             }
+            else
+            {
+                errorProvider1.SetError(textBox, null);
+            }
         }
 
         private void dbInfo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -476,13 +480,32 @@ namespace NPRFIDTool
                 {
                     errorProvider1.SetError(textBox, "请输入有效的数据库地址");
                 }
+                else
+                {
+                    errorProvider1.SetError(textBox, null);
+                }
             }
         }
 
-        private bool isValidateIP(string uri)
+        private void IPTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            return false;
+            var textBox = sender as TextBox;
+            if (!isValidateIP(textBox.Text))
+            {
+                errorProvider1.SetError(textBox, "请输入有效的IP地址");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox, null);
+            }
         }
+
+        private bool isValidateIP(string ip)
+        {
+            return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
+        }
+
+
 
         private void showEmptyWarningIfNeeded(TextBox txtBox, System.ComponentModel.CancelEventArgs e)
         {
