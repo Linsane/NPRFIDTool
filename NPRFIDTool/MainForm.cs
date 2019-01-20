@@ -435,5 +435,28 @@ namespace NPRFIDTool
             if (timingManager != null) timingManager.stopCycles();
             NPWebSocket.disconnect();
         }
+
+
+        #region 控件输入校验
+        private void urlTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var txt = sender as TextBox;
+            if (txt == null) return;
+            e.Cancel = (txt.Text == string.Empty);
+            showEmptyWarningIfNeeded(txt);
+        }
+
+        private void showEmptyWarningIfNeeded(TextBox txtBox)
+        {
+            if (string.IsNullOrEmpty(txtBox.Text))
+            {
+                errorProvider1.SetError(txtBox, "不能为空");
+            }
+            else
+            {
+                errorProvider1.SetError(txtBox, null);
+            }
+        }
+        #endregion
     }
 }

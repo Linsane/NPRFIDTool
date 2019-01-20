@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.systemConfigGroup = new System.Windows.Forms.GroupBox();
             this.systemConfigContainer = new System.Windows.Forms.SplitContainer();
             this.serverConfigGroup = new System.Windows.Forms.GroupBox();
@@ -121,6 +122,7 @@
             this.checkCheckBox2 = new System.Windows.Forms.CheckBox();
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
             this.controlButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -156,6 +158,7 @@
             this.portsCountGroupBox2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // systemConfigGroup
@@ -246,9 +249,10 @@
             this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.urlTextBox.Location = new System.Drawing.Point(3, 19);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(387, 21);
+            this.urlTextBox.Size = new System.Drawing.Size(335, 21);
             this.urlTextBox.TabIndex = 0;
             this.urlTextBox.TabStop = false;
+            this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.urlTextBox_Validating);
             // 
             // localConfigGroup
             // 
@@ -1352,6 +1356,10 @@
             this.controlButton.UseVisualStyleBackColor = true;
             this.controlButton.Click += new System.EventHandler(this.controlButton_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1411,6 +1419,7 @@
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1510,6 +1519,7 @@
         private System.Windows.Forms.RadioButton checkRadio2;
         private System.Windows.Forms.RadioButton checkRadio1;
         private System.Windows.Forms.Button controlButton;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
