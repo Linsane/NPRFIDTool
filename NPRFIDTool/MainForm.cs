@@ -434,6 +434,8 @@ namespace NPRFIDTool
             if (dbManager != null) dbManager.disconnectDataBase();
             if (timingManager != null) timingManager.stopCycles();
             NPWebSocket.disconnect();
+            readerManager.endReading(inStoreReader);
+            readerManager.endReading(checkReader);
         }
 
 
@@ -458,5 +460,17 @@ namespace NPRFIDTool
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            readerManager.beginReading(inStoreReader);
+            Console.WriteLine("开始入库");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            readerManager.endReading(inStoreReader);
+            Console.WriteLine("结束入库");
+        }
     }
 }

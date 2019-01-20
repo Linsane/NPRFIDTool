@@ -87,6 +87,7 @@ namespace NPRFIDTool.NPKit
 
         public void endReading(NPRFIDReaderInfo readerInfo)
         {
+            if (readerDict == null || readerDict.Keys.Count <= 0) return;
             // 当需要停的时候，判断下是否还有其它Reader的端口在，有的话移除自己的端口即可，不用停止读取RFID，否则停止停止读取RFID
             WrapReader wrapReader = readerDict[readerInfo.readerIP];
             Reader reader = wrapReader.reader;
@@ -214,7 +215,6 @@ namespace NPRFIDTool.NPKit
                 }
                 else // 入库端口数据
                 {
-                    Console.WriteLine(tag.EPCString + "入庫端口");
                     // 判断是否已经存在这个数据，没有记录到inStoreTags并上报
                     if (!isTagExist(tag.EPCString))
                     {
@@ -226,6 +226,11 @@ namespace NPRFIDTool.NPKit
             if (sendNeededTags.Count > 0)
             {
                 NPWebSocket.sendTagData(sendNeededTags);
+                Console.WriteLine();
+                foreach(string tag in sendNeededTags)
+                {
+                    Console.WriteLine("上报入库数据:" + tag);
+                }
             }
         }
 
@@ -271,7 +276,7 @@ namespace NPRFIDTool.NPKit
             if (isNew)
             {
                 checkedDict.Add(tag.EPCString, tag.Time.ToString());
-                Console.WriteLine("盘点端口:" + tag.EPCString);
+                Console.WriteLine("记录盘点端口数据:" + tag.EPCString);
             }
             else
             {

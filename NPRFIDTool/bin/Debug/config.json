@@ -7,16 +7,16 @@
     "password": "910123"
   },
   "inStoreIP": "192.168.100.188",
-  "inStoreAntNums": 1,
+  "inStoreAntNums": 4,
   "inStorePorts": [
-    1
+    2
   ],
   "checkIP": "192.168.100.188",
   "checkAntNums": 4,
   "checkPorts": [
-    3
+    4
   ],
-  "readPortTime": 3,
-  "readPortCycle": 10,
+  "readPortTime": 25,
+  "readPortCycle": 60,
   "analyzeCycle": 10
 }
