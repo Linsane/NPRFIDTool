@@ -49,7 +49,7 @@ namespace NPRFIDTool.NPKit
         // 根据类型查询数据库中对应表的数据
         public JObject queryDataBase( TableType type )
         {
-            string tableName = type == TableType.TableTypeRemain ? "remain" : "check";
+            string tableName = type == TableType.TableTypeRemain ? "remain" : "checked";
             string queryStr = String.Format("SELECT * FROM {0}", tableName);
             MySqlDataAdapter adapter = new MySqlDataAdapter(queryStr, conn);
             MySqlCommandBuilder cmdBuilder = new MySqlCommandBuilder(adapter);
@@ -87,7 +87,7 @@ namespace NPRFIDTool.NPKit
         // 清空数据库
         public void clearDataBase ( TableType type )
         {
-            string tableName = type == TableType.TableTypeRemain ? "remain" : "check";
+            string tableName = type == TableType.TableTypeRemain ? "remain" : "checked";
             string deleteStr = String.Format("truncate table {0}", tableName);
             MySqlCommand cmd = new MySqlCommand(deleteStr, conn);
             cmd.ExecuteNonQuery();

@@ -206,6 +206,7 @@ namespace NPRFIDTool
                 resetAppStatus();
                 return;
             }
+            dbManager.clearDataBase(TableType.TableTypeCheck);
             #endregion
 
             #region RFID硬件信息
