@@ -265,7 +265,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(450, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(453, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -293,7 +293,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(426, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(429, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -345,7 +345,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(255, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(258, 21);
             this.dbNameTextBox.TabIndex = 7;
             this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -354,7 +354,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(255, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(258, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -363,7 +363,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(255, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(258, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -372,7 +372,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(255, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(258, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -442,6 +442,7 @@
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -463,8 +464,9 @@
             this.readTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.readTimeTextBox.Location = new System.Drawing.Point(123, 12);
             this.readTimeTextBox.Name = "readTimeTextBox";
-            this.readTimeTextBox.Size = new System.Drawing.Size(306, 21);
+            this.readTimeTextBox.Size = new System.Drawing.Size(286, 21);
             this.readTimeTextBox.TabIndex = 1;
+            this.readTimeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
             // 
             // tableLayoutPanel8
             // 
@@ -478,6 +480,7 @@
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -489,16 +492,18 @@
             this.analyzeCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.analyzeCycleTextBox.Location = new System.Drawing.Point(147, 58);
             this.analyzeCycleTextBox.Name = "analyzeCycleTextBox";
-            this.analyzeCycleTextBox.Size = new System.Drawing.Size(283, 21);
+            this.analyzeCycleTextBox.Size = new System.Drawing.Size(263, 21);
             this.analyzeCycleTextBox.TabIndex = 3;
+            this.analyzeCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
             // 
             // scanCycleTextBox
             // 
             this.scanCycleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.scanCycleTextBox.Location = new System.Drawing.Point(147, 12);
             this.scanCycleTextBox.Name = "scanCycleTextBox";
-            this.scanCycleTextBox.Size = new System.Drawing.Size(283, 21);
+            this.scanCycleTextBox.Size = new System.Drawing.Size(263, 21);
             this.scanCycleTextBox.TabIndex = 2;
+            this.scanCycleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeTextBox_Validating);
             // 
             // label13
             // 

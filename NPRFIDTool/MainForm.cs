@@ -228,7 +228,7 @@ namespace NPRFIDTool
             // Timing 控制
             if (timingManager == null)
             {
-                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle, configManager.analyzeCycle * 60);
+                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle * 60, configManager.analyzeCycle * 60);
                 timingManager.readPortTimesUpHandler += (src, ee) =>
                 {
                     // 停止读盘点接口
@@ -534,6 +534,18 @@ namespace NPRFIDTool
             Console.WriteLine("结束入库");
         }
 
-
+        private void timeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            try
+            {
+                int var1 = Convert.ToInt32(textBox.Text);
+                errorProvider1.SetError(textBox, null);
+            }
+            catch
+            {
+                errorProvider1.SetError(textBox, "请输入有效的数字");
+            }
+        }
     }
 }
