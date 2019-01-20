@@ -98,7 +98,10 @@ namespace NPRFIDTool
             // websocket通知结束读入库端口
             NPWebSocket.stopInStoreHandler += (wse) =>
             {
-
+                services.getStockInit((resultObje)=>
+                {
+                    // 处理返回数据，存储到数据库中的Remain表
+                });
             };
             NPWebSocket.connectStopHandler += (wse) =>
             {
