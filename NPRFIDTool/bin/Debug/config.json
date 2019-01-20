@@ -1,5 +1,5 @@
 {
-  "configURL": "www.baidu.com",
+  "configURL": "http://raderfid.radeit.cn",
   "dbConfig": {
     "dbAddress": "localhost:3306",
     "dbName": "rfid_db",

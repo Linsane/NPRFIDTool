@@ -2,9 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using NPRFIDTool.NPKit;
-using System.Collections;
 using Newtonsoft.Json.Linq;
-using System.Timers;
+using System.Text.RegularExpressions;
 
 namespace NPRFIDTool
 {
@@ -449,14 +448,46 @@ namespace NPRFIDTool
         #region 控件输入校验
         private void urlTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var txt = sender as TextBox;
-            if (txt == null) return;
-            e.Cancel = (txt.Text == string.Empty);
-            showEmptyWarningIfNeeded(txt);
+            var textBox = sender as TextBox;
+            showEmptyWarningIfNeeded(textBox, e);
+            string Pattern = @"^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&$%\$#\=~])*$";
+            Regex r = new Regex(Pattern);
+            Match m = r.Match(textBox.Text);
+            if (!m.Success)
+            {
+                errorProvider1.SetError(textBox, "请输入有效的URL地址");
+            }
         }
 
-        private void showEmptyWarningIfNeeded(TextBox txtBox)
+        private void dbInfo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            var textBox = sender as TextBox;
+            showEmptyWarningIfNeeded(textBox, e);
+            // 校验数据库地址有效性
+
+            if (textBox == dbAddressTextBox)
+            {
+                string num = "(25[0-5]|2[0-4]//d|[0-1]//d{2}|[1-9]?//d)";
+                string IPPattern = "^" + num + "//." + num + "//." + num + "//." + num + "$";
+                string Pattern = @"^(localhost|"+ IPPattern+ @")(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&$%\$#\=~])*$";
+                Regex r = new Regex(Pattern);
+                Match m = r.Match(textBox.Text);
+                if (!m.Success)
+                {
+                    errorProvider1.SetError(textBox, "请输入有效的数据库地址");
+                }
+            }
+        }
+
+        private bool isValidateIP(string uri)
+        {
+            return false;
+        }
+
+        private void showEmptyWarningIfNeeded(TextBox txtBox, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtBox == null) return;
+            e.Cancel = (txtBox.Text == string.Empty);
             if (string.IsNullOrEmpty(txtBox.Text))
             {
                 errorProvider1.SetError(txtBox, "不能为空");
@@ -479,5 +510,7 @@ namespace NPRFIDTool
             readerManager.endReading(inStoreReader);
             Console.WriteLine("结束入库");
         }
+
+
     }
 }

@@ -251,16 +251,17 @@
             this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.urlTextBox.Location = new System.Drawing.Point(3, 19);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(335, 21);
+            this.urlTextBox.Size = new System.Drawing.Size(338, 21);
             this.urlTextBox.TabIndex = 0;
             this.urlTextBox.TabStop = false;
             this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.urlTextBox_Validating);
             // 
             // localConfigGroup
             // 
+            this.localConfigGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.localConfigGroup.Controls.Add(this.dbConfigPanel);
             this.localConfigGroup.Cursor = System.Windows.Forms.Cursors.Default;
-            this.localConfigGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
@@ -271,6 +272,8 @@
             // 
             // dbConfigPanel
             // 
+            this.dbConfigPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dbConfigPanel.ColumnCount = 2;
             this.dbConfigPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.dbConfigPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -278,19 +281,19 @@
             this.dbConfigPanel.Controls.Add(this.label3, 0, 1);
             this.dbConfigPanel.Controls.Add(this.label4, 0, 2);
             this.dbConfigPanel.Controls.Add(this.label5, 0, 3);
-            this.dbConfigPanel.Controls.Add(this.dbAddressTextBox, 1, 0);
             this.dbConfigPanel.Controls.Add(this.dbNameTextBox, 1, 1);
             this.dbConfigPanel.Controls.Add(this.dbUserNameTextBox, 1, 2);
             this.dbConfigPanel.Controls.Add(this.dbPasswordTextBox, 1, 3);
-            this.dbConfigPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dbConfigPanel.Controls.Add(this.dbAddressTextBox, 1, 0);
             this.dbConfigPanel.Location = new System.Drawing.Point(3, 34);
             this.dbConfigPanel.Name = "dbConfigPanel";
+            this.dbConfigPanel.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.dbConfigPanel.RowCount = 4;
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(441, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(423, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -342,32 +345,36 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(290, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(252, 21);
             this.dbAddressTextBox.TabIndex = 6;
+            this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // dbNameTextBox
             // 
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(290, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(252, 21);
             this.dbNameTextBox.TabIndex = 7;
+            this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // dbUserNameTextBox
             // 
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(290, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(252, 21);
             this.dbUserNameTextBox.TabIndex = 8;
+            this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // dbPasswordTextBox
             // 
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(290, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(252, 21);
             this.dbPasswordTextBox.TabIndex = 9;
+            this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // updateButton
             // 
