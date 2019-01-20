@@ -98,9 +98,12 @@ namespace NPRFIDTool
             // websocket通知结束读入库端口
             NPWebSocket.stopInStoreHandler += (wse) =>
             {
-                services.getStockInit((resultObje)=>
+                Console.WriteLine("websocket通知入库结束，主动请求Remain表数据");
+                services.getStockInit((remainData)=>
                 {
+                    if (remainData == null) return;
                     // 处理返回数据，存储到数据库中的Remain表
+                    dbManager.appendDataToDataBase(TableType.TableTypeRemain,remainData);
                 });
             };
             NPWebSocket.connectStopHandler += (wse) =>

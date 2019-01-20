@@ -59,6 +59,14 @@ namespace NPRFIDTool.NPKit
             return tableDict;
         }
 
+        // 刷新表的数据
+        public void refreshTableWithData (TableType type, JObject dataDict)
+        {
+            clearDataBase(type);
+            appendDataToDataBase(type, dataDict);
+        }
+
+
         // 往数据库中插入数据
         public void appendDataToDataBase ( TableType type, JObject dataDict )
         {

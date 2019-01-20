@@ -8,6 +8,7 @@ using System.Collections;
 using WebSocketSharp;
 using ModuleTech;
 using System.Net;
+using System.Collections.Generic;
 
 
 namespace NPRFIDTool.NPKit
@@ -42,7 +43,19 @@ namespace NPRFIDTool.NPKit
             HttpResponseMessage response = await client.PostAsync(
                 "api/rwapp/getStockInit", content);
             string responseString = await response.Content.ReadAsStringAsync();
-            JObject resultObj = JObject.Parse(responseString);
+            JObject rspObj = JObject.Parse(responseString);
+            if (int.Parse(rspObj["code"].ToString()) != 1)
+            {
+                handler(null);
+                return null;
+            }
+
+            List<string> labels = rspObj["data"]["label"].ToObject<List<string>>();
+            JObject resultObj = new JObject();
+            foreach(string tag in labels)
+            {
+                resultObj.Add(tag, DateTime.Now);
+            }
             handler(resultObj);
             return resultObj;
         }
