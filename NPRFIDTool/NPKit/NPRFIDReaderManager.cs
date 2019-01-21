@@ -77,6 +77,23 @@ namespace NPRFIDTool.NPKit
                 wrapReader.checkPorts = new JArray(readerInfo.usedPorts);
             }
 
+            // 如果是入库Reader，判断一下端口功率是否为10db，不是的话改为10db
+            if(readerInfo.portType == PortType.PortTypeInStore)
+            {
+                AntPower[] pwrs = (AntPower[])reader.ParamGet("AntPowerConf"); // 获取当前配置
+                bool needUpdate = false;
+                foreach (int num in readerInfo.usedPorts)
+                {
+                    if(pwrs[num-1].ReadPower != 10)
+                    {
+                        pwrs[num - 1].ReadPower = 10;
+                        pwrs[num - 1].WritePower = 10;
+                        needUpdate = true;
+                    }
+                }
+                reader.ParamSet("AntPowerConf", pwrs);
+            }
+
             if (!wrapReader.isReading)
             {
                 reader.StartReading();
