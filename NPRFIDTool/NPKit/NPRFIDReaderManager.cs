@@ -120,6 +120,7 @@ namespace NPRFIDTool.NPKit
         {
             if (readerDict == null || readerDict.Keys.Count <= 0) return;
             // 当需要停的时候，判断下是否还有其它Reader的端口在，有的话移除自己的端口即可，不用停止读取RFID，否则停止停止读取RFID
+            if (!readerDict.ContainsKey(readerInfo.readerIP)) return;
             WrapReader wrapReader = readerDict[readerInfo.readerIP];
             Reader reader = wrapReader.reader;
 
