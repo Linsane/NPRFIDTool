@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.systemConfigGroup = new System.Windows.Forms.GroupBox();
             this.systemConfigContainer = new System.Windows.Forms.SplitContainer();
             this.serverConfigGroup = new System.Windows.Forms.GroupBox();
@@ -59,7 +60,6 @@
             this.readTimeTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.networkConfigGroupBox = new System.Windows.Forms.GroupBox();
             this.networkConfigContrainer = new System.Windows.Forms.SplitContainer();
             this.inStoreConfigGroupBox = new System.Windows.Forms.GroupBox();
@@ -127,6 +127,7 @@
             this.checkCheckBox3 = new System.Windows.Forms.CheckBox();
             this.checkCheckBox2 = new System.Windows.Forms.CheckBox();
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label17 = new System.Windows.Forms.Label();
@@ -320,7 +321,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(498, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(501, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -348,7 +349,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(474, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(477, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -400,7 +401,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(283, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(286, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -408,7 +409,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(283, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(286, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -416,7 +417,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(283, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(286, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -424,7 +425,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(283, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(286, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -558,16 +559,6 @@
             this.label13.Size = new System.Drawing.Size(136, 12);
             this.label13.TabIndex = 1;
             this.label13.Text = "定时扫描周期(分)";
-            // 
-            // logTextBox
-            // 
-            this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.logTextBox.Location = new System.Drawing.Point(444, 458);
-            this.logTextBox.Name = "logTextBox";
-            this.logTextBox.ReadOnly = true;
-            this.logTextBox.Size = new System.Drawing.Size(433, 101);
-            this.logTextBox.TabIndex = 7;
-            this.logTextBox.Text = "";
             // 
             // networkConfigGroupBox
             // 
@@ -1482,6 +1473,16 @@
             this.checkCheckBox1.Visible = false;
             this.checkCheckBox1.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
+            // logTextBox
+            // 
+            this.logTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.logTextBox.Location = new System.Drawing.Point(444, 458);
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.Size = new System.Drawing.Size(433, 101);
+            this.logTextBox.TabIndex = 7;
+            this.logTextBox.Text = "";
+            // 
             // controlButton
             // 
             this.controlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -1518,8 +1519,9 @@
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.systemConfigGroup);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(842, 645);
+            this.MinimumSize = new System.Drawing.Size(842, 642);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RFID桌面管理器";
