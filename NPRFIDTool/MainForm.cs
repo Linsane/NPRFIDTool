@@ -191,6 +191,7 @@ namespace NPRFIDTool
             // 处理开始逻辑
             systemConfigGroup.Enabled = false;
             portsConfigGroupBox.Enabled = false;
+            updateButton.Enabled = false;
             if (!validateCurrentConfiguration())
             {
                 MessageBox.Show("完善配置后请先点击更新配置");
@@ -445,6 +446,7 @@ namespace NPRFIDTool
             readerManager.endReading(checkReader);
             systemConfigGroup.Enabled = true;
             portsConfigGroupBox.Enabled = true;
+            updateButton.Enabled = true;
         }
 
 
