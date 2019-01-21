@@ -189,13 +189,14 @@ namespace NPRFIDTool
             }
 
             // 处理开始逻辑
+            systemConfigGroup.Enabled = false;
+            portsConfigGroupBox.Enabled = false;
             if (!validateCurrentConfiguration())
             {
                 MessageBox.Show("完善配置后请先点击更新配置");
                 return;
             }
 
-            resetAppStatus();
             controlButton.Text = "停止";
             controlButton.Enabled = false;
             #region 数据库连接
@@ -442,6 +443,8 @@ namespace NPRFIDTool
             NPWebSocket.disconnect();
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
+            systemConfigGroup.Enabled = true;
+            portsConfigGroupBox.Enabled = true;
         }
 
 
