@@ -514,8 +514,8 @@ namespace NPRFIDTool
         private void inStoreRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
+            clearCheckBoxs(PortType.PortTypeInStore, false);
             if (rb.Checked == false) return;
-            clearCheckBoxs(PortType.PortTypeInStore);
             showPartOfCheckBoxs(PortType.PortTypeInStore, int.Parse(rb.Text));
             if(inStoreIPTextBox.Text == checkIPTextBox.Text)
             {
@@ -527,8 +527,8 @@ namespace NPRFIDTool
         private void checkRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
+            clearCheckBoxs(PortType.PortTypeCheck, false);
             if (rb.Checked == false) return;
-            clearCheckBoxs(PortType.PortTypeCheck);
             showPartOfCheckBoxs(PortType.PortTypeCheck, int.Parse(rb.Text));
             if (inStoreIPTextBox.Text == checkIPTextBox.Text)
             {
@@ -546,6 +546,11 @@ namespace NPRFIDTool
             else
             {
                 portsCountGroupBox1.Enabled = false;
+                foreach (RadioButton rb in inStoreRadioList)
+                {
+                    rb.Checked = false;
+                }
+                clearCheckBoxs(PortType.PortTypeInStore, true);
             }
             if(tb.Text == checkIPTextBox.Text)
             {
@@ -566,9 +571,15 @@ namespace NPRFIDTool
             {
                 portsCountGroupBox2.Enabled = true;
             }
+
             else
             {
                 portsCountGroupBox2.Enabled = false;
+                foreach(RadioButton rb in checkRadioList)
+                {
+                    rb.Checked = false;
+                }
+                clearCheckBoxs(PortType.PortTypeCheck, true);
             }
             if (tb.Text == inStoreIPTextBox.Text)
             {
@@ -596,12 +607,16 @@ namespace NPRFIDTool
         }
 
         // 清空端口选择状态
-        private void clearCheckBoxs(PortType type)
+        private void clearCheckBoxs(PortType type, bool hidden)
         {
             CheckBox[] checkBoxList = type == PortType.PortTypeInStore ? inStoreCheckBoxList : checkCheckBoxList;
             foreach (CheckBox cb in checkBoxList)
             {
                 cb.Checked = false;
+                if (hidden)
+                {
+                    cb.Visible = false;
+                }
             }
         }
 
