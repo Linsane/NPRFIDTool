@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using NPRFIDTool.NPKit;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace NPRFIDTool
 {
@@ -27,6 +28,7 @@ namespace NPRFIDTool
         private CheckBox[] inStoreCheckBoxList;
         private RadioButton[] checkRadioList;
         private CheckBox[] checkCheckBoxList;
+        private bool hasError;
 
         private delegate void MainThreadMethod();
 
@@ -195,6 +197,21 @@ namespace NPRFIDTool
             if (!validateCurrentConfiguration())
             {
                 MessageBox.Show("完善配置后请先点击更新配置");
+                resetAppStatus();
+                return;
+            }
+
+            if (hasError)
+            {
+                MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
+                resetAppStatus();
+                return;
+            }
+
+            if (checkIfConfigHasChanged())
+            {
+                MessageBox.Show("配置已修改，是否要更新配置");
+                resetAppStatus();
                 return;
             }
 
@@ -323,7 +340,7 @@ namespace NPRFIDTool
             #endregion
         }
 
-        // 校验配置
+        #region 校验配置
         private bool validateCurrentConfiguration()
         {
             if((dbAddressTextBox.Text == "" || dbNameTextBox.Text == "" || dbUserNameTextBox.Text == "" || dbPasswordTextBox.Text == "") && urlTextBox.Text == "")
@@ -384,6 +401,75 @@ namespace NPRFIDTool
 
             return true;
         }
+
+        private bool checkIfConfigHasChanged()
+        {
+            if (urlTextBox.Text != configManager.configURL) return true;
+
+            if (dbAddressTextBox.Text != configManager.dbConfig.dbAddress || dbNameTextBox.Text != configManager.dbConfig.dbName || dbUserNameTextBox.Text != configManager.dbConfig.username || dbPasswordTextBox.Text != configManager.dbConfig.password)
+            {
+                return  true;
+            }
+            if (inStoreIPTextBox.Text != configManager.inStoreIP || checkIPTextBox.Text != configManager.checkIP)
+            {
+                return true;
+            }
+            if (int.Parse(readTimeTextBox.Text) != configManager.readPortTime || int.Parse(scanCycleTextBox.Text) == configManager.readPortCycle || int.Parse(analyzeCycleTextBox.Text) != configManager.analyzeCycle)
+            {
+                return true;
+            }
+
+            foreach (RadioButton rb in inStoreRadioList)
+            {
+                if (rb.Checked && int.Parse(rb.Text) != configManager.inStoreAntNums)
+                {
+                    return true;
+                }
+            }
+            ArrayList portsList = new ArrayList();
+            foreach (CheckBox cb in inStoreCheckBoxList)
+            {
+                if (cb.Checked)
+                {
+                    portsList.Add(int.Parse(cb.Text));
+                }
+            }
+            if (portsList.Count != configManager.inStorePorts.Count) return true;
+            foreach (int num in portsList){
+                if (!configManager.inStorePorts.Contains(num))
+                {
+                    return true;
+                }
+            }
+
+            foreach (RadioButton rb in checkRadioList)
+            {
+                if (rb.Checked && int.Parse(rb.Text) != configManager.checkAntNums)
+                {
+                    return true;
+                }
+            }
+
+            ArrayList list = new ArrayList();
+            foreach (CheckBox cb in checkCheckBoxList)
+            {
+                if (cb.Checked)
+                {
+                    list.Add(int.Parse(cb.Text));
+                }
+            }
+            if (list.Count != configManager.checkPorts.Count) return true;
+            foreach (int num in list)
+            {
+                if (!configManager.checkPorts.Contains(num))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        #endregion
 
         // 入库端口数选择
         private void inStoreRadio_CheckedChanged(object sender, EventArgs e)
@@ -461,10 +547,12 @@ namespace NPRFIDTool
             if (!m.Success)
             {
                 errorProvider1.SetError(textBox, "请输入有效的URL地址");
+                hasError = true;
             }
             else
             {
                 errorProvider1.SetError(textBox, null);
+                hasError = false;
             }
         }
 
@@ -484,10 +572,12 @@ namespace NPRFIDTool
                 if (!m.Success)
                 {
                     errorProvider1.SetError(textBox, "请输入有效的数据库地址");
+                    hasError = true;
                 }
                 else
                 {
                     errorProvider1.SetError(textBox, null);
+                    hasError = false;
                 }
             }
         }
@@ -498,10 +588,12 @@ namespace NPRFIDTool
             if (!isValidateIP(textBox.Text))
             {
                 errorProvider1.SetError(textBox, "请输入有效的IP地址");
+                hasError = true;
             }
             else
             {
                 errorProvider1.SetError(textBox, null);
+                hasError = false;
             }
         }
 
@@ -510,7 +602,21 @@ namespace NPRFIDTool
             return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
         }
 
-
+        private void timeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            try
+            {
+                int var1 = Convert.ToInt32(textBox.Text);
+                errorProvider1.SetError(textBox, null);
+                hasError = false;
+            }
+            catch
+            {
+                errorProvider1.SetError(textBox, "请输入有效的数字");
+                hasError = true;
+            }
+        }
 
         private void showEmptyWarningIfNeeded(TextBox txtBox, System.ComponentModel.CancelEventArgs e)
         {
@@ -519,10 +625,12 @@ namespace NPRFIDTool
             if (string.IsNullOrEmpty(txtBox.Text))
             {
                 errorProvider1.SetError(txtBox, "不能为空");
+                hasError = true;
             }
             else
             {
                 errorProvider1.SetError(txtBox, null);
+                hasError = false;
             }
         }
         #endregion
@@ -539,18 +647,5 @@ namespace NPRFIDTool
             Console.WriteLine("结束入库");
         }
 
-        private void timeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            try
-            {
-                int var1 = Convert.ToInt32(textBox.Text);
-                errorProvider1.SetError(textBox, null);
-            }
-            catch
-            {
-                errorProvider1.SetError(textBox, "请输入有效的数字");
-            }
-        }
     }
 }
