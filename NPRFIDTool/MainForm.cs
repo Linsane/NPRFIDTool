@@ -5,6 +5,7 @@ using NPRFIDTool.NPKit;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace NPRFIDTool
 {
@@ -137,6 +138,10 @@ namespace NPRFIDTool
                     {
                         rb.Checked = true;
                     }
+                    else
+                    {
+                        rb.Checked = false;
+                    }
                 }
             }
             showPartOfCheckBoxs(PortType.PortTypeInStore, manager.inStoreAntNums);
@@ -149,6 +154,10 @@ namespace NPRFIDTool
                     {
                         cb.Checked = true;
                     }
+                    else
+                    {
+                        cb.Checked = false;
+                    }
                 }
             }
             checkIPTextBox.Text = manager.checkIP == null ? "" : manager.checkIP;
@@ -159,6 +168,10 @@ namespace NPRFIDTool
                     if (int.Parse(rb.Text) == manager.checkAntNums)
                     {
                         rb.Checked = true;
+                    }
+                    else
+                    {
+                        rb.Checked = false;
                     }
                 }
             }
@@ -171,6 +184,10 @@ namespace NPRFIDTool
                     if (Array.IndexOf<int>(array, cb.TabIndex + 1) != -1)
                     {
                         cb.Checked = true;
+                    }
+                    else
+                    {
+                        cb.Checked = false;
                     }
                 }
             }
@@ -210,9 +227,17 @@ namespace NPRFIDTool
 
             if (checkIfConfigHasChanged())
             {
-                MessageBox.Show("配置已修改，是否要更新配置");
-                resetAppStatus();
-                return;
+                DialogResult dr = MessageBox.Show("配置已修改，是否要更新配置？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.OK)
+                {
+                    updateButton_Click(null, null);
+                }
+                else
+                {
+                    loadUpLocalConfiguration(configManager);
+                    resetAppStatus();
+                    return;
+                }
             }
 
             controlButton.Text = "停止";
@@ -285,6 +310,13 @@ namespace NPRFIDTool
             if (!validateCurrentConfiguration())
             {
                 MessageBox.Show("请完善配置信息");
+                return;
+            }
+
+            if (hasError)
+            {
+                MessageBox.Show("含有不正确配置，请根据提示修改相关配置");
+                resetAppStatus();
                 return;
             }
 
@@ -414,7 +446,7 @@ namespace NPRFIDTool
             {
                 return true;
             }
-            if (int.Parse(readTimeTextBox.Text) != configManager.readPortTime || int.Parse(scanCycleTextBox.Text) == configManager.readPortCycle || int.Parse(analyzeCycleTextBox.Text) != configManager.analyzeCycle)
+            if (int.Parse(readTimeTextBox.Text) != configManager.readPortTime || int.Parse(scanCycleTextBox.Text) != configManager.readPortCycle || int.Parse(analyzeCycleTextBox.Text) != configManager.analyzeCycle)
             {
                 return true;
             }
@@ -435,8 +467,9 @@ namespace NPRFIDTool
                 }
             }
             if (portsList.Count != configManager.inStorePorts.Count) return true;
+            List<int> instorePorts = configManager.inStorePorts.ToObject<List<int>>();
             foreach (int num in portsList){
-                if (!configManager.inStorePorts.Contains(num))
+                if (!instorePorts.Contains(num))
                 {
                     return true;
                 }
@@ -459,9 +492,10 @@ namespace NPRFIDTool
                 }
             }
             if (list.Count != configManager.checkPorts.Count) return true;
+            List<int> checkPorts = configManager.checkPorts.ToObject<List<int>>();
             foreach (int num in list)
             {
-                if (!configManager.checkPorts.Contains(num))
+                if (!checkPorts.Contains(num))
                 {
                     return true;
                 }
