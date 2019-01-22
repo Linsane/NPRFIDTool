@@ -65,6 +65,12 @@ namespace NPRFIDTool.NPKit
                             stopScanHandler(e);
                         }
                         break;
+                    case "conntect_status":
+                        {
+                            Console.WriteLine("后台检测RFID硬件连接状态");
+                            NPLogger.log("后台检测RFID硬件连接状态");
+                        }
+                        break;
                 }
             };
 

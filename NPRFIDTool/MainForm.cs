@@ -98,7 +98,10 @@ namespace NPRFIDTool
             {
                 readerManager.scanType = 0;
                 readerManager.beginReading(inStoreReader);
-                timingManager.startIOStoreTimer();
+                if (timingManager != null)
+                {
+                    timingManager.startIOStoreTimer();
+                }
                 Console.WriteLine("开始入库");
                 NPLogger.log("开始入库");
             };
@@ -107,7 +110,10 @@ namespace NPRFIDTool
             {
                 readerManager.scanType = 1;
                 readerManager.beginReading(inStoreReader);
-                timingManager.startIOStoreTimer();
+                if(timingManager != null)
+                {
+                    timingManager.startIOStoreTimer();
+                }
                 Console.WriteLine("开始出库");
                 NPLogger.log("开始出库");
             };
