@@ -24,12 +24,9 @@ namespace NPRFIDTool
         private NPBackendService services;
 
         NPRFIDReaderInfo inStoreReader;
-        NPRFIDReaderInfo checkReader;
 
         private RadioButton[] inStoreRadioList;
         private CheckBox[] inStoreCheckBoxList;
-        private RadioButton[] checkRadioList;
-        private CheckBox[] checkCheckBoxList;
         private bool hasError;
 
         private delegate void MainThreadMethod();
@@ -71,14 +68,6 @@ namespace NPRFIDTool
             {
                 inStoreCheckBox1,inStoreCheckBox2,inStoreCheckBox3,inStoreCheckBox4,inStoreCheckBox5,inStoreCheckBox6,inStoreCheckBox7,inStoreCheckBox8,inStoreCheckBox9,inStoreCheckBox10,inStoreCheckBox11,inStoreCheckBox12,inStoreCheckBox13,inStoreCheckBox14,inStoreCheckBox15,inStoreCheckBox16
             };
-            //checkRadioList = new RadioButton[]
-            //{
-            //    checkRadio1,checkRadio2,checkRadio3,checkRadio4,checkRadio5,checkRadio6
-            //};
-            //checkCheckBoxList = new CheckBox[]
-            //{
-            //    checkCheckBox1,checkCheckBox2,checkCheckBox3,checkCheckBox4,checkCheckBox5,checkCheckBox6,checkCheckBox7,checkCheckBox8,checkCheckBox9,checkCheckBox10,checkCheckBox11,checkCheckBox12,checkCheckBox13,checkCheckBox14,checkCheckBox15,checkCheckBox16
-            //};
             #endregion
 
             #region 配置加载
@@ -160,6 +149,7 @@ namespace NPRFIDTool
                 resetAppStatus();
             };
             #endregion
+            this.testDataGridView();
         }
 
         // 加载本地配置到控件
@@ -203,37 +193,6 @@ namespace NPRFIDTool
                     }
                 }
             }
-            //checkIPTextBox.Text = manager.checkIP == null ? "" : manager.checkIP;
-            //if (manager.checkAntNums > 0)
-            //{
-            //    foreach (RadioButton rb in checkRadioList)
-            //    {
-            //        if (int.Parse(rb.Text) == manager.checkAntNums)
-            //        {
-            //            rb.Checked = true;
-            //        }
-            //        else
-            //        {
-            //            rb.Checked = false;
-            //        }
-            //    }
-            //}
-            //showPartOfCheckBoxs(PortType.PortTypeCheck, manager.checkAntNums);
-            //if (manager.checkPorts.Count > 0)
-            //{
-            //    foreach (CheckBox cb in checkCheckBoxList)
-            //    {
-            //        int[] array = manager.checkPorts.ToObject<int[]>();
-            //        if (Array.IndexOf<int>(array, cb.TabIndex + 1) != -1)
-            //        {
-            //            cb.Checked = true;
-            //        }
-            //        else
-            //        {
-            //            cb.Checked = false;
-            //        }
-            //    }
-            //}
             readTimeTextBox.Text = manager.readPortTime == -1 ? "" : manager.readPortTime.ToString();
             scanCycleTextBox.Text = manager.readPortCycle == -1 ? "" : (manager.readPortCycle / 60.0).ToString();
             analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : (manager.analyzeCycle / 60.0).ToString();
@@ -327,30 +286,12 @@ namespace NPRFIDTool
             #region RFID硬件信息
             // 入库
             inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts, configManager.inStorePower);
-            // 盘点
-            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts, configManager.inStorePower);
             #endregion
 
             #region Timing控制
             if (timingManager == null)
             {
                 timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle, configManager.analyzeCycle);
-                timingManager.readPortTimesUpHandler += (src, ee) =>
-                {
-                    // 停止读盘点接口
-                    Console.WriteLine("停止盘点");
-                    NPLogger.log("停止盘点");
-                    readerManager.endReading(checkReader);
-                    // 将盘点数据写入数据库
-                    dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
-                };
-                timingManager.scanCycleStartHandler += (src, ee) =>
-                {
-                    // 开始读盘点接口
-                    Console.WriteLine("开始盘点，读取盘点数据");
-                    NPLogger.log("开始盘点，读取盘点数据");
-                    readerManager.beginReading(checkReader);
-                };
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
                 {
                     // 开始分析差异数据，上报分析结果
@@ -394,10 +335,6 @@ namespace NPRFIDTool
             }
             #endregion
             timingManager.startCycles();
-            // 启动自动触发一次盘点
-            Console.WriteLine("启动的第一次盘点");
-            NPLogger.log("启动的第一次盘点");
-            readerManager.beginReading(checkReader);
             if(timingManager != null && timingManager.readPortTimer != null)
             {
                 timingManager.readPortTimer.Enabled = true;
@@ -450,25 +387,7 @@ namespace NPRFIDTool
                 }
             }
             configManager.inStorePorts = inStorePorts;
-            //configManager.checkIP = checkIPTextBox.Text;
-            foreach (RadioButton rb in checkRadioList)
-            {
-                if (rb.Checked)
-                {
-                    configManager.checkAntNums = int.Parse(rb.Text);
-                    break;
-                }
-            }
 
-            JArray checkPorts = new JArray();
-            foreach (CheckBox cb in checkCheckBoxList)
-            {
-                if (cb.Checked)
-                {
-                    checkPorts.Add(int.Parse(cb.Text));
-                }
-            }
-            configManager.checkPorts = checkPorts;
             configManager.readPortTime = int.Parse(readTimeTextBox.Text);
             configManager.readPortCycle = (int)(double.Parse(scanCycleTextBox.Text)*60);
             configManager.analyzeCycle = (int)(double.Parse(analyzeCycleTextBox.Text)*60);
@@ -515,28 +434,6 @@ namespace NPRFIDTool
             }
             if (!instoreCheckBoxSelected) return false;
 
-            bool checkRadioSelected = false;
-            foreach (RadioButton rb in checkRadioList)
-            {
-                if (rb.Checked)
-                {
-                    checkRadioSelected = true;
-                    break;
-                }
-            }
-            if (!checkRadioSelected) return false;
-
-            bool checkCheckBoxSelected = false;
-            foreach (CheckBox cb in checkCheckBoxList)
-            {
-                if (cb.Checked)
-                {
-                    checkCheckBoxSelected = true;
-                    break;
-                }
-            }
-            if (!checkCheckBoxSelected) return false;
-
             return true;
         }
 
@@ -581,32 +478,6 @@ namespace NPRFIDTool
                 }
             }
 
-            foreach (RadioButton rb in checkRadioList)
-            {
-                if (rb.Checked && int.Parse(rb.Text) != configManager.checkAntNums)
-                {
-                    return true;
-                }
-            }
-
-            ArrayList list = new ArrayList();
-            foreach (CheckBox cb in checkCheckBoxList)
-            {
-                if (cb.Checked)
-                {
-                    list.Add(int.Parse(cb.Text));
-                }
-            }
-            if (list.Count != configManager.checkPorts.Count) return true;
-            List<int> checkPorts = configManager.checkPorts.ToObject<List<int>>();
-            foreach (int num in list)
-            {
-                if (!checkPorts.Contains(num))
-                {
-                    return true;
-                }
-            }
-
             return false;
         }
         #endregion
@@ -619,10 +490,6 @@ namespace NPRFIDTool
             clearCheckBoxs(PortType.PortTypeInStore, false);
             if (rb.Checked == false) return;
             showPartOfCheckBoxs(PortType.PortTypeInStore, int.Parse(rb.Text));
-            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            //{
-            //    checkRadioList[rb.TabIndex].Checked = true;
-            //}
         }
 
         // 盘点端口数选择
@@ -632,10 +499,6 @@ namespace NPRFIDTool
             clearCheckBoxs(PortType.PortTypeCheck, false);
             if (rb.Checked == false) return;
             showPartOfCheckBoxs(PortType.PortTypeCheck, int.Parse(rb.Text));
-            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            //{
-            //    inStoreRadioList[rb.TabIndex].Checked = true;
-            //}
         }
 
         private void inStoreIPTextBox_TextChanged(object sender, EventArgs e)
@@ -655,71 +518,11 @@ namespace NPRFIDTool
                 rb.Checked = false;
             }
             clearCheckBoxs(PortType.PortTypeInStore, true);
-            //if (tb.Text == checkIPTextBox.Text)
-            //{
-            //    foreach(RadioButton rb in checkRadioList)
-            //    {
-            //        if (rb.Checked)
-            //        {
-            //            inStoreRadioList[rb.TabIndex].Checked = true;
-            //        }
-            //    }
-            //    foreach(CheckBox cb in checkCheckBoxList)
-            //    {
-            //        inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-            //    }
-            //}
-        }
-
-        private void checkIPTextBox_TextChanged(object sender, EventArgs e)
-        {
-            TextBox tb = (TextBox)sender;
-            //if (isValidateIP(tb.Text))
-            //{
-            //    portsCountGroupBox2.Enabled = true;
-            //}
-
-            //else
-            //{
-            //    portsCountGroupBox2.Enabled = false;
-            //}
-            foreach (RadioButton rb in checkRadioList)
-            {
-                rb.Checked = false;
-            }
-            clearCheckBoxs(PortType.PortTypeCheck, true);
-            if (tb.Text == inStoreIPTextBox.Text)
-            {
-                foreach (RadioButton rb in inStoreRadioList)
-                {
-                    if (rb.Checked)
-                    {
-                        checkRadioList[rb.TabIndex].Checked = true;
-                    }
-                }
-                foreach (CheckBox cb in inStoreCheckBoxList)
-                {
-                    checkCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-                }
-            }
         }
 
         private void inStoreCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            //{
-            //    checkCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-            //}
-        }
-
-        private void checkCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            //CheckBox cb = (CheckBox)sender;
-            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            //{
-            //    inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-            //}
         }
 
         #endregion
@@ -727,7 +530,7 @@ namespace NPRFIDTool
         // 控制端口选项显示个数
         private void showPartOfCheckBoxs(PortType type , int portNum)
         {
-            CheckBox[] checkBoxList = type == PortType.PortTypeInStore ? inStoreCheckBoxList : checkCheckBoxList;
+            CheckBox[] checkBoxList = inStoreCheckBoxList;
 
             foreach(CheckBox cb in checkBoxList)
             {
@@ -738,7 +541,7 @@ namespace NPRFIDTool
         // 清空端口选择状态
         private void clearCheckBoxs(PortType type, bool hidden)
         {
-            CheckBox[] checkBoxList = type == PortType.PortTypeInStore ? inStoreCheckBoxList : checkCheckBoxList;
+            CheckBox[] checkBoxList = inStoreCheckBoxList;
             foreach (CheckBox cb in checkBoxList)
             {
                 cb.Checked = false;
@@ -751,11 +554,6 @@ namespace NPRFIDTool
             {
                 cb.Enabled = true;
             }
-
-            //foreach (CheckBox cb in checkCheckBoxList)
-            //{
-            //    cb.Enabled = true;
-            //}
         }
 
         private void resetControlButton()
@@ -783,8 +581,6 @@ namespace NPRFIDTool
             if (timingManager != null) timingManager.stopCycles();
             timingManager = null;
             readerManager.endReading(inStoreReader);
-            readerManager.endReading(checkReader);
-            //NPWebSocket.disconnect();
             readerManager.clear();
         }
    
@@ -941,7 +737,15 @@ namespace NPRFIDTool
         private void button1_Click(object sender, EventArgs e)
         {
             CheckInfoForm checkForm = new CheckInfoForm();
-            NPRFIDReaderInfo info1 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.100", 4, new JArray(new int[] { 1,2}), "盘点器1");
+            ArrayList infoArray = this.getTestData();
+            checkForm.setUpCheckReaderInfos(infoArray);
+            checkForm.ShowDialog();
+     
+        }
+
+        private ArrayList getTestData()
+        {
+            NPRFIDReaderInfo info1 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.100", 4, new JArray(new int[] { 1, 2 }), "盘点器1");
             NPRFIDReaderInfo info2 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.101", 4, new JArray(new int[] { 2, 3 }), "盘点器2");
             NPRFIDReaderInfo info3 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.102", 4, new JArray(new int[] { 2, 3 }), "盘点器3");
             NPRFIDReaderInfo info4 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.103", 4, new JArray(new int[] { 3, 4 }), "盘点器4");
@@ -956,9 +760,20 @@ namespace NPRFIDTool
             infoArray.Add(info3);
             infoArray.Add(info5);
             infoArray.Add(info4);
-            checkForm.setUpCheckReaderInfos(infoArray);
-            checkForm.ShowDialog();
-     
+            return infoArray;
+        }
+
+        private void testDataGridView()
+        {
+            ArrayList infoArray = this.getTestData();
+            foreach (NPRFIDReaderInfo info in infoArray)
+            {
+                int index = this.dataGridView1.Rows.Add();
+                this.dataGridView1.Rows[index].Cells[0].Value = info.readerIP;
+                this.dataGridView1.Rows[index].Cells[1].Value = info.readerAntNum.ToString();
+                this.dataGridView1.Rows[index].Cells[2].Value = string.Join(",",info.usedPorts);
+                this.dataGridView1.Rows[index].Cells[3].Value = "未连接";
+            }
         }
     }
 }

@@ -102,6 +102,11 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label17 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.portNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.使用端口 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connectStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -138,7 +143,9 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.outStoreConfigGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // systemConfigGroup
@@ -287,7 +294,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(510, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(513, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -315,7 +322,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(486, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(489, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -367,7 +374,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(295, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(298, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -375,7 +382,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(295, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(298, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -383,7 +390,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(295, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(298, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -391,7 +398,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(295, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(298, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -1022,6 +1029,7 @@
             // 
             // outStoreConfigGroupBox
             // 
+            this.outStoreConfigGroupBox.Controls.Add(this.dataGridView1);
             this.outStoreConfigGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.outStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
@@ -1075,6 +1083,52 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ipAddress,
+            this.portNum,
+            this.使用端口,
+            this.connectStatus});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(424, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // ipAddress
+            // 
+            this.ipAddress.HeaderText = "地址";
+            this.ipAddress.Name = "ipAddress";
+            this.ipAddress.ReadOnly = true;
+            this.ipAddress.Width = 120;
+            // 
+            // portNum
+            // 
+            this.portNum.HeaderText = "端口数";
+            this.portNum.Name = "portNum";
+            this.portNum.ReadOnly = true;
+            this.portNum.Width = 80;
+            // 
+            // 使用端口
+            // 
+            this.使用端口.HeaderText = "usedPorts";
+            this.使用端口.Name = "使用端口";
+            this.使用端口.ReadOnly = true;
+            this.使用端口.Width = 90;
+            // 
+            // connectStatus
+            // 
+            this.connectStatus.HeaderText = "连接状态";
+            this.connectStatus.Name = "connectStatus";
+            this.connectStatus.ReadOnly = true;
+            this.connectStatus.Width = 90;
             // 
             // MainForm
             // 
@@ -1142,7 +1196,9 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.outStoreConfigGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1222,6 +1278,11 @@
         private System.Windows.Forms.RichTextBox logTextBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ipAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn portNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 使用端口;
+        private System.Windows.Forms.DataGridViewTextBoxColumn connectStatus;
     }
 }
 
