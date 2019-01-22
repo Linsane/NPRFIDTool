@@ -215,7 +215,7 @@ namespace NPRFIDTool
             #region 启动条件判断
             if (!validateCurrentConfiguration())
             {
-                MessageBox.Show("完善配置后请先点击更新配置");
+                MessageBox.Show("请先完善配置");
                 resetAppStatus();
                 return;
             }
@@ -373,6 +373,7 @@ namespace NPRFIDTool
             configManager.analyzeCycle = int.Parse(analyzeCycleTextBox.Text);
 
             configManager.markDownConfiguration();
+            MessageBox.Show("配置已更新");
             #endregion
         }
 

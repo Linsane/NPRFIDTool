@@ -1,0 +1,37 @@
+{
+  "configURL": "http://raderfid.radeit.cn",
+  "dbConfig": {
+    "dbAddress": "localhost:3306",
+    "dbName": "rfid_db",
+    "username": "root",
+    "password": "910123"
+  },
+  "inStoreIP": "192.168.100.187",
+  "inStoreAntNums": 16,
+  "inStorePorts": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "checkIP": "192.168.100.188",
+  "checkAntNums": 4,
+  "checkPorts": [
+    4
+  ],
+  "readPortTime": 25,
+  "readPortCycle": 60,
+  "analyzeCycle": 10
+}
