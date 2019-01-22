@@ -546,13 +546,14 @@ namespace NPRFIDTool
             else
             {
                 portsCountGroupBox1.Enabled = false;
-                foreach (RadioButton rb in inStoreRadioList)
-                {
-                    rb.Checked = false;
-                }
-                clearCheckBoxs(PortType.PortTypeInStore, true);
+
             }
-            if(tb.Text == checkIPTextBox.Text)
+            foreach (RadioButton rb in inStoreRadioList)
+            {
+                rb.Checked = false;
+            }
+            clearCheckBoxs(PortType.PortTypeInStore, true);
+            if (tb.Text == checkIPTextBox.Text)
             {
                 foreach(RadioButton rb in checkRadioList)
                 {
@@ -560,6 +561,10 @@ namespace NPRFIDTool
                     {
                         inStoreRadioList[rb.TabIndex].Checked = true;
                     }
+                }
+                foreach(CheckBox cb in checkCheckBoxList)
+                {
+                    inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
                 }
             }
         }
@@ -575,12 +580,12 @@ namespace NPRFIDTool
             else
             {
                 portsCountGroupBox2.Enabled = false;
-                foreach(RadioButton rb in checkRadioList)
-                {
-                    rb.Checked = false;
-                }
-                clearCheckBoxs(PortType.PortTypeCheck, true);
             }
+            foreach (RadioButton rb in checkRadioList)
+            {
+                rb.Checked = false;
+            }
+            clearCheckBoxs(PortType.PortTypeCheck, true);
             if (tb.Text == inStoreIPTextBox.Text)
             {
                 foreach (RadioButton rb in inStoreRadioList)
@@ -590,6 +595,28 @@ namespace NPRFIDTool
                         checkRadioList[rb.TabIndex].Checked = true;
                     }
                 }
+                foreach (CheckBox cb in inStoreCheckBoxList)
+                {
+                    checkCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
+                }
+            }
+        }
+
+        private void inStoreCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            {
+                checkCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
+            }
+        }
+
+        private void checkCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            {
+                inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
             }
         }
 
@@ -617,6 +644,15 @@ namespace NPRFIDTool
                 {
                     cb.Visible = false;
                 }
+            }
+            foreach(CheckBox cb in inStoreCheckBoxList)
+            {
+                cb.Enabled = true;
+            }
+
+            foreach (CheckBox cb in checkCheckBoxList)
+            {
+                cb.Enabled = true;
             }
         }
 

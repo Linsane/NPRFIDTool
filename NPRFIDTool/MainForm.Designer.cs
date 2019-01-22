@@ -265,7 +265,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(456, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(462, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -293,7 +293,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(432, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(438, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -345,7 +345,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(261, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(267, 21);
             this.dbNameTextBox.TabIndex = 7;
             this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -354,7 +354,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(261, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(267, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -363,7 +363,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(261, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(267, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -372,7 +372,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(261, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(267, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -683,6 +683,7 @@
             this.inStoreCheckBox16.Text = "16";
             this.inStoreCheckBox16.UseVisualStyleBackColor = true;
             this.inStoreCheckBox16.Visible = false;
+            this.inStoreCheckBox16.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox15
             // 
@@ -694,6 +695,7 @@
             this.inStoreCheckBox15.Text = "15";
             this.inStoreCheckBox15.UseVisualStyleBackColor = true;
             this.inStoreCheckBox15.Visible = false;
+            this.inStoreCheckBox15.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox14
             // 
@@ -705,6 +707,7 @@
             this.inStoreCheckBox14.Text = "14";
             this.inStoreCheckBox14.UseVisualStyleBackColor = true;
             this.inStoreCheckBox14.Visible = false;
+            this.inStoreCheckBox14.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox13
             // 
@@ -716,6 +719,7 @@
             this.inStoreCheckBox13.Text = "13";
             this.inStoreCheckBox13.UseVisualStyleBackColor = true;
             this.inStoreCheckBox13.Visible = false;
+            this.inStoreCheckBox13.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox12
             // 
@@ -727,6 +731,7 @@
             this.inStoreCheckBox12.Text = "12";
             this.inStoreCheckBox12.UseVisualStyleBackColor = true;
             this.inStoreCheckBox12.Visible = false;
+            this.inStoreCheckBox12.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox11
             // 
@@ -738,6 +743,7 @@
             this.inStoreCheckBox11.Text = "11";
             this.inStoreCheckBox11.UseVisualStyleBackColor = true;
             this.inStoreCheckBox11.Visible = false;
+            this.inStoreCheckBox11.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox10
             // 
@@ -749,6 +755,7 @@
             this.inStoreCheckBox10.Text = "10";
             this.inStoreCheckBox10.UseVisualStyleBackColor = true;
             this.inStoreCheckBox10.Visible = false;
+            this.inStoreCheckBox10.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox9
             // 
@@ -760,6 +767,7 @@
             this.inStoreCheckBox9.Text = "09";
             this.inStoreCheckBox9.UseVisualStyleBackColor = true;
             this.inStoreCheckBox9.Visible = false;
+            this.inStoreCheckBox9.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox8
             // 
@@ -771,6 +779,7 @@
             this.inStoreCheckBox8.Text = "08";
             this.inStoreCheckBox8.UseVisualStyleBackColor = true;
             this.inStoreCheckBox8.Visible = false;
+            this.inStoreCheckBox8.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox7
             // 
@@ -782,6 +791,7 @@
             this.inStoreCheckBox7.Text = "07";
             this.inStoreCheckBox7.UseVisualStyleBackColor = true;
             this.inStoreCheckBox7.Visible = false;
+            this.inStoreCheckBox7.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox6
             // 
@@ -793,6 +803,7 @@
             this.inStoreCheckBox6.Text = "06";
             this.inStoreCheckBox6.UseVisualStyleBackColor = true;
             this.inStoreCheckBox6.Visible = false;
+            this.inStoreCheckBox6.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox5
             // 
@@ -804,6 +815,7 @@
             this.inStoreCheckBox5.Text = "05";
             this.inStoreCheckBox5.UseVisualStyleBackColor = true;
             this.inStoreCheckBox5.Visible = false;
+            this.inStoreCheckBox5.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox4
             // 
@@ -815,6 +827,7 @@
             this.inStoreCheckBox4.Text = "04";
             this.inStoreCheckBox4.UseVisualStyleBackColor = true;
             this.inStoreCheckBox4.Visible = false;
+            this.inStoreCheckBox4.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox3
             // 
@@ -826,6 +839,7 @@
             this.inStoreCheckBox3.Text = "03";
             this.inStoreCheckBox3.UseVisualStyleBackColor = true;
             this.inStoreCheckBox3.Visible = false;
+            this.inStoreCheckBox3.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox2
             // 
@@ -837,6 +851,7 @@
             this.inStoreCheckBox2.Text = "02";
             this.inStoreCheckBox2.UseVisualStyleBackColor = true;
             this.inStoreCheckBox2.Visible = false;
+            this.inStoreCheckBox2.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // inStoreCheckBox1
             // 
@@ -848,6 +863,7 @@
             this.inStoreCheckBox1.Text = "01";
             this.inStoreCheckBox1.UseVisualStyleBackColor = true;
             this.inStoreCheckBox1.Visible = false;
+            this.inStoreCheckBox1.CheckedChanged += new System.EventHandler(this.inStoreCheckBox_CheckedChanged);
             // 
             // portsCountGroupBox1
             // 
@@ -1201,6 +1217,7 @@
             this.checkCheckBox16.Text = "16";
             this.checkCheckBox16.UseVisualStyleBackColor = true;
             this.checkCheckBox16.Visible = false;
+            this.checkCheckBox16.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox15
             // 
@@ -1212,6 +1229,7 @@
             this.checkCheckBox15.Text = "15";
             this.checkCheckBox15.UseVisualStyleBackColor = true;
             this.checkCheckBox15.Visible = false;
+            this.checkCheckBox15.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox14
             // 
@@ -1223,6 +1241,7 @@
             this.checkCheckBox14.Text = "14";
             this.checkCheckBox14.UseVisualStyleBackColor = true;
             this.checkCheckBox14.Visible = false;
+            this.checkCheckBox14.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox13
             // 
@@ -1234,6 +1253,7 @@
             this.checkCheckBox13.Text = "13";
             this.checkCheckBox13.UseVisualStyleBackColor = true;
             this.checkCheckBox13.Visible = false;
+            this.checkCheckBox13.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox12
             // 
@@ -1245,6 +1265,7 @@
             this.checkCheckBox12.Text = "12";
             this.checkCheckBox12.UseVisualStyleBackColor = true;
             this.checkCheckBox12.Visible = false;
+            this.checkCheckBox12.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox11
             // 
@@ -1256,6 +1277,7 @@
             this.checkCheckBox11.Text = "11";
             this.checkCheckBox11.UseVisualStyleBackColor = true;
             this.checkCheckBox11.Visible = false;
+            this.checkCheckBox11.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox10
             // 
@@ -1267,6 +1289,7 @@
             this.checkCheckBox10.Text = "10";
             this.checkCheckBox10.UseVisualStyleBackColor = true;
             this.checkCheckBox10.Visible = false;
+            this.checkCheckBox10.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox9
             // 
@@ -1278,6 +1301,7 @@
             this.checkCheckBox9.Text = "09";
             this.checkCheckBox9.UseVisualStyleBackColor = true;
             this.checkCheckBox9.Visible = false;
+            this.checkCheckBox9.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox8
             // 
@@ -1289,6 +1313,7 @@
             this.checkCheckBox8.Text = "08";
             this.checkCheckBox8.UseVisualStyleBackColor = true;
             this.checkCheckBox8.Visible = false;
+            this.checkCheckBox8.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox7
             // 
@@ -1300,6 +1325,7 @@
             this.checkCheckBox7.Text = "07";
             this.checkCheckBox7.UseVisualStyleBackColor = true;
             this.checkCheckBox7.Visible = false;
+            this.checkCheckBox7.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox6
             // 
@@ -1311,6 +1337,7 @@
             this.checkCheckBox6.Text = "06";
             this.checkCheckBox6.UseVisualStyleBackColor = true;
             this.checkCheckBox6.Visible = false;
+            this.checkCheckBox6.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox5
             // 
@@ -1322,6 +1349,7 @@
             this.checkCheckBox5.Text = "05";
             this.checkCheckBox5.UseVisualStyleBackColor = true;
             this.checkCheckBox5.Visible = false;
+            this.checkCheckBox5.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox4
             // 
@@ -1333,6 +1361,7 @@
             this.checkCheckBox4.Text = "04";
             this.checkCheckBox4.UseVisualStyleBackColor = true;
             this.checkCheckBox4.Visible = false;
+            this.checkCheckBox4.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox3
             // 
@@ -1344,6 +1373,7 @@
             this.checkCheckBox3.Text = "03";
             this.checkCheckBox3.UseVisualStyleBackColor = true;
             this.checkCheckBox3.Visible = false;
+            this.checkCheckBox3.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox2
             // 
@@ -1355,6 +1385,7 @@
             this.checkCheckBox2.Text = "02";
             this.checkCheckBox2.UseVisualStyleBackColor = true;
             this.checkCheckBox2.Visible = false;
+            this.checkCheckBox2.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // checkCheckBox1
             // 
@@ -1366,6 +1397,7 @@
             this.checkCheckBox1.Text = "01";
             this.checkCheckBox1.UseVisualStyleBackColor = true;
             this.checkCheckBox1.Visible = false;
+            this.checkCheckBox1.CheckedChanged += new System.EventHandler(this.checkCheckBox_CheckedChanged);
             // 
             // controlButton
             // 
