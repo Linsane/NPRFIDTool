@@ -149,7 +149,6 @@ namespace NPRFIDTool
                 resetAppStatus();
             };
             #endregion
-            this.testDataGridView();
         }
 
         // 加载本地配置到控件
@@ -737,8 +736,6 @@ namespace NPRFIDTool
         private void button1_Click(object sender, EventArgs e)
         {
             CheckInfoForm checkForm = new CheckInfoForm();
-            ArrayList infoArray = this.getTestData();
-            checkForm.setUpCheckReaderInfos(infoArray);
             checkForm.ShowDialog();
      
         }
@@ -774,6 +771,7 @@ namespace NPRFIDTool
                 this.dataGridView1.Rows[index].Cells[2].Value = string.Join(",",info.usedPorts);
                 this.dataGridView1.Rows[index].Cells[3].Value = "未连接";
             }
+            this.dataGridView1.TopLeftHeaderCell.Value = "序号";
         }
     }
 }
