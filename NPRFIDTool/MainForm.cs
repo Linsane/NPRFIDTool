@@ -211,6 +211,8 @@ namespace NPRFIDTool
             systemConfigGroup.Enabled = false;
             portsConfigGroupBox.Enabled = false;
             updateButton.Enabled = false;
+
+            #region 启动条件判断
             if (!validateCurrentConfiguration())
             {
                 MessageBox.Show("完善配置后请先点击更新配置");
@@ -239,6 +241,7 @@ namespace NPRFIDTool
                     return;
                 }
             }
+            #endregion
 
             controlButton.Text = "停止";
             controlButton.Enabled = false;
@@ -269,7 +272,7 @@ namespace NPRFIDTool
             NPWebSocket.connect();
             #endregion
 
-            // Timing 控制
+            #region Timing控制
             if (timingManager == null)
             {
                 timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle * 60, configManager.analyzeCycle * 60);
@@ -296,6 +299,7 @@ namespace NPRFIDTool
                     services.reportCheckDiff(diffArray);
                 };
             }
+            #endregion
             timingManager.startCycles();
             // 启动自动触发一次盘点
             readerManager.beginReading(checkReader);
@@ -505,21 +509,80 @@ namespace NPRFIDTool
         }
         #endregion
 
+        #region 控件值变化处理
         // 入库端口数选择
         private void inStoreRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
+            if (rb.Checked == false) return;
             clearCheckBoxs(PortType.PortTypeInStore);
             showPartOfCheckBoxs(PortType.PortTypeInStore, int.Parse(rb.Text));
+            if(inStoreIPTextBox.Text == checkIPTextBox.Text)
+            {
+                checkRadioList[rb.TabIndex].Checked = true;
+            }
         }
 
         // 盘点端口数选择
         private void checkRadio_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
+            if (rb.Checked == false) return;
             clearCheckBoxs(PortType.PortTypeCheck);
             showPartOfCheckBoxs(PortType.PortTypeCheck, int.Parse(rb.Text));
+            if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            {
+                inStoreRadioList[rb.TabIndex].Checked = true;
+            }
         }
+
+        private void inStoreIPTextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (isValidateIP(tb.Text))
+            {
+                portsCountGroupBox1.Enabled = true;
+            }
+            else
+            {
+                portsCountGroupBox1.Enabled = false;
+            }
+            if(tb.Text == checkIPTextBox.Text)
+            {
+                foreach(RadioButton rb in checkRadioList)
+                {
+                    if (rb.Checked)
+                    {
+                        inStoreRadioList[rb.TabIndex].Checked = true;
+                    }
+                }
+            }
+        }
+
+        private void checkIPTextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (isValidateIP(tb.Text))
+            {
+                portsCountGroupBox2.Enabled = true;
+            }
+            else
+            {
+                portsCountGroupBox2.Enabled = false;
+            }
+            if (tb.Text == inStoreIPTextBox.Text)
+            {
+                foreach (RadioButton rb in inStoreRadioList)
+                {
+                    if (rb.Checked)
+                    {
+                        checkRadioList[rb.TabIndex].Checked = true;
+                    }
+                }
+            }
+        }
+
+        #endregion
 
         // 控制端口选项显示个数
         private void showPartOfCheckBoxs(PortType type , int portNum)
@@ -680,6 +743,7 @@ namespace NPRFIDTool
             readerManager.endReading(inStoreReader);
             Console.WriteLine("结束入库");
         }
+
 
     }
 }
