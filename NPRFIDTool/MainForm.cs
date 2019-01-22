@@ -71,14 +71,14 @@ namespace NPRFIDTool
             {
                 inStoreCheckBox1,inStoreCheckBox2,inStoreCheckBox3,inStoreCheckBox4,inStoreCheckBox5,inStoreCheckBox6,inStoreCheckBox7,inStoreCheckBox8,inStoreCheckBox9,inStoreCheckBox10,inStoreCheckBox11,inStoreCheckBox12,inStoreCheckBox13,inStoreCheckBox14,inStoreCheckBox15,inStoreCheckBox16
             };
-            checkRadioList = new RadioButton[]
-{
-                checkRadio1,checkRadio2,checkRadio3,checkRadio4,checkRadio5,checkRadio6
-};
-            checkCheckBoxList = new CheckBox[]
-            {
-                checkCheckBox1,checkCheckBox2,checkCheckBox3,checkCheckBox4,checkCheckBox5,checkCheckBox6,checkCheckBox7,checkCheckBox8,checkCheckBox9,checkCheckBox10,checkCheckBox11,checkCheckBox12,checkCheckBox13,checkCheckBox14,checkCheckBox15,checkCheckBox16
-            };
+            //checkRadioList = new RadioButton[]
+            //{
+            //    checkRadio1,checkRadio2,checkRadio3,checkRadio4,checkRadio5,checkRadio6
+            //};
+            //checkCheckBoxList = new CheckBox[]
+            //{
+            //    checkCheckBox1,checkCheckBox2,checkCheckBox3,checkCheckBox4,checkCheckBox5,checkCheckBox6,checkCheckBox7,checkCheckBox8,checkCheckBox9,checkCheckBox10,checkCheckBox11,checkCheckBox12,checkCheckBox13,checkCheckBox14,checkCheckBox15,checkCheckBox16
+            //};
             #endregion
 
             #region 配置加载
@@ -203,37 +203,37 @@ namespace NPRFIDTool
                     }
                 }
             }
-            checkIPTextBox.Text = manager.checkIP == null ? "" : manager.checkIP;
-            if (manager.checkAntNums > 0)
-            {
-                foreach (RadioButton rb in checkRadioList)
-                {
-                    if (int.Parse(rb.Text) == manager.checkAntNums)
-                    {
-                        rb.Checked = true;
-                    }
-                    else
-                    {
-                        rb.Checked = false;
-                    }
-                }
-            }
-            showPartOfCheckBoxs(PortType.PortTypeCheck, manager.checkAntNums);
-            if (manager.checkPorts.Count > 0)
-            {
-                foreach (CheckBox cb in checkCheckBoxList)
-                {
-                    int[] array = manager.checkPorts.ToObject<int[]>();
-                    if (Array.IndexOf<int>(array, cb.TabIndex + 1) != -1)
-                    {
-                        cb.Checked = true;
-                    }
-                    else
-                    {
-                        cb.Checked = false;
-                    }
-                }
-            }
+            //checkIPTextBox.Text = manager.checkIP == null ? "" : manager.checkIP;
+            //if (manager.checkAntNums > 0)
+            //{
+            //    foreach (RadioButton rb in checkRadioList)
+            //    {
+            //        if (int.Parse(rb.Text) == manager.checkAntNums)
+            //        {
+            //            rb.Checked = true;
+            //        }
+            //        else
+            //        {
+            //            rb.Checked = false;
+            //        }
+            //    }
+            //}
+            //showPartOfCheckBoxs(PortType.PortTypeCheck, manager.checkAntNums);
+            //if (manager.checkPorts.Count > 0)
+            //{
+            //    foreach (CheckBox cb in checkCheckBoxList)
+            //    {
+            //        int[] array = manager.checkPorts.ToObject<int[]>();
+            //        if (Array.IndexOf<int>(array, cb.TabIndex + 1) != -1)
+            //        {
+            //            cb.Checked = true;
+            //        }
+            //        else
+            //        {
+            //            cb.Checked = false;
+            //        }
+            //    }
+            //}
             readTimeTextBox.Text = manager.readPortTime == -1 ? "" : manager.readPortTime.ToString();
             scanCycleTextBox.Text = manager.readPortCycle == -1 ? "" : (manager.readPortCycle / 60.0).ToString();
             analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : (manager.analyzeCycle / 60.0).ToString();
@@ -450,7 +450,7 @@ namespace NPRFIDTool
                 }
             }
             configManager.inStorePorts = inStorePorts;
-            configManager.checkIP = checkIPTextBox.Text;
+            //configManager.checkIP = checkIPTextBox.Text;
             foreach (RadioButton rb in checkRadioList)
             {
                 if (rb.Checked)
@@ -485,7 +485,7 @@ namespace NPRFIDTool
             {
                 return false;
             }
-            if(inStoreIPTextBox.Text == "" || checkIPTextBox.Text == "")
+            if(inStoreIPTextBox.Text == "")
             {
                 return false;
             }
@@ -548,7 +548,7 @@ namespace NPRFIDTool
             {
                 return  true;
             }
-            if (inStoreIPTextBox.Text != configManager.inStoreIP || checkIPTextBox.Text != configManager.checkIP || portPowerTextBox.Text != configManager.inStorePower.ToString())
+            if (inStoreIPTextBox.Text != configManager.inStoreIP || portPowerTextBox.Text != configManager.inStorePower.ToString())
             {
                 return true;
             }
@@ -619,10 +619,10 @@ namespace NPRFIDTool
             clearCheckBoxs(PortType.PortTypeInStore, false);
             if (rb.Checked == false) return;
             showPartOfCheckBoxs(PortType.PortTypeInStore, int.Parse(rb.Text));
-            if(inStoreIPTextBox.Text == checkIPTextBox.Text)
-            {
-                checkRadioList[rb.TabIndex].Checked = true;
-            }
+            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            //{
+            //    checkRadioList[rb.TabIndex].Checked = true;
+            //}
         }
 
         // 盘点端口数选择
@@ -632,10 +632,10 @@ namespace NPRFIDTool
             clearCheckBoxs(PortType.PortTypeCheck, false);
             if (rb.Checked == false) return;
             showPartOfCheckBoxs(PortType.PortTypeCheck, int.Parse(rb.Text));
-            if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            {
-                inStoreRadioList[rb.TabIndex].Checked = true;
-            }
+            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            //{
+            //    inStoreRadioList[rb.TabIndex].Checked = true;
+            //}
         }
 
         private void inStoreIPTextBox_TextChanged(object sender, EventArgs e)
@@ -655,34 +655,34 @@ namespace NPRFIDTool
                 rb.Checked = false;
             }
             clearCheckBoxs(PortType.PortTypeInStore, true);
-            if (tb.Text == checkIPTextBox.Text)
-            {
-                foreach(RadioButton rb in checkRadioList)
-                {
-                    if (rb.Checked)
-                    {
-                        inStoreRadioList[rb.TabIndex].Checked = true;
-                    }
-                }
-                foreach(CheckBox cb in checkCheckBoxList)
-                {
-                    inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-                }
-            }
+            //if (tb.Text == checkIPTextBox.Text)
+            //{
+            //    foreach(RadioButton rb in checkRadioList)
+            //    {
+            //        if (rb.Checked)
+            //        {
+            //            inStoreRadioList[rb.TabIndex].Checked = true;
+            //        }
+            //    }
+            //    foreach(CheckBox cb in checkCheckBoxList)
+            //    {
+            //        inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
+            //    }
+            //}
         }
 
         private void checkIPTextBox_TextChanged(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            if (isValidateIP(tb.Text))
-            {
-                portsCountGroupBox2.Enabled = true;
-            }
+            //if (isValidateIP(tb.Text))
+            //{
+            //    portsCountGroupBox2.Enabled = true;
+            //}
 
-            else
-            {
-                portsCountGroupBox2.Enabled = false;
-            }
+            //else
+            //{
+            //    portsCountGroupBox2.Enabled = false;
+            //}
             foreach (RadioButton rb in checkRadioList)
             {
                 rb.Checked = false;
@@ -707,19 +707,19 @@ namespace NPRFIDTool
         private void inStoreCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            {
-                checkCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-            }
+            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            //{
+            //    checkCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
+            //}
         }
 
         private void checkCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox cb = (CheckBox)sender;
-            if (inStoreIPTextBox.Text == checkIPTextBox.Text)
-            {
-                inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
-            }
+            //CheckBox cb = (CheckBox)sender;
+            //if (inStoreIPTextBox.Text == checkIPTextBox.Text)
+            //{
+            //    inStoreCheckBoxList[cb.TabIndex].Enabled = !cb.Checked;
+            //}
         }
 
         #endregion
@@ -752,10 +752,10 @@ namespace NPRFIDTool
                 cb.Enabled = true;
             }
 
-            foreach (CheckBox cb in checkCheckBoxList)
-            {
-                cb.Enabled = true;
-            }
+            //foreach (CheckBox cb in checkCheckBoxList)
+            //{
+            //    cb.Enabled = true;
+            //}
         }
 
         private void resetControlButton()
