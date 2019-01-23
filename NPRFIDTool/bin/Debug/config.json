@@ -1,5 +1,5 @@
 {
-  "configURL": "http://raderfid.radeit.cn",
+  "configURL": "http://rfidv2.radeit.cn",
   "dbConfig": {
     "dbAddress": "localhost:3306",
     "dbName": "rfid_db",

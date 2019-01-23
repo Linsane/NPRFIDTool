@@ -86,7 +86,7 @@ namespace NPRFIDTool
             #endregion
 
             #region 初始化各种组件
-            services = new NPBackendService("", "RFID0012");
+            services = new NPBackendService(configManager.configURL, "", "RFID0012");
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
                 MessageBox.Show("websocket 连接失败");

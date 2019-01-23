@@ -20,11 +20,11 @@ namespace NPRFIDTool.NPKit
         private JObject commonParams;
 
 
-        public NPBackendService(string ip, string device)
+        public NPBackendService(string baseURL, string ip, string device)
         {
             client = new HttpClient();
             commonParams = new JObject();
-            client.BaseAddress = new Uri("http://rfidv2.radeit.cn");
+            client.BaseAddress = new Uri(baseURL);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
