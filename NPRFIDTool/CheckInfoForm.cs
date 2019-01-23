@@ -107,7 +107,7 @@ namespace NPRFIDTool
 
         private void comfirmButton_Click(object sender, EventArgs e)
         {
-            foreach(NPCheckInfoControl control in this.checkControls)
+            foreach (NPCheckInfoControl control in this.checkControls)
             {
                 NPRFIDReaderInfo info = (NPRFIDReaderInfo)this.checkReaderInfos[control.index];
                 info.readerIP = control.getIpAddress();

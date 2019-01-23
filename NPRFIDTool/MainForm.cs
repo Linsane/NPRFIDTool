@@ -295,6 +295,20 @@ namespace NPRFIDTool
             if (timingManager == null)
             {
                 timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle, configManager.analyzeCycle);
+
+                timingManager.scanCycleStartHandler += (src, ee) =>
+                {
+                    // 开始读盘点接口
+                    Console.WriteLine("开始盘点，读取盘点数据");
+                    NPLogger.log("开始盘点，读取盘点数据");
+                    /*
+                    foreach(NPRFIDReaderInfo info in checkReaderInfos)
+                    {
+                        readerManager.beginReading(info);
+                    } 
+                    */
+                };
+
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
                 {
                     // 开始分析差异数据，上报分析结果
@@ -338,6 +352,9 @@ namespace NPRFIDTool
             }
             #endregion
             timingManager.startCycles();
+            // 启动自动触发一次盘点
+            NPLogger.log("启动的第一次盘点");
+            //readerManager.beginReading(checkReader);
             if(timingManager != null && timingManager.readPortTimer != null)
             {
                 timingManager.readPortTimer.Enabled = true;
@@ -747,10 +764,8 @@ namespace NPRFIDTool
             }
             checkForm.confirmHandler = (readerInfos) =>
             {
-                Console.WriteLine(readerInfos);
                 this.checkReaderInfos = new ArrayList(readerInfos);
                 this.renderDataGridView(this.checkReaderInfos);
-
             };
             checkForm.ShowDialog();
         }
@@ -766,6 +781,11 @@ namespace NPRFIDTool
                 this.dataGridView1.Rows[index].Cells[2].Value = string.Join(",",info.usedPorts);
                 this.dataGridView1.Rows[index].Cells[3].Value = "未连接";
             }
+        }
+
+        private void updateDataGridViewConnectStatus(int index, string msg)
+        {
+            this.dataGridView1.Rows[index].Cells[3].Value = msg;
         }
     }
 }
