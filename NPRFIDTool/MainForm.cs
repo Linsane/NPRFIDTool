@@ -27,6 +27,7 @@ namespace NPRFIDTool
 
         private RadioButton[] inStoreRadioList;
         private CheckBox[] inStoreCheckBoxList;
+        private ArrayList checkReaderInfos;
         private bool hasError;
 
         private delegate void MainThreadMethod();
@@ -68,6 +69,7 @@ namespace NPRFIDTool
             {
                 inStoreCheckBox1,inStoreCheckBox2,inStoreCheckBox3,inStoreCheckBox4,inStoreCheckBox5,inStoreCheckBox6,inStoreCheckBox7,inStoreCheckBox8,inStoreCheckBox9,inStoreCheckBox10,inStoreCheckBox11,inStoreCheckBox12,inStoreCheckBox13,inStoreCheckBox14,inStoreCheckBox15,inStoreCheckBox16
             };
+            checkReaderInfos = new ArrayList();
             #endregion
 
             #region 配置加载
@@ -733,12 +735,23 @@ namespace NPRFIDTool
             e.Graphics.DrawString(title, scanConfigGroupBox.Font, Brushes.Black, (scanConfigGroupBox.Width - fontSize.Width) / 2 + fontSize.Width / 2, 1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void detailButton_Click(object sender, EventArgs e)
         {
             CheckInfoForm checkForm = new CheckInfoForm();
+            if (checkReaderInfos.Count > 0)
+            {
+                checkForm.setUpCheckReaderInfos(checkReaderInfos);
+            }
+            checkForm.confirmHandler = (readerInfos) =>
+            {
+                Console.WriteLine(readerInfos);
+                this.checkReaderInfos = new ArrayList(readerInfos);
+                this.renderDataGridView(this.checkReaderInfos);
+
+            };
             checkForm.ShowDialog();
-     
         }
+
 
         private ArrayList getTestData()
         {
@@ -760,9 +773,9 @@ namespace NPRFIDTool
             return infoArray;
         }
 
-        private void testDataGridView()
+        private void renderDataGridView(ArrayList infoArray)
         {
-            ArrayList infoArray = this.getTestData();
+            this.dataGridView1.Rows.Clear();
             foreach (NPRFIDReaderInfo info in infoArray)
             {
                 int index = this.dataGridView1.Rows.Add();
@@ -771,7 +784,6 @@ namespace NPRFIDTool
                 this.dataGridView1.Rows[index].Cells[2].Value = string.Join(",",info.usedPorts);
                 this.dataGridView1.Rows[index].Cells[3].Value = "未连接";
             }
-            this.dataGridView1.TopLeftHeaderCell.Value = "序号";
         }
     }
 }

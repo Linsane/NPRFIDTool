@@ -106,7 +106,7 @@
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label17 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.detailButton = new System.Windows.Forms.Button();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -1029,7 +1029,7 @@
             // 
             // outStoreConfigGroupBox
             // 
-            this.outStoreConfigGroupBox.Controls.Add(this.button1);
+            this.outStoreConfigGroupBox.Controls.Add(this.detailButton);
             this.outStoreConfigGroupBox.Controls.Add(this.dataGridView1);
             this.outStoreConfigGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.outStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1121,20 +1121,20 @@
             this.label17.TabIndex = 7;
             this.label17.Text = "版本号：v1.0";
             // 
-            // button1
+            // detailButton
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Location = new System.Drawing.Point(61, -5);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 20);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "详细信息";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.detailButton.FlatAppearance.BorderSize = 0;
+            this.detailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.detailButton.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.detailButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.detailButton.Location = new System.Drawing.Point(61, -5);
+            this.detailButton.Margin = new System.Windows.Forms.Padding(0);
+            this.detailButton.Name = "detailButton";
+            this.detailButton.Size = new System.Drawing.Size(53, 20);
+            this.detailButton.TabIndex = 8;
+            this.detailButton.Text = "详细信息";
+            this.detailButton.UseVisualStyleBackColor = true;
+            this.detailButton.Click += new System.EventHandler(this.detailButton_Click);
             // 
             // MainForm
             // 
@@ -1282,7 +1282,7 @@
         private System.Windows.Forms.TextBox websocketTextBox;
         private System.Windows.Forms.RichTextBox logTextBox;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button detailButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ipAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn portNum;
