@@ -263,7 +263,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(474, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(477, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -291,7 +291,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(450, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(453, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -343,7 +343,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(279, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(282, 21);
             this.dbNameTextBox.TabIndex = 7;
             this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -352,7 +352,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(279, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(282, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -361,7 +361,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(279, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(282, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -370,14 +370,14 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(279, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(282, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.updateButton.Location = new System.Drawing.Point(325, 626);
+            this.updateButton.Location = new System.Drawing.Point(325, 620);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(115, 23);
             this.updateButton.TabIndex = 1;
@@ -394,7 +394,7 @@
             this.portsConfigGroupBox.Controls.Add(this.networkConfigGroupBox);
             this.portsConfigGroupBox.Location = new System.Drawing.Point(3, 238);
             this.portsConfigGroupBox.Name = "portsConfigGroupBox";
-            this.portsConfigGroupBox.Size = new System.Drawing.Size(884, 382);
+            this.portsConfigGroupBox.Size = new System.Drawing.Size(884, 376);
             this.portsConfigGroupBox.TabIndex = 5;
             this.portsConfigGroupBox.TabStop = false;
             this.portsConfigGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.portsConfigGroupBox_Paint);
@@ -405,7 +405,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.scanConfigGroupBox.Controls.Add(this.splitContainer1);
             this.scanConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.scanConfigGroupBox.Location = new System.Drawing.Point(3, 261);
+            this.scanConfigGroupBox.Location = new System.Drawing.Point(3, 255);
             this.scanConfigGroupBox.Name = "scanConfigGroupBox";
             this.scanConfigGroupBox.Size = new System.Drawing.Size(875, 112);
             this.scanConfigGroupBox.TabIndex = 1;
@@ -455,7 +455,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(114, 12);
             this.label12.TabIndex = 0;
-            this.label12.Text = "扫描天线周期(秒)";
+            this.label12.Text = "扫描天线时长(秒)";
             // 
             // readTimeTextBox
             // 
@@ -532,7 +532,7 @@
             this.networkConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.networkConfigGroupBox.Location = new System.Drawing.Point(3, 17);
             this.networkConfigGroupBox.Name = "networkConfigGroupBox";
-            this.networkConfigGroupBox.Size = new System.Drawing.Size(875, 365);
+            this.networkConfigGroupBox.Size = new System.Drawing.Size(875, 359);
             this.networkConfigGroupBox.TabIndex = 0;
             this.networkConfigGroupBox.TabStop = false;
             this.networkConfigGroupBox.Text = "网络配置";
@@ -554,7 +554,7 @@
             // networkConfigContrainer.Panel2
             // 
             this.networkConfigContrainer.Panel2.Controls.Add(this.outStoreConfigGroupBox);
-            this.networkConfigContrainer.Size = new System.Drawing.Size(866, 220);
+            this.networkConfigContrainer.Size = new System.Drawing.Size(866, 214);
             this.networkConfigContrainer.SplitterDistance = 432;
             this.networkConfigContrainer.TabIndex = 0;
             // 
@@ -565,7 +565,7 @@
             this.inStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.inStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
             this.inStoreConfigGroupBox.Name = "inStoreConfigGroupBox";
-            this.inStoreConfigGroupBox.Size = new System.Drawing.Size(432, 220);
+            this.inStoreConfigGroupBox.Size = new System.Drawing.Size(432, 214);
             this.inStoreConfigGroupBox.TabIndex = 0;
             this.inStoreConfigGroupBox.TabStop = false;
             this.inStoreConfigGroupBox.Text = "出入库天线配置";
@@ -590,7 +590,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 200);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 194);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label9
@@ -599,7 +599,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 40);
+            this.label9.Size = new System.Drawing.Size(87, 38);
             this.label9.TabIndex = 0;
             this.label9.Text = "入库天线IP:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -608,9 +608,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 40);
+            this.label10.Location = new System.Drawing.Point(3, 38);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 40);
+            this.label10.Size = new System.Drawing.Size(87, 38);
             this.label10.TabIndex = 1;
             this.label10.Text = "天线端口数";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -619,17 +619,17 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Location = new System.Drawing.Point(3, 80);
+            this.label11.Location = new System.Drawing.Point(3, 76);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label11.Size = new System.Drawing.Size(87, 120);
+            this.label11.Size = new System.Drawing.Size(87, 118);
             this.label11.TabIndex = 2;
             this.label11.Text = "使用端口";
             // 
             // inStoreIPTextBox
             // 
             this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStoreIPTextBox.Location = new System.Drawing.Point(96, 9);
+            this.inStoreIPTextBox.Location = new System.Drawing.Point(96, 8);
             this.inStoreIPTextBox.Name = "inStoreIPTextBox";
             this.inStoreIPTextBox.Size = new System.Drawing.Size(307, 21);
             this.inStoreIPTextBox.TabIndex = 3;
@@ -661,14 +661,14 @@
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.inStoreCheckBox1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(96, 83);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(96, 79);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 114);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(249, 112);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // inStoreCheckBox16
@@ -869,10 +869,10 @@
             this.portsCountGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox1.Enabled = false;
             this.portsCountGroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox1.Location = new System.Drawing.Point(96, 43);
+            this.portsCountGroupBox1.Location = new System.Drawing.Point(96, 41);
             this.portsCountGroupBox1.Name = "portsCountGroupBox1";
             this.portsCountGroupBox1.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox1.Size = new System.Drawing.Size(307, 34);
+            this.portsCountGroupBox1.Size = new System.Drawing.Size(307, 32);
             this.portsCountGroupBox1.TabIndex = 6;
             this.portsCountGroupBox1.TabStop = false;
             this.portsCountGroupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox1_Paint);
@@ -893,7 +893,7 @@
             this.tableLayoutPanel3.Controls.Add(this.inStoreRadio3, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.inStoreRadio2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.inStoreRadio1, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 6);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -985,7 +985,7 @@
             this.outStoreConfigGroupBox.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.outStoreConfigGroupBox.Location = new System.Drawing.Point(0, 0);
             this.outStoreConfigGroupBox.Name = "outStoreConfigGroupBox";
-            this.outStoreConfigGroupBox.Size = new System.Drawing.Size(430, 220);
+            this.outStoreConfigGroupBox.Size = new System.Drawing.Size(430, 214);
             this.outStoreConfigGroupBox.TabIndex = 0;
             this.outStoreConfigGroupBox.TabStop = false;
             this.outStoreConfigGroupBox.Text = "仓库天线配置";
@@ -1009,7 +1009,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 200);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 194);
             this.tableLayoutPanel4.TabIndex = 7;
             // 
             // portsCountGroupBox2
@@ -1018,10 +1018,10 @@
             this.portsCountGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portsCountGroupBox2.Enabled = false;
             this.portsCountGroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.portsCountGroupBox2.Location = new System.Drawing.Point(95, 43);
+            this.portsCountGroupBox2.Location = new System.Drawing.Point(95, 41);
             this.portsCountGroupBox2.Name = "portsCountGroupBox2";
             this.portsCountGroupBox2.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.portsCountGroupBox2.Size = new System.Drawing.Size(306, 34);
+            this.portsCountGroupBox2.Size = new System.Drawing.Size(306, 32);
             this.portsCountGroupBox2.TabIndex = 7;
             this.portsCountGroupBox2.TabStop = false;
             this.portsCountGroupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.portsCountGroupBox2_Paint);
@@ -1042,7 +1042,7 @@
             this.tableLayoutPanel6.Controls.Add(this.checkRadio3, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.checkRadio2, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.checkRadio1, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 6);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1133,7 +1133,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 40);
+            this.label6.Size = new System.Drawing.Size(86, 38);
             this.label6.TabIndex = 0;
             this.label6.Text = "盘点天线IP:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1142,9 +1142,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 40);
+            this.label7.Location = new System.Drawing.Point(3, 38);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 40);
+            this.label7.Size = new System.Drawing.Size(86, 38);
             this.label7.TabIndex = 1;
             this.label7.Text = "天线端口数";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1153,17 +1153,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 80);
+            this.label8.Location = new System.Drawing.Point(3, 76);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
-            this.label8.Size = new System.Drawing.Size(86, 120);
+            this.label8.Size = new System.Drawing.Size(86, 118);
             this.label8.TabIndex = 2;
             this.label8.Text = "使用端口";
             // 
             // checkIPTextBox
             // 
             this.checkIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkIPTextBox.Location = new System.Drawing.Point(95, 9);
+            this.checkIPTextBox.Location = new System.Drawing.Point(95, 8);
             this.checkIPTextBox.Name = "checkIPTextBox";
             this.checkIPTextBox.Size = new System.Drawing.Size(306, 21);
             this.checkIPTextBox.TabIndex = 3;
@@ -1195,14 +1195,14 @@
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox3, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkCheckBox1, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(95, 83);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(95, 79);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(249, 114);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(249, 112);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // checkCheckBox16
@@ -1400,7 +1400,7 @@
             // controlButton
             // 
             this.controlButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.controlButton.Location = new System.Drawing.Point(444, 626);
+            this.controlButton.Location = new System.Drawing.Point(444, 620);
             this.controlButton.Name = "controlButton";
             this.controlButton.Size = new System.Drawing.Size(115, 23);
             this.controlButton.TabIndex = 6;
@@ -1416,7 +1416,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 661);
+            this.ClientSize = new System.Drawing.Size(893, 655);
             this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);

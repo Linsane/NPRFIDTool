@@ -18,6 +18,6 @@
     1
   ],
   "readPortTime": 20,
-  "readPortCycle": 30,
+  "readPortCycle": 24,
   "analyzeCycle": 48
 }

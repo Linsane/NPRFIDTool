@@ -793,6 +793,18 @@ namespace NPRFIDTool
                 errorProvider1.SetError(textBox, "请输入有效的数字");
                 hasError = true;
             }
+            if(textBox == scanCycleTextBox || textBox == analyzeCycleTextBox)
+            {
+                if(analyzeCycleTextBox.Text == null) return;
+                double var1 = double.Parse(scanCycleTextBox.Text);
+                double var2 = double.Parse(analyzeCycleTextBox.Text);
+                if(var1>= var2)
+                {
+                    errorProvider1.SetError(textBox, "盘点周期时长需大于扫描周期时长");
+                    hasError = true;
+                }
+
+            }
         }
 
         private void showEmptyWarningIfNeeded(TextBox txtBox, System.ComponentModel.CancelEventArgs e)
