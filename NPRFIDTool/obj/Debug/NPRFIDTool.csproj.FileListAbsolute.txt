@@ -1,6 +1,5 @@
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\NPRFIDTool.exe
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\NPRFIDTool.pdb
-C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csprojAssemblyReference.cache
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.Properties.Resources.resources
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csproj.GenerateResource.cache
 C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csproj.CoreCompileInputs.cache

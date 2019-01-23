@@ -32,8 +32,8 @@ namespace NPRFIDTool.NPKit
         public JArray checkPorts = new JArray(); // 盘点使用端口
 
         public int readPortTime = -1; // 扫描天线
-        public int readPortCycle = -1; // 定时扫描周期，单位分
-        public int analyzeCycle = -1; // 盘点结果发送周期，单位分
+        public int readPortCycle = -1; // 定时扫描周期，单位秒
+        public int analyzeCycle = -1; // 盘点结果发送周期，单位秒
 
         public NPConfigManager()
         {

@@ -398,8 +398,8 @@ namespace NPRFIDTool
             }
             configManager.checkPorts = checkPorts;
             configManager.readPortTime = int.Parse(readTimeTextBox.Text);
-            configManager.readPortCycle = int.Parse(scanCycleTextBox.Text);
-            configManager.analyzeCycle = int.Parse(analyzeCycleTextBox.Text);
+            configManager.readPortCycle = (int)(double.Parse(scanCycleTextBox.Text)*60);
+            configManager.analyzeCycle = (int)(double.Parse(analyzeCycleTextBox.Text)*60);
 
             configManager.markDownConfiguration();
             #endregion
@@ -479,7 +479,7 @@ namespace NPRFIDTool
             {
                 return true;
             }
-            if (int.Parse(readTimeTextBox.Text) != configManager.readPortTime || int.Parse(scanCycleTextBox.Text) != configManager.readPortCycle || int.Parse(analyzeCycleTextBox.Text) != configManager.analyzeCycle)
+            if (int.Parse(readTimeTextBox.Text) != configManager.readPortTime || (int)(double.Parse(scanCycleTextBox.Text)*60) != configManager.readPortCycle || (int)(double.Parse(analyzeCycleTextBox.Text)*60) != configManager.analyzeCycle)
             {
                 return true;
             }
@@ -784,7 +784,7 @@ namespace NPRFIDTool
             var textBox = sender as TextBox;
             try
             {
-                int var1 = Convert.ToInt32(textBox.Text);
+                double var1 = double.Parse(textBox.Text);
                 errorProvider1.SetError(textBox, null);
                 hasError = false;
             }
