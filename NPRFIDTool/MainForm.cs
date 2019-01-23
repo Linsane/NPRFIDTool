@@ -264,7 +264,9 @@ namespace NPRFIDTool
             dbManager = new NPDBManager(configManager.dbConfig);
             try
             {
-                dbManager.connectDataBase();
+                /* 暂时注释
+                 dbManager.connectDataBase();
+                 */
             }
             catch (Exception ex)
             {
@@ -273,8 +275,10 @@ namespace NPRFIDTool
                 return;
             }
             // 清空数据库
+            /* 暂时注释
             dbManager.clearDataBase(TableType.TableTypeCheck);
             dbManager.clearDataBase(TableType.TableTypeRemain);
+            */
             #endregion
 
             #region WebSocket连接
@@ -295,6 +299,16 @@ namespace NPRFIDTool
             if (timingManager == null)
             {
                 timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle, configManager.analyzeCycle);
+
+                timingManager.readPortTimesUpHandler += (src, ee) =>
+                {
+                    // 停止读盘点接口
+                    Console.WriteLine("停止盘点");
+                    NPLogger.log("停止盘点");
+                    //readerManager.endReading(checkReader);
+                    // 将盘点数据写入数据库
+                    dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
+                };
 
                 timingManager.scanCycleStartHandler += (src, ee) =>
                 {
@@ -351,11 +365,22 @@ namespace NPRFIDTool
                 };
             }
             #endregion
+
+            // 尝试连接盘点设备
+            NPLogger.log("尝试连接盘点设备...");
+            int index = 0;
+            foreach(NPRFIDReaderInfo info in checkReaderInfos)
+            {
+                updateDataGridViewConnectStatus(index, "连接中");
+                readerManager.prepareReader(info, (msg, success) =>
+                {
+                    updateDataGridViewConnectStatus(index, msg);
+                    if (!success) return;
+                });
+            }
+
             timingManager.startCycles();
-            // 启动自动触发一次盘点
-            NPLogger.log("启动的第一次盘点");
-            //readerManager.beginReading(checkReader);
-            if(timingManager != null && timingManager.readPortTimer != null)
+            if (timingManager != null && timingManager.readPortTimer != null)
             {
                 timingManager.readPortTimer.Enabled = true;
             }
@@ -786,6 +811,7 @@ namespace NPRFIDTool
         private void updateDataGridViewConnectStatus(int index, string msg)
         {
             this.dataGridView1.Rows[index].Cells[3].Value = msg;
+            this.dataGridView1.Refresh();
         }
     }
 }

@@ -30,10 +30,9 @@ namespace NPRFIDTool.NPKit
             };
 
             scanCycleTimer = new Timer(scanCycleTime * 1000);
-            scanCycleTimer.AutoReset = true;
+            scanCycleTimer.AutoReset = false;
             scanCycleTimer.Elapsed += (src, e) =>
             {
-                readPortTimer.Enabled = true;
                 scanCycleStartHandler(src, e);
             };
 
@@ -54,7 +53,6 @@ namespace NPRFIDTool.NPKit
 
         public void startCycles()
         {
-            scanCycleTimer.Enabled = true;
             analyzeCycleTimer.Enabled = true;
         }
 
@@ -63,6 +61,16 @@ namespace NPRFIDTool.NPKit
             scanCycleTimer.Enabled = false;
             analyzeCycleTimer.Enabled = false;
             readPortTimer.Enabled = false;
+        }
+
+        public void startScanCycleTimer()
+        {
+            scanCycleTimer.Enabled = true;
+        }
+
+        public void startReadPortTimer()
+        {
+            readPortTimer.Enabled = true;
         }
 
         public void startIOStoreTimer()
