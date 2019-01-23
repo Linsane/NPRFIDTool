@@ -1426,7 +1426,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RFID桌面管理器";
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.systemConfigGroup.ResumeLayout(false);
             this.systemConfigContainer.Panel1.ResumeLayout(false);
             this.systemConfigContainer.Panel2.ResumeLayout(false);
