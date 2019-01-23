@@ -78,7 +78,6 @@ namespace NPRFIDTool.NPKit
                 Console.WriteLine(ex.Message);
                 NPLogger.log(ex.Message);
             }
-
         }
 
         public void markDownConfiguration()
@@ -124,7 +123,7 @@ namespace NPRFIDTool.NPKit
             ArrayList arrayList = new ArrayList();
             foreach (JObject obj in checkReaderInfos)
             {
-                NPRFIDReaderInfo info  = new NPRFIDReaderInfo(PortType.PortTypeCheck, (string)obj["readerIP"], (int)obj["readerAntNum"], (JArray)obj["usedPorts"], "盘点器");
+                NPRFIDReaderInfo info  = new NPRFIDReaderInfo(PortType.PortTypeCheck, (string)obj["readerIP"], (int)obj["readerAntNum"], (JArray)obj["usedPorts"], 0);
                 arrayList.Add(info);
             }
             return arrayList;

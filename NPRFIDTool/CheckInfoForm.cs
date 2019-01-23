@@ -53,7 +53,7 @@ namespace NPRFIDTool
             foreach (NPRFIDReaderInfo info in checkReaderInfos)
             {
                 NPCheckInfoControl checkControl = new NPCheckInfoControl();
-                checkControl.setTitle(info.title);
+                checkControl.setTitle("盘点器"+ (index+1));
                 checkControl.setAddress(info.readerIP);
                 checkControl.setPortNum(info.readerAntNum);
                 checkControl.setUsedPort(info.usedPorts);
@@ -125,7 +125,7 @@ namespace NPRFIDTool
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            NPRFIDReaderInfo info = new NPRFIDReaderInfo(PortType.PortTypeCheck, "", 0, new JArray(), "盘点器"+ (this.checkReaderInfos.Count + 1));
+            NPRFIDReaderInfo info = new NPRFIDReaderInfo(PortType.PortTypeCheck, "", 0, new JArray(),0);
             this.checkReaderInfos.Add(info);
             this.drawItems();
             this.ScrollControlIntoView(this.space);
