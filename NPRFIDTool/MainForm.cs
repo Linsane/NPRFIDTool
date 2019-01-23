@@ -259,6 +259,7 @@ namespace NPRFIDTool
                 return;
             }
             dbManager.clearDataBase(TableType.TableTypeCheck);
+            dbManager.clearDataBase(TableType.TableTypeRemain);
             #endregion
 
             #region RFID硬件信息
@@ -275,7 +276,7 @@ namespace NPRFIDTool
             #region Timing控制
             if (timingManager == null)
             {
-                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle * 60, configManager.analyzeCycle * 60);
+                timingManager = new NPTimingManager(configManager.readPortTime, configManager.readPortCycle, configManager.analyzeCycle);
                 timingManager.readPortTimesUpHandler += (src, ee) =>
                 {
                     // 停止读盘点接口
@@ -287,7 +288,7 @@ namespace NPRFIDTool
                 timingManager.scanCycleStartHandler += (src, ee) =>
                 {
                     // 开始读盘点接口
-                    Console.WriteLine("开始盘点");
+                    Console.WriteLine("开始盘点，读取盘点数据");
                     readerManager.beginReading(checkReader);
                 };
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
@@ -295,15 +296,32 @@ namespace NPRFIDTool
                     // 开始分析差异数据，上报分析结果
                     Console.WriteLine("分析盘点结果");
                     JObject remainData = dbManager.queryDataBase(TableType.TableTypeRemain);
+                    if (remainData.Count <= 0)
+                    {
+                        Console.WriteLine("不存在remain数据,不需要分析结果");
+                        return;
+                    }
                     JArray diffArray = readerManager.getDiffTagsArray(remainData);
-                    services.reportCheckDiff(diffArray);
+                    if (diffArray.Count > 0)
+                    {
+                        services.reportCheckDiff(diffArray);
+                        Console.WriteLine("盘点失败，上报差异结果"+ diffArray.ToString());
+                    }
+                    else
+                    {
+                        services.reportCheckSuccess(null);
+                        Console.WriteLine("盘点成功");
+                    }
+                    
                 };
             }
             #endregion
             timingManager.startCycles();
             // 启动自动触发一次盘点
+            Console.WriteLine("启动的第一次盘点");
             readerManager.beginReading(checkReader);
             timingManager.readPortTimer.Enabled = true;
+
 
             controlButton.Enabled = true;
         }
@@ -683,7 +701,7 @@ namespace NPRFIDTool
             portsConfigGroupBox.Enabled = true;
             updateButton.Enabled = true;
         }
-
+   
 
         #region 控件输入校验
         private void urlTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -794,6 +812,13 @@ namespace NPRFIDTool
         {
             readerManager.endReading(inStoreReader);
             Console.WriteLine("结束入库");
+
+            #region 测试代码
+
+            // 记录数据到remain表
+            dbManager.refreshTableWithData(TableType.TableTypeRemain, readerManager.inStoreDict);
+
+            #endregion
         }
 
 

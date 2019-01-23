@@ -115,8 +115,8 @@ namespace NPRFIDTool.NPKit
         {
             JObject obj = new JObject();
             obj.Add("action", "check");
-            obj.Add("antenna", String.Format("天线{0}", tagData.Antenna));
-            obj.Add("antenna_param", "");
+            //obj.Add("antenna", String.Format("天线{0}", tagData.Antenna));
+            //obj.Add("antenna_param", "");
             obj.Add("check", "ok");
 
             obj.Merge(commonParams);

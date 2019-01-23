@@ -22,7 +22,7 @@ namespace NPRFIDTool.NPKit
     class NPRFIDReaderManager
     {
         public JObject checkedDict = new JObject();
-        public JArray inStoreTags = new JArray();
+        public JObject inStoreDict = new JObject();
 
         public Dictionary<string,WrapReader> readerDict = new Dictionary<string, WrapReader>();
         public CreatReaderFailHandler failHandler;
@@ -80,6 +80,10 @@ namespace NPRFIDTool.NPKit
             // 如果是入库Reader，判断一下端口功率是否为10db，不是的话改为10db
             if(readerInfo.portType == PortType.PortTypeInStore)
             {
+
+                inStoreDict.RemoveAll();
+
+                /*
                 AntPower[] pwrs = (AntPower[])reader.ParamGet("AntPowerConf"); // 获取当前配置
                 bool needUpdate = false;
                 foreach (int num in readerInfo.usedPorts)
@@ -92,6 +96,7 @@ namespace NPRFIDTool.NPKit
                     }
                 }
                 reader.ParamSet("AntPowerConf", pwrs);
+                */
             }
 
             if (!wrapReader.isReading)
@@ -126,12 +131,6 @@ namespace NPRFIDTool.NPKit
             }
 
             reader.ParamSet("ReadPlan", new SimpleReadPlan(TagProtocol.GEN2, arr.ToArray()));
-
-            // 如果是停止入库端口读取，要清除已记录的入库tags数据
-            if (readerInfo.portType == PortType.PortTypeCheck)
-            {
-                inStoreTags.Clear();
-            }
         }
 
         // 根据IP判断是否已经存在对应Reader
@@ -235,7 +234,7 @@ namespace NPRFIDTool.NPKit
                     // 判断是否已经存在这个数据，没有记录到inStoreTags并上报
                     if (!isTagExist(tag.EPCString))
                     {
-                        inStoreTags.Add(tag.EPCString);
+                        inStoreDict.Add(tag.EPCString, DateTime.Now.ToString());
                         sendNeededTags.Add(tag.EPCString);
                     }
                 }
@@ -271,10 +270,13 @@ namespace NPRFIDTool.NPKit
         private bool isTagExist(string tag)
         {
             bool exist = false;
-            string[] tags = inStoreTags.ToObject<string[]>();
-            if (tags.Contains(tag))
+            foreach (var item in inStoreDict)
             {
-                exist = true;
+                if (item.Key == tag)
+                {
+                    exist = true;
+                    break;
+                }
             }
             return exist;
         }
