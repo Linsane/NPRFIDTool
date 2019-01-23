@@ -6,17 +6,18 @@
     "username": "root",
     "password": "910123"
   },
-  "inStoreIP": "192.168.100.188",
+  "inStoreIP": "192.168.100.189",
   "inStoreAntNums": 4,
   "inStorePorts": [
+    2,
     3
   ],
-  "checkIP": "192.168.100.188",
+  "checkIP": "192.168.100.189",
   "checkAntNums": 4,
   "checkPorts": [
     1
   ],
   "readPortTime": 20,
   "readPortCycle": 30,
-  "analyzeCycle": 40
+  "analyzeCycle": 48
 }

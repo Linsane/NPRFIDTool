@@ -201,8 +201,8 @@ namespace NPRFIDTool
                 }
             }
             readTimeTextBox.Text = manager.readPortTime == -1 ? "" : manager.readPortTime.ToString();
-            scanCycleTextBox.Text = manager.readPortCycle == -1 ? "" : manager.readPortCycle.ToString();
-            analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : manager.analyzeCycle.ToString();
+            scanCycleTextBox.Text = manager.readPortCycle == -1 ? "" : (manager.readPortCycle / 60.0).ToString();
+            analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : (manager.analyzeCycle / 60.0).ToString();
         }
 
         // 点击启动/停止按钮
