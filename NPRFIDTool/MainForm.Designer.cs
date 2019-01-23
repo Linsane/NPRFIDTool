@@ -64,7 +64,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.inStoreIPTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.inStoreCheckBox16 = new System.Windows.Forms.CheckBox();
             this.inStoreCheckBox15 = new System.Windows.Forms.CheckBox();
@@ -123,6 +122,10 @@
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.inStoreIPTextBox = new System.Windows.Forms.TextBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label15 = new System.Windows.Forms.Label();
+            this.portPowerTextBox = new System.Windows.Forms.TextBox();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -159,6 +162,10 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // systemConfigGroup
@@ -577,9 +584,9 @@
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.inStoreIPTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.portsCountGroupBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -624,16 +631,6 @@
             this.label11.Size = new System.Drawing.Size(87, 118);
             this.label11.TabIndex = 2;
             this.label11.Text = "使用端口";
-            // 
-            // inStoreIPTextBox
-            // 
-            this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStoreIPTextBox.Location = new System.Drawing.Point(96, 8);
-            this.inStoreIPTextBox.Name = "inStoreIPTextBox";
-            this.inStoreIPTextBox.Size = new System.Drawing.Size(307, 21);
-            this.inStoreIPTextBox.TabIndex = 3;
-            this.inStoreIPTextBox.TextChanged += new System.EventHandler(this.inStoreIPTextBox_TextChanged);
-            this.inStoreIPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IPTextBox_Validating);
             // 
             // tableLayoutPanel2
             // 
@@ -1411,6 +1408,56 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // inStoreIPTextBox
+            // 
+            this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inStoreIPTextBox.Location = new System.Drawing.Point(0, 7);
+            this.inStoreIPTextBox.Name = "inStoreIPTextBox";
+            this.inStoreIPTextBox.Size = new System.Drawing.Size(128, 21);
+            this.inStoreIPTextBox.TabIndex = 3;
+            this.inStoreIPTextBox.TextChanged += new System.EventHandler(this.inStoreIPTextBox_TextChanged);
+            this.inStoreIPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IPTextBox_Validating);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(96, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.inStoreIPTextBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.portPowerTextBox);
+            this.splitContainer2.Panel2.Controls.Add(this.label15);
+            this.splitContainer2.Size = new System.Drawing.Size(307, 32);
+            this.splitContainer2.SplitterDistance = 143;
+            this.splitContainer2.TabIndex = 7;
+            this.splitContainer2.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(64, 12);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "端口功率:";
+            // 
+            // portPowerTextBox
+            // 
+            this.portPowerTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.portPowerTextBox.Location = new System.Drawing.Point(73, 7);
+            this.portPowerTextBox.Name = "portPowerTextBox";
+            this.portPowerTextBox.Size = new System.Drawing.Size(63, 21);
+            this.portPowerTextBox.TabIndex = 1;
+            this.portPowerTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.portPowerTextBox_Validating);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1473,6 +1520,12 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1506,7 +1559,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox inStoreIPTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.CheckBox inStoreCheckBox16;
         private System.Windows.Forms.CheckBox inStoreCheckBox15;
@@ -1573,6 +1625,10 @@
         private System.Windows.Forms.RadioButton checkRadio1;
         private System.Windows.Forms.Button controlButton;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TextBox inStoreIPTextBox;
+        private System.Windows.Forms.TextBox portPowerTextBox;
+        private System.Windows.Forms.Label label15;
     }
 }
 

@@ -180,8 +180,8 @@ namespace NPRFIDTool.NPKit
                 }
                 else
                 {
-                    pwrs[i].ReadPower = (ushort)1000;
-                    pwrs[i].WritePower = (ushort)1000;
+                    pwrs[i].ReadPower = readerInfo.portPower;
+                    pwrs[i].WritePower = readerInfo.portPower;
                 }
                
             }

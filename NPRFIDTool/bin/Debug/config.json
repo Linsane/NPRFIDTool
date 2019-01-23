@@ -7,6 +7,7 @@
     "password": "910123"
   },
   "inStoreIP": "192.168.100.189",
+  "inStorePower": 3000,
   "inStoreAntNums": 4,
   "inStorePorts": [
     2,

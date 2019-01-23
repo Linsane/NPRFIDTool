@@ -24,6 +24,7 @@ namespace NPRFIDTool.NPKit
         public DBConfig dbConfig;     // 本地数据配置
 
         public string inStoreIP; // 入库天线IP
+        public ushort inStorePower; // 入库天线功率
         public int inStoreAntNums; // 天线端口数
         public JArray inStorePorts = new JArray(); // 入库使用端口
 
@@ -49,6 +50,7 @@ namespace NPRFIDTool.NPKit
             configURL = config["configURL"].ToString();
             dbConfig = config["dbConfig"].ToObject<DBConfig>();
             inStoreIP = config["inStoreIP"].ToString();
+            inStorePower = (ushort)config["inStorePower"];
             inStoreAntNums = (int)config["inStoreAntNums"];
             inStorePorts = (JArray)config["inStorePorts"];
             checkIP = config["checkIP"].ToString();
@@ -65,6 +67,7 @@ namespace NPRFIDTool.NPKit
             config.Add("configURL", configURL);
             config.Add("dbConfig", JObject.FromObject(dbConfig));
             config.Add("inStoreIP", inStoreIP);
+            config.Add("inStorePower", inStorePower);
             config.Add("inStoreAntNums", inStoreAntNums);
             config.Add("inStorePorts", inStorePorts);
             config.Add("checkIP", checkIP);

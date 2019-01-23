@@ -139,7 +139,8 @@ namespace NPRFIDTool
             dbUserNameTextBox.Text = manager.dbConfig.username == null ? "" : manager.dbConfig.username;
             dbPasswordTextBox.Text = manager.dbConfig.password == null ? "" : manager.dbConfig.password;
             inStoreIPTextBox.Text = manager.inStoreIP == null ? "" : manager.inStoreIP;
-            if(manager.inStoreAntNums > 0)
+            portPowerTextBox.Text = manager.inStorePower == null ? "" : manager.inStorePower.ToString();
+            if (manager.inStoreAntNums > 0)
             {
                 foreach (RadioButton rb in inStoreRadioList)
                 {
@@ -274,9 +275,9 @@ namespace NPRFIDTool
 
             #region RFID硬件信息
             // 入库
-            inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts);
+            inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts, configManager.inStorePower);
             // 盘点
-            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts);
+            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts, 0);
             #endregion
 
             #region WebSocket连接
@@ -360,6 +361,7 @@ namespace NPRFIDTool
             configManager.dbConfig.username = dbUserNameTextBox.Text;
             configManager.dbConfig.password = dbPasswordTextBox.Text;
             configManager.inStoreIP = inStoreIPTextBox.Text;
+            configManager.inStorePower = ushort.Parse(portPowerTextBox.Text);
             foreach (RadioButton rb in inStoreRadioList)
             {
                 if (rb.Checked)
@@ -402,6 +404,7 @@ namespace NPRFIDTool
             configManager.analyzeCycle = (int)(double.Parse(analyzeCycleTextBox.Text)*60);
 
             configManager.markDownConfiguration();
+            MessageBox.Show("更新配置成功");
             #endregion
         }
 
@@ -475,7 +478,7 @@ namespace NPRFIDTool
             {
                 return  true;
             }
-            if (inStoreIPTextBox.Text != configManager.inStoreIP || checkIPTextBox.Text != configManager.checkIP)
+            if (inStoreIPTextBox.Text != configManager.inStoreIP || checkIPTextBox.Text != configManager.checkIP || portPowerTextBox.Text != configManager.inStorePower.ToString())
             {
                 return true;
             }
@@ -762,6 +765,7 @@ namespace NPRFIDTool
         private void IPTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var textBox = sender as TextBox;
+            showEmptyWarningIfNeeded(textBox, e);
             if (!isValidateIP(textBox.Text))
             {
                 errorProvider1.SetError(textBox, "请输入有效的IP地址");
@@ -782,6 +786,7 @@ namespace NPRFIDTool
         private void timeTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var textBox = sender as TextBox;
+            showEmptyWarningIfNeeded(textBox, e);
             try
             {
                 double var1 = double.Parse(textBox.Text);
@@ -824,5 +829,27 @@ namespace NPRFIDTool
         }
         #endregion
 
+        private void portPowerTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            showEmptyWarningIfNeeded(textBox, e);
+            
+            try
+            {
+                ushort var1 = ushort.Parse(textBox.Text);
+                errorProvider1.SetError(textBox, null);
+                hasError = false;
+                if (var1 < 1 || var1 > 3000)
+                {
+                    errorProvider1.SetError(textBox, "请输入1-3000之间有效整数");
+                    hasError = true;
+                }
+            }
+            catch
+            {
+                errorProvider1.SetError(textBox, "请输入1-3000之间有效整数");
+                hasError = true;
+            }
+        }
     }
 }
