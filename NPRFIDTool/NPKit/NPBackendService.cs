@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using System.Collections;
-using WebSocketSharp;
 using ModuleTech;
 using System.Net;
 using System.Collections.Generic;
