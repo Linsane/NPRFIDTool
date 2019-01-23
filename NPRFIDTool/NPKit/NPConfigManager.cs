@@ -37,6 +37,8 @@ namespace NPRFIDTool.NPKit
         public int readPortCycle = -1; // 定时扫描周期，单位秒
         public int analyzeCycle = -1; // 盘点结果发送周期，单位秒
 
+        private JArray checkReaderInfos; // 所有盘点设备信息的数组
+
         public NPConfigManager()
         {
             dbConfig = new DBConfig();
@@ -68,6 +70,8 @@ namespace NPRFIDTool.NPKit
                 readPortCycle = (int)config["readPortCycle"];
                 analyzeCycle = (int)config["analyzeCycle"];
                 wsAddress = config["wsAddress"].ToString();
+                checkReaderInfos = (JArray)config["checkReaderInfos"];
+                Console.WriteLine(checkReaderInfos);
             }
             catch(Exception ex)
             {
@@ -93,6 +97,7 @@ namespace NPRFIDTool.NPKit
             config.Add("readPortCycle", readPortCycle);
             config.Add("analyzeCycle", analyzeCycle);
             config.Add("wsAddress", wsAddress);
+            config.Add("checkReaderInfos", checkReaderInfos);
 
             File.WriteAllText("config.json", config.ToString());
         }
@@ -101,6 +106,28 @@ namespace NPRFIDTool.NPKit
         {
             bool validate = false;
             return validate;
+        }
+
+        public void setCheckReaderInfos(ArrayList array)
+        {
+            JArray jArray = new JArray();
+            foreach (NPRFIDReaderInfo info in array)
+            {
+                JObject obj = new JObject { { "readerIP", info.readerIP }, {"readerAntNum",info.readerAntNum }, {"usedPorts", info.usedPorts } };
+                jArray.Add(obj);
+            }
+            checkReaderInfos = jArray;
+        }
+
+        public ArrayList getCheckReaderInfos()
+        {
+            ArrayList arrayList = new ArrayList();
+            foreach (JObject obj in checkReaderInfos)
+            {
+                NPRFIDReaderInfo info  = new NPRFIDReaderInfo(PortType.PortTypeCheck, (string)obj["readerIP"], (int)obj["readerAntNum"], (JArray)obj["usedPorts"], "盘点器");
+                arrayList.Add(info);
+            }
+            return arrayList;
         }
     }
 }

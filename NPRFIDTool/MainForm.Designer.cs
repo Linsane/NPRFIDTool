@@ -97,16 +97,16 @@
             this.portPowerTextBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.outStoreConfigGroupBox = new System.Windows.Forms.GroupBox();
+            this.detailButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.portNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.使用端口 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.connectStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.logTextBox = new System.Windows.Forms.RichTextBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label17 = new System.Windows.Forms.Label();
-            this.detailButton = new System.Windows.Forms.Button();
+            this.ipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.portNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.使用端口 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.connectStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -294,7 +294,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(516, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(519, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -322,7 +322,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(492, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(495, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -374,7 +374,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(301, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(304, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -382,7 +382,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(301, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(304, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -390,7 +390,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(301, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(304, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -398,7 +398,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(301, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(304, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -1040,6 +1040,21 @@
             this.outStoreConfigGroupBox.TabStop = false;
             this.outStoreConfigGroupBox.Text = "盘点配置";
             // 
+            // detailButton
+            // 
+            this.detailButton.FlatAppearance.BorderSize = 0;
+            this.detailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.detailButton.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.detailButton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.detailButton.Location = new System.Drawing.Point(61, -5);
+            this.detailButton.Margin = new System.Windows.Forms.Padding(0);
+            this.detailButton.Name = "detailButton";
+            this.detailButton.Size = new System.Drawing.Size(53, 20);
+            this.detailButton.TabIndex = 8;
+            this.detailButton.Text = "详细信息";
+            this.detailButton.UseVisualStyleBackColor = true;
+            this.detailButton.Click += new System.EventHandler(this.detailButton_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -1057,34 +1072,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(424, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // ipAddress
-            // 
-            this.ipAddress.HeaderText = "地址";
-            this.ipAddress.Name = "ipAddress";
-            this.ipAddress.ReadOnly = true;
-            this.ipAddress.Width = 120;
-            // 
-            // portNum
-            // 
-            this.portNum.HeaderText = "端口数";
-            this.portNum.Name = "portNum";
-            this.portNum.ReadOnly = true;
-            this.portNum.Width = 80;
-            // 
-            // 使用端口
-            // 
-            this.使用端口.HeaderText = "usedPorts";
-            this.使用端口.Name = "使用端口";
-            this.使用端口.ReadOnly = true;
-            this.使用端口.Width = 90;
-            // 
-            // connectStatus
-            // 
-            this.connectStatus.HeaderText = "连接状态";
-            this.connectStatus.Name = "connectStatus";
-            this.connectStatus.ReadOnly = true;
-            this.connectStatus.Width = 90;
             // 
             // logTextBox
             // 
@@ -1121,20 +1108,33 @@
             this.label17.TabIndex = 7;
             this.label17.Text = "版本号：v1.0";
             // 
-            // detailButton
+            // ipAddress
             // 
-            this.detailButton.FlatAppearance.BorderSize = 0;
-            this.detailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.detailButton.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.detailButton.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.detailButton.Location = new System.Drawing.Point(61, -5);
-            this.detailButton.Margin = new System.Windows.Forms.Padding(0);
-            this.detailButton.Name = "detailButton";
-            this.detailButton.Size = new System.Drawing.Size(53, 20);
-            this.detailButton.TabIndex = 8;
-            this.detailButton.Text = "详细信息";
-            this.detailButton.UseVisualStyleBackColor = true;
-            this.detailButton.Click += new System.EventHandler(this.detailButton_Click);
+            this.ipAddress.HeaderText = "地址";
+            this.ipAddress.Name = "ipAddress";
+            this.ipAddress.ReadOnly = true;
+            this.ipAddress.Width = 120;
+            // 
+            // portNum
+            // 
+            this.portNum.HeaderText = "端口数";
+            this.portNum.Name = "portNum";
+            this.portNum.ReadOnly = true;
+            this.portNum.Width = 80;
+            // 
+            // 使用端口
+            // 
+            this.使用端口.HeaderText = "使用端口";
+            this.使用端口.Name = "使用端口";
+            this.使用端口.ReadOnly = true;
+            this.使用端口.Width = 90;
+            // 
+            // connectStatus
+            // 
+            this.connectStatus.HeaderText = "连接状态";
+            this.connectStatus.Name = "connectStatus";
+            this.connectStatus.ReadOnly = true;
+            this.connectStatus.Width = 90;
             // 
             // MainForm
             // 

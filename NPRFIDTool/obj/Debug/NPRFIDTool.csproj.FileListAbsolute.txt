@@ -32,3 +32,4 @@ C:\Users\LinSeanYu\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool
 C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.CheckInfoForm.resources
 C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\WindowsFormsControlLibrary1.dll
 C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\bin\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\sean\Desktop\NPProjects\NPRFIDTool\NPRFIDTool\obj\Debug\NPRFIDTool.csprojAssemblyReference.cache

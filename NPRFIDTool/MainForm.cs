@@ -197,6 +197,8 @@ namespace NPRFIDTool
             readTimeTextBox.Text = manager.readPortTime == -1 ? "" : manager.readPortTime.ToString();
             scanCycleTextBox.Text = manager.readPortCycle == -1 ? "" : (manager.readPortCycle / 60.0).ToString();
             analyzeCycleTextBox.Text = manager.analyzeCycle == -1 ? "" : (manager.analyzeCycle / 60.0).ToString();
+            checkReaderInfos = manager.getCheckReaderInfos();
+            renderDataGridView(checkReaderInfos);
         }
 
         // 点击启动/停止按钮
@@ -388,6 +390,7 @@ namespace NPRFIDTool
                 }
             }
             configManager.inStorePorts = inStorePorts;
+            configManager.setCheckReaderInfos(checkReaderInfos);
 
             configManager.readPortTime = int.Parse(readTimeTextBox.Text);
             configManager.readPortCycle = (int)(double.Parse(scanCycleTextBox.Text)*60);
