@@ -80,7 +80,6 @@ namespace NPRFIDTool.NPKit
                 }
                 callback("已连接", true);
             }
-            
         }
 
         public void beginReading(NPRFIDReaderInfo readerInfo)
@@ -407,6 +406,32 @@ namespace NPRFIDTool.NPKit
         public void clearCheck()
         {
             checkedDict.RemoveAll();
+        }
+
+        public void startCheckReading(NPRFIDReaderInfo info, Action<string> callback)
+        {
+            Reader reader = null;
+            WrapReader wrapReader = null;
+            wrapReader = readerDict[info.readerIP];
+            reader = wrapReader.reader;
+            if (!wrapReader.isReading)
+            {
+                reader.StartReading();
+                wrapReader.isReading = true;
+                callback("读取中");
+            }
+        }
+
+        public void stopCheckReading(NPRFIDReaderInfo info, Action<string> callback)
+        {
+            WrapReader wrapReader = readerDict[info.readerIP];
+            Reader reader = wrapReader.reader;
+            if (wrapReader.isReading)
+            {
+                reader.StopReading();
+                wrapReader.isReading = false;
+                callback("已连接");
+            }
         }
     }
 }

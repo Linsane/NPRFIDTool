@@ -305,7 +305,7 @@ namespace NPRFIDTool
                     // 停止读盘点接口
                     Console.WriteLine("停止盘点");
                     NPLogger.log("停止盘点");
-                    //readerManager.endReading(checkReader);
+                    stopCheckReading();
                     // 将盘点数据写入数据库
                     dbManager.appendDataToDataBase(TableType.TableTypeCheck, readerManager.checkedDict);
                 };
@@ -315,12 +315,7 @@ namespace NPRFIDTool
                     // 开始读盘点接口
                     Console.WriteLine("开始盘点，读取盘点数据");
                     NPLogger.log("开始盘点，读取盘点数据");
-                    /*
-                    foreach(NPRFIDReaderInfo info in checkReaderInfos)
-                    {
-                        readerManager.beginReading(info);
-                    } 
-                    */
+                    startCheckReading();
                 };
 
                 timingManager.analyzeCycleStartHandler += (src, ee) =>
@@ -376,14 +371,15 @@ namespace NPRFIDTool
                 {
                     updateDataGridViewConnectStatus(index, msg);
                     if (!success) return;
-                });
-            }
 
-            timingManager.startCycles();
-            if (timingManager != null && timingManager.readPortTimer != null)
-            {
-                timingManager.readPortTimer.Enabled = true;
+                });
+                index++;
             }
+            // 开始盘点
+            startCheckReading();
+
+            // 启动分析盘点结果周期
+            timingManager.startCycles();
             
             controlButton.Enabled = true;
         }
@@ -812,6 +808,33 @@ namespace NPRFIDTool
         {
             this.dataGridView1.Rows[index].Cells[3].Value = msg;
             this.dataGridView1.Refresh();
+        }
+
+        private void startCheckReading()
+        {
+            int index = 0;
+            foreach(NPRFIDReaderInfo info in checkReaderInfos)
+            {
+                readerManager.startCheckReading(info, (msg) =>
+                 {
+                     updateDataGridViewConnectStatus(index, msg);
+                     index++;
+                 });
+            }
+            timingManager.startReadPortTimer();
+        }
+
+        private void stopCheckReading()
+        {
+            int index = 0;
+            foreach (NPRFIDReaderInfo info in checkReaderInfos)
+            {
+                readerManager.stopCheckReading(info, (msg) =>
+                {
+                    updateDataGridViewConnectStatus(index, msg);
+                    index++;
+                });
+            }
         }
     }
 }
