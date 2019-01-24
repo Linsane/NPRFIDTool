@@ -3,6 +3,7 @@ using WebSocketSharp;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Timers;
 
 namespace NPRFIDTool.NPKit
 {
@@ -20,6 +21,7 @@ namespace NPRFIDTool.NPKit
         public static WebSocketStopInStoreHandler stopScanHandler;
         public static WebSocketCloseHandler connectStopHandler;
         public static string currentAddress;
+        public static System.Timers.Timer heartBeatTimer;
 
         // 建立长链接
         public static void connect(string address)
@@ -79,6 +81,7 @@ namespace NPRFIDTool.NPKit
                 Console.WriteLine("Websocket Open");
                 NPLogger.log("Websocket Open");
                 initial();
+                startHeartBeat();
             };
 
             ws.OnClose += (sender, e) =>
@@ -137,6 +140,26 @@ namespace NPRFIDTool.NPKit
             obj.Add("data", "");
             string json = obj.ToString(Formatting.None);
             ws.Send(json);
+        }
+
+        public static void heartBeat()
+        {
+            JObject obj = new JObject();
+            obj.Add("client_type", "app");
+            obj.Add("data", "heartBeat");
+            string json = obj.ToString(Formatting.None);
+            ws.Send(json);
+        }
+
+        public static void startHeartBeat()
+        {
+            heartBeatTimer = new System.Timers.Timer(120*1000);
+            heartBeatTimer.AutoReset = true;
+            heartBeatTimer.Elapsed += (src, e) =>
+            {
+                heartBeat();
+            };
+            heartBeatTimer.Enabled = true;
         }
     }
 }
