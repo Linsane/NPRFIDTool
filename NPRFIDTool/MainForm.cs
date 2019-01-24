@@ -224,6 +224,8 @@ namespace NPRFIDTool
                 return;
             }
 
+            logTextBox.Text = "";
+
             // 处理开始逻辑
             systemConfigGroup.Enabled = false;
             portsConfigGroupBox.Enabled = false;
@@ -743,6 +745,7 @@ namespace NPRFIDTool
             }
             if (dbManager != null) dbManager.disconnectDataBase();
             if (timingManager != null) timingManager.stopCycles();
+            timingManager = null;
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
             NPWebSocket.disconnect();
