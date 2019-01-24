@@ -117,6 +117,14 @@ namespace NPRFIDTool
             {
                 resetAppStatus();
             };
+            #region WebSocket连接
+            // "123.207.54.83:1359"
+            if (configManager.wsAddress != null)
+            {
+                NPWebSocket.connect(configManager.wsAddress);
+            }
+            
+            #endregion
             readerManager.failHandler += (ex) =>
             {
                 MessageBox.Show("连接读写器失败:" + ex.ToString());
@@ -140,6 +148,7 @@ namespace NPRFIDTool
             dbPasswordTextBox.Text = manager.dbConfig.password == null ? "" : manager.dbConfig.password;
             inStoreIPTextBox.Text = manager.inStoreIP == null ? "" : manager.inStoreIP;
             portPowerTextBox.Text = manager.inStorePower == null ? "" : manager.inStorePower.ToString();
+            websocketTextBox.Text = manager.wsAddress == null ? "" : manager.wsAddress;
             if (manager.inStoreAntNums > 0)
             {
                 foreach (RadioButton rb in inStoreRadioList)
@@ -209,7 +218,6 @@ namespace NPRFIDTool
         // 点击启动/停止按钮
         private void controlButton_Click(object sender, EventArgs e)
         {
-
             Button button = (Button)sender;
             if (button.Text == "停止") // 处理停止逻辑
             {
@@ -278,10 +286,6 @@ namespace NPRFIDTool
             inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts, configManager.inStorePower);
             // 盘点
             checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts, 0);
-            #endregion
-
-            #region WebSocket连接
-            NPWebSocket.connect();
             #endregion
 
             #region Timing控制
@@ -362,6 +366,12 @@ namespace NPRFIDTool
             configManager.dbConfig.password = dbPasswordTextBox.Text;
             configManager.inStoreIP = inStoreIPTextBox.Text;
             configManager.inStorePower = ushort.Parse(portPowerTextBox.Text);
+            if (configManager.wsAddress != websocketTextBox.Text)
+            {
+                NPWebSocket.connect(websocketTextBox.Text);
+            }
+            configManager.wsAddress = websocketTextBox.Text;
+
             foreach (RadioButton rb in inStoreRadioList)
             {
                 if (rb.Checked)
@@ -474,7 +484,7 @@ namespace NPRFIDTool
         {
             if (urlTextBox.Text != configManager.configURL) return true;
 
-            if (dbAddressTextBox.Text != configManager.dbConfig.dbAddress || dbNameTextBox.Text != configManager.dbConfig.dbName || dbUserNameTextBox.Text != configManager.dbConfig.username || dbPasswordTextBox.Text != configManager.dbConfig.password)
+            if (dbAddressTextBox.Text != configManager.dbConfig.dbAddress || dbNameTextBox.Text != configManager.dbConfig.dbName || dbUserNameTextBox.Text != configManager.dbConfig.username || dbPasswordTextBox.Text != configManager.dbConfig.password || websocketTextBox.Text != configManager.wsAddress)
             {
                 return  true;
             }
@@ -710,7 +720,6 @@ namespace NPRFIDTool
             }
             if (dbManager != null) dbManager.disconnectDataBase();
             if (timingManager != null) timingManager.stopCycles();
-            NPWebSocket.disconnect();
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
             readerManager.clear();
@@ -741,24 +750,18 @@ namespace NPRFIDTool
             var textBox = sender as TextBox;
             showEmptyWarningIfNeeded(textBox, e);
             // 校验数据库地址有效性
-
-            if (textBox == dbAddressTextBox)
+            string Pattern = @"(?:(?:\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(?:\d|[1-9]\d|2[0-4]\d|25[0-5]):\d{1,4}";
+            Regex r = new Regex(Pattern);
+            Match m = r.Match(textBox.Text);
+            if (!m.Success)
             {
-                string num = "(25[0-5]|2[0-4]//d|[0-1]//d{2}|[1-9]?//d)";
-                string IPPattern = "^" + num + "//." + num + "//." + num + "//." + num + "$";
-                string Pattern = @"^(localhost|"+ IPPattern+ @")(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&$%\$#\=~])*$";
-                Regex r = new Regex(Pattern);
-                Match m = r.Match(textBox.Text);
-                if (!m.Success)
-                {
-                    errorProvider1.SetError(textBox, "请输入有效的数据库地址");
-                    hasError = true;
-                }
-                else
-                {
-                    errorProvider1.SetError(textBox, null);
-                    hasError = false;
-                }
+                errorProvider1.SetError(textBox, "请输入有效的地址");
+                hasError = true;
+            }
+            else
+            {
+                errorProvider1.SetError(textBox, null);
+                hasError = false;
             }
         }
 
@@ -831,25 +834,7 @@ namespace NPRFIDTool
 
         private void portPowerTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var textBox = sender as TextBox;
-            showEmptyWarningIfNeeded(textBox, e);
-            
-            try
-            {
-                ushort var1 = ushort.Parse(textBox.Text);
-                errorProvider1.SetError(textBox, null);
-                hasError = false;
-                if (var1 < 1 || var1 > 3000)
-                {
-                    errorProvider1.SetError(textBox, "请输入1-3000之间有效整数");
-                    hasError = true;
-                }
-            }
-            catch
-            {
-                errorProvider1.SetError(textBox, "请输入1-3000之间有效整数");
-                hasError = true;
-            }
+
         }
     }
 }

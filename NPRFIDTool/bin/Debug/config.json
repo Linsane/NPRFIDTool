@@ -1,7 +1,7 @@
 {
   "configURL": "http://rfidv2.radeit.cn",
   "dbConfig": {
-    "dbAddress": "localhost:3306",
+    "dbAddress": "127.0.0.1:3306",
     "dbName": "rfid_db",
     "username": "root",
     "password": "910123"
@@ -20,5 +20,6 @@
   ],
   "readPortTime": 20,
   "readPortCycle": 24,
-  "analyzeCycle": 48
+  "analyzeCycle": 48,
+  "wsAddress": "123.207.54.83:1359"
 }

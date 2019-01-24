@@ -21,6 +21,7 @@ namespace NPRFIDTool.NPKit
     class NPConfigManager
     {
         public string configURL; // 服务器配置URL
+        public string wsAddress; // websocket地址
         public DBConfig dbConfig;     // 本地数据配置
 
         public string inStoreIP; // 入库天线IP
@@ -58,7 +59,8 @@ namespace NPRFIDTool.NPKit
             checkPorts = (JArray)config["checkPorts"];
             readPortTime = (int)config["readPortTime"];
             readPortCycle = (int)config["readPortCycle"];
-            analyzeCycle = (int)config["analyzeCycle"];     
+            analyzeCycle = (int)config["analyzeCycle"];
+            wsAddress = config["wsAddress"].ToString();
         }
 
         public void markDownConfiguration()
@@ -76,6 +78,7 @@ namespace NPRFIDTool.NPKit
             config.Add("readPortTime", readPortTime);
             config.Add("readPortCycle", readPortCycle);
             config.Add("analyzeCycle", analyzeCycle);
+            config.Add("wsAddress", wsAddress);
 
             File.WriteAllText("config.json", config.ToString());
         }

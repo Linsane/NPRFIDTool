@@ -19,16 +19,25 @@ namespace NPRFIDTool.NPKit
         public static WebSocketStartOutStoreHandler startOutStoreHandler;
         public static WebSocketStopInStoreHandler stopScanHandler;
         public static WebSocketCloseHandler connectStopHandler;
+        public static string currentAddress;
 
         // 建立长链接
-        public static void connect()
+        public static void connect(string address)
         {
-            if (ws != null && (ws.ReadyState != WebSocketState.Connecting || ws.ReadyState != WebSocketState.Open))
+            
+            if (ws != null && (ws.ReadyState != WebSocketState.Connecting || ws.ReadyState != WebSocketState.Open) && currentAddress == address)
             {
-                ws.Connect();
+                ws.ConnectAsync();
                 return;
             }
-            ws = new WebSocket("ws://123.207.54.83:1359/");
+            else
+            {
+                if (ws!= null && ws.ReadyState == WebSocketState.Open) ws.Close();
+                ws = null;
+            }
+            currentAddress = address;
+            //123.207.54.83:1359
+            ws = new WebSocket("ws://" + address + "/");
 
             ws.OnMessage += (sender, e) =>
             {
@@ -66,6 +75,10 @@ namespace NPRFIDTool.NPKit
             ws.OnClose += (sender, e) =>
             {
                 Console.WriteLine("Websocket Close");
+                if (e.Reason != null && e.Reason != "")
+                {
+                    MessageBox.Show(e.Reason);
+                }
                 connectStopHandler(e);
             };
 
@@ -75,7 +88,7 @@ namespace NPRFIDTool.NPKit
                 errorHandler(e);
             };
 
-            ws.Connect();
+            ws.ConnectAsync();
         }
 
         // 断开长连接

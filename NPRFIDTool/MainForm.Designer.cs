@@ -89,6 +89,10 @@
             this.inStoreRadio3 = new System.Windows.Forms.RadioButton();
             this.inStoreRadio2 = new System.Windows.Forms.RadioButton();
             this.inStoreRadio1 = new System.Windows.Forms.RadioButton();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.inStoreIPTextBox = new System.Windows.Forms.TextBox();
+            this.portPowerTextBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.outStoreConfigGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.portsCountGroupBox2 = new System.Windows.Forms.GroupBox();
@@ -122,10 +126,9 @@
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.inStoreIPTextBox = new System.Windows.Forms.TextBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.label15 = new System.Windows.Forms.Label();
-            this.portPowerTextBox = new System.Windows.Forms.TextBox();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.label16 = new System.Windows.Forms.Label();
+            this.websocketTextBox = new System.Windows.Forms.TextBox();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -156,16 +159,20 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.portsCountGroupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.outStoreConfigGroupBox.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.portsCountGroupBox2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // systemConfigGroup
@@ -207,14 +214,16 @@
             // 
             // serverConfigGroup
             // 
+            this.serverConfigGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.serverConfigGroup.CausesValidation = false;
+            this.serverConfigGroup.Controls.Add(this.splitContainer3);
             this.serverConfigGroup.Controls.Add(this.urlContainer);
             this.serverConfigGroup.Cursor = System.Windows.Forms.Cursors.Default;
-            this.serverConfigGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serverConfigGroup.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.serverConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.serverConfigGroup.Name = "serverConfigGroup";
-            this.serverConfigGroup.Padding = new System.Windows.Forms.Padding(3, 50, 3, 3);
+            this.serverConfigGroup.Padding = new System.Windows.Forms.Padding(3, 30, 3, 30);
             this.serverConfigGroup.Size = new System.Drawing.Size(439, 195);
             this.serverConfigGroup.TabIndex = 0;
             this.serverConfigGroup.TabStop = false;
@@ -222,10 +231,10 @@
             // 
             // urlContainer
             // 
-            this.urlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.urlContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.urlContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.urlContainer.IsSplitterFixed = true;
-            this.urlContainer.Location = new System.Drawing.Point(3, 64);
+            this.urlContainer.Location = new System.Drawing.Point(3, 44);
             this.urlContainer.MaximumSize = new System.Drawing.Size(0, 50);
             this.urlContainer.Name = "urlContainer";
             // 
@@ -237,7 +246,7 @@
             // 
             this.urlContainer.Panel2.Controls.Add(this.urlTextBox);
             this.urlContainer.Size = new System.Drawing.Size(433, 50);
-            this.urlContainer.SplitterDistance = 60;
+            this.urlContainer.SplitterDistance = 112;
             this.urlContainer.TabIndex = 1;
             this.urlContainer.TabStop = false;
             // 
@@ -245,18 +254,18 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 22);
+            this.label1.Location = new System.Drawing.Point(32, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 12);
+            this.label1.Size = new System.Drawing.Size(52, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "URL";
+            this.label1.Text = "api域名";
             // 
             // urlTextBox
             // 
             this.urlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.urlTextBox.Location = new System.Drawing.Point(3, 19);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(338, 21);
+            this.urlTextBox.Size = new System.Drawing.Size(286, 21);
             this.urlTextBox.TabIndex = 0;
             this.urlTextBox.TabStop = false;
             this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.urlTextBox_Validating);
@@ -270,7 +279,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(483, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(486, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -292,13 +301,13 @@
             this.dbConfigPanel.Controls.Add(this.dbAddressTextBox, 1, 0);
             this.dbConfigPanel.Location = new System.Drawing.Point(3, 34);
             this.dbConfigPanel.Name = "dbConfigPanel";
-            this.dbConfigPanel.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.dbConfigPanel.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
             this.dbConfigPanel.RowCount = 4;
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(459, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(462, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -350,34 +359,31 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(288, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(271, 21);
             this.dbNameTextBox.TabIndex = 7;
-            this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // dbUserNameTextBox
             // 
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(288, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(271, 21);
             this.dbUserNameTextBox.TabIndex = 8;
-            this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // dbPasswordTextBox
             // 
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(288, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(271, 21);
             this.dbPasswordTextBox.TabIndex = 9;
-            this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // dbAddressTextBox
             // 
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(288, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(271, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -974,6 +980,56 @@
             this.inStoreRadio1.UseVisualStyleBackColor = true;
             this.inStoreRadio1.CheckedChanged += new System.EventHandler(this.inStoreRadio_CheckedChanged);
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(96, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.inStoreIPTextBox);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.portPowerTextBox);
+            this.splitContainer2.Panel2.Controls.Add(this.label15);
+            this.splitContainer2.Size = new System.Drawing.Size(307, 32);
+            this.splitContainer2.SplitterDistance = 143;
+            this.splitContainer2.TabIndex = 7;
+            this.splitContainer2.TabStop = false;
+            // 
+            // inStoreIPTextBox
+            // 
+            this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inStoreIPTextBox.Location = new System.Drawing.Point(0, 7);
+            this.inStoreIPTextBox.Name = "inStoreIPTextBox";
+            this.inStoreIPTextBox.Size = new System.Drawing.Size(128, 21);
+            this.inStoreIPTextBox.TabIndex = 3;
+            this.inStoreIPTextBox.TextChanged += new System.EventHandler(this.inStoreIPTextBox_TextChanged);
+            this.inStoreIPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IPTextBox_Validating);
+            // 
+            // portPowerTextBox
+            // 
+            this.portPowerTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.portPowerTextBox.Location = new System.Drawing.Point(73, 7);
+            this.portPowerTextBox.Name = "portPowerTextBox";
+            this.portPowerTextBox.Size = new System.Drawing.Size(63, 21);
+            this.portPowerTextBox.TabIndex = 1;
+            this.portPowerTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.portPowerTextBox_Validating);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(64, 12);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "端口功率:";
+            // 
             // outStoreConfigGroupBox
             // 
             this.outStoreConfigGroupBox.Controls.Add(this.tableLayoutPanel4);
@@ -1408,55 +1464,47 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // inStoreIPTextBox
+            // splitContainer3
             // 
-            this.inStoreIPTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inStoreIPTextBox.Location = new System.Drawing.Point(0, 7);
-            this.inStoreIPTextBox.Name = "inStoreIPTextBox";
-            this.inStoreIPTextBox.Size = new System.Drawing.Size(128, 21);
-            this.inStoreIPTextBox.TabIndex = 3;
-            this.inStoreIPTextBox.TextChanged += new System.EventHandler(this.inStoreIPTextBox_TextChanged);
-            this.inStoreIPTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.IPTextBox_Validating);
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 115);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 100);
+            this.splitContainer3.MaximumSize = new System.Drawing.Size(0, 50);
+            this.splitContainer3.Name = "splitContainer3";
             // 
-            // splitContainer2
+            // splitContainer3.Panel1
             // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(96, 3);
-            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer3.Panel1.Controls.Add(this.label16);
             // 
-            // splitContainer2.Panel1
+            // splitContainer3.Panel2
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.inStoreIPTextBox);
+            this.splitContainer3.Panel2.Controls.Add(this.websocketTextBox);
+            this.splitContainer3.Size = new System.Drawing.Size(433, 50);
+            this.splitContainer3.SplitterDistance = 113;
+            this.splitContainer3.TabIndex = 2;
+            this.splitContainer3.TabStop = false;
             // 
-            // splitContainer2.Panel2
+            // label16
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.portPowerTextBox);
-            this.splitContainer2.Panel2.Controls.Add(this.label15);
-            this.splitContainer2.Size = new System.Drawing.Size(307, 32);
-            this.splitContainer2.SplitterDistance = 143;
-            this.splitContainer2.TabIndex = 7;
-            this.splitContainer2.TabStop = false;
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "websocket地址";
             // 
-            // label15
+            // websocketTextBox
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 10);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(64, 12);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "端口功率:";
-            // 
-            // portPowerTextBox
-            // 
-            this.portPowerTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.portPowerTextBox.Location = new System.Drawing.Point(73, 7);
-            this.portPowerTextBox.Name = "portPowerTextBox";
-            this.portPowerTextBox.Size = new System.Drawing.Size(63, 21);
-            this.portPowerTextBox.TabIndex = 1;
-            this.portPowerTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.portPowerTextBox_Validating);
+            this.websocketTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.websocketTextBox.Location = new System.Drawing.Point(3, 19);
+            this.websocketTextBox.Name = "websocketTextBox";
+            this.websocketTextBox.Size = new System.Drawing.Size(285, 21);
+            this.websocketTextBox.TabIndex = 0;
+            this.websocketTextBox.TabStop = false;
+            this.websocketTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
             // MainForm
             // 
@@ -1511,6 +1559,12 @@
             this.portsCountGroupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.outStoreConfigGroupBox.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -1520,12 +1574,12 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1629,6 +1683,9 @@
         private System.Windows.Forms.TextBox inStoreIPTextBox;
         private System.Windows.Forms.TextBox portPowerTextBox;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox websocketTextBox;
     }
 }
 
