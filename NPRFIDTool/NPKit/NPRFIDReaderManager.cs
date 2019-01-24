@@ -307,7 +307,8 @@ namespace NPRFIDTool.NPKit
         private void updateCheckedData(TagReadData tag)
         {
             bool isNew = true;
-            foreach (var item in checkedDict)
+            JObject enumCheckedDict = new JObject(checkedDict);
+            foreach (var item in enumCheckedDict)
             {
                 if (tag.EPCString == item.Key)
                 {
