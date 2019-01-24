@@ -100,13 +100,7 @@ namespace NPRFIDTool
             // websocket通知结束读入库端口
             NPWebSocket.stopInStoreHandler += (wse) =>
             {
-                Console.WriteLine("websocket通知入库结束，主动请求Remain表数据");
-                services.getStockInit((remainData)=>
-                {
-                    if (remainData == null) return;
-                    // 处理返回数据，存储到数据库中的Remain表
-                    dbManager.appendDataToDataBase(TableType.TableTypeRemain,remainData);
-                });
+                Console.WriteLine("websocket通知入库结束");
             };
             NPWebSocket.connectStopHandler += (wse) =>
             {
@@ -258,7 +252,8 @@ namespace NPRFIDTool
                 resetAppStatus();
                 return;
             }
-            dbManager.clearDataBase(TableType.TableTypeCheck);
+            // 加载已盘点的数据
+            readerManager.checkedDict = dbManager.queryDataBase(TableType.TableTypeCheck);
             dbManager.clearDataBase(TableType.TableTypeRemain);
             #endregion
 
@@ -296,9 +291,11 @@ namespace NPRFIDTool
                     // 开始分析差异数据，上报分析结果
                     Console.WriteLine("分析盘点结果");
                     // 请求remain表数据，根据数据表进行盘点分析
+#pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
                     services.getStockInit((remainData) =>
                     {
                         if (remainData == null) return;
+                        dbManager.refreshTableWithData(TableType.TableTypeRemain, remainData);
                         JArray diffArray = readerManager.getDiffTagsArray(remainData);
                         if (diffArray.Count > 0)
                         {
@@ -311,6 +308,7 @@ namespace NPRFIDTool
                             Console.WriteLine("盘点成功");
                         }
                     });
+#pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
                 };
             }
             #endregion
@@ -700,7 +698,6 @@ namespace NPRFIDTool
             updateButton.Enabled = true;
         }
    
-
         #region 控件输入校验
         private void urlTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
