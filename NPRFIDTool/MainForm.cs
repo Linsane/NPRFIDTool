@@ -86,7 +86,6 @@ namespace NPRFIDTool
             #endregion
 
             #region 初始化各种组件
-            services = new NPBackendService(configManager.configURL, "", "RFID0012");
             readerManager = new NPRFIDReaderManager();
             NPWebSocket.errorHandler += (err) => {
                 MessageBox.Show("websocket 连接失败");
@@ -97,6 +96,7 @@ namespace NPRFIDTool
             {
                 readerManager.scanType = 0;
                 readerManager.beginReading(inStoreReader);
+                timingManager.startIOStoreTimer();
                 Console.WriteLine("开始入库");
             };
             // websocket通知开始读入库端口
@@ -104,6 +104,7 @@ namespace NPRFIDTool
             {
                 readerManager.scanType = 1;
                 readerManager.beginReading(inStoreReader);
+                timingManager.startIOStoreTimer();
                 Console.WriteLine("开始出库");
             };
             // websocket通知结束读出入库端口
@@ -117,14 +118,7 @@ namespace NPRFIDTool
             {
                 resetAppStatus();
             };
-            #region WebSocket连接
-            // "123.207.54.83:1359"
-            if (configManager.wsAddress != null)
-            {
-                NPWebSocket.connect(configManager.wsAddress);
-            }
-            
-            #endregion
+
             readerManager.failHandler += (ex) =>
             {
                 MessageBox.Show("连接读写器失败:" + ex.ToString());
@@ -147,7 +141,7 @@ namespace NPRFIDTool
             dbUserNameTextBox.Text = manager.dbConfig.username == null ? "" : manager.dbConfig.username;
             dbPasswordTextBox.Text = manager.dbConfig.password == null ? "" : manager.dbConfig.password;
             inStoreIPTextBox.Text = manager.inStoreIP == null ? "" : manager.inStoreIP;
-            portPowerTextBox.Text = manager.inStorePower == null ? "" : manager.inStorePower.ToString();
+            portPowerTextBox.Text = manager.inStorePower == 0 ? "" : manager.inStorePower.ToString();
             websocketTextBox.Text = manager.wsAddress == null ? "" : manager.wsAddress;
             if (manager.inStoreAntNums > 0)
             {
@@ -263,6 +257,9 @@ namespace NPRFIDTool
 
             controlButton.Text = "停止";
             controlButton.Enabled = false;
+
+            services = new NPBackendService(configManager.configURL, "", "RFID0012");
+                 
             #region 数据库连接
             if (dbManager != null) dbManager.disconnectDataBase();
             dbManager = new NPDBManager(configManager.dbConfig);
@@ -281,11 +278,20 @@ namespace NPRFIDTool
             dbManager.clearDataBase(TableType.TableTypeRemain);
             #endregion
 
+            #region WebSocket连接
+            // "123.207.54.83:1359"
+            if (configManager.wsAddress != null)
+            {
+                NPWebSocket.connect(configManager.wsAddress);
+            }
+
+            #endregion
+
             #region RFID硬件信息
             // 入库
             inStoreReader = new NPRFIDReaderInfo(PortType.PortTypeInStore, configManager.inStoreIP, configManager.inStoreAntNums, configManager.inStorePorts, configManager.inStorePower);
             // 盘点
-            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts, 0);
+            checkReader = new NPRFIDReaderInfo(PortType.PortTypeCheck, configManager.checkIP, configManager.checkAntNums, configManager.checkPorts, configManager.inStorePower);
             #endregion
 
             #region Timing控制
@@ -330,6 +336,15 @@ namespace NPRFIDTool
                     });
 #pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
                 };
+                timingManager.ioStoreTimeOutHandler += (src, ee) =>
+                {
+                    if(readerManager.scanType != -1)
+                    {
+                        readerManager.scanType = -1;
+                        readerManager.endReading(inStoreReader);
+                        Console.WriteLine("出入库读取达到时限停止");
+                    }
+                };
             }
             #endregion
             timingManager.startCycles();
@@ -366,10 +381,6 @@ namespace NPRFIDTool
             configManager.dbConfig.password = dbPasswordTextBox.Text;
             configManager.inStoreIP = inStoreIPTextBox.Text;
             configManager.inStorePower = ushort.Parse(portPowerTextBox.Text);
-            if (configManager.wsAddress != websocketTextBox.Text)
-            {
-                NPWebSocket.connect(websocketTextBox.Text);
-            }
             configManager.wsAddress = websocketTextBox.Text;
 
             foreach (RadioButton rb in inStoreRadioList)
@@ -722,6 +733,7 @@ namespace NPRFIDTool
             if (timingManager != null) timingManager.stopCycles();
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
+            NPWebSocket.disconnect();
             readerManager.clear();
         }
    
@@ -795,24 +807,25 @@ namespace NPRFIDTool
                 double var1 = double.Parse(textBox.Text);
                 errorProvider1.SetError(textBox, null);
                 hasError = false;
+                if (textBox == scanCycleTextBox || textBox == analyzeCycleTextBox)
+                {
+                    if (analyzeCycleTextBox.Text == "" || scanCycleTextBox.Text == "") return;
+                    double var2 = double.Parse(scanCycleTextBox.Text);
+                    double var3 = double.Parse(analyzeCycleTextBox.Text);
+                    if (var2 >= var3)
+                    {
+                        errorProvider1.SetError(textBox, "盘点周期时长需大于扫描周期时长");
+                        hasError = true;
+                    }
+
+                }
             }
             catch
             {
                 errorProvider1.SetError(textBox, "请输入有效的数字");
                 hasError = true;
             }
-            if(textBox == scanCycleTextBox || textBox == analyzeCycleTextBox)
-            {
-                if(analyzeCycleTextBox.Text == null) return;
-                double var1 = double.Parse(scanCycleTextBox.Text);
-                double var2 = double.Parse(analyzeCycleTextBox.Text);
-                if(var1>= var2)
-                {
-                    errorProvider1.SetError(textBox, "盘点周期时长需大于扫描周期时长");
-                    hasError = true;
-                }
 
-            }
         }
 
         private void showEmptyWarningIfNeeded(TextBox txtBox, System.ComponentModel.CancelEventArgs e)
@@ -834,6 +847,24 @@ namespace NPRFIDTool
 
         private void portPowerTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            var textBox = sender as TextBox;
+            showEmptyWarningIfNeeded(textBox, e);
+            try
+            {
+                ushort var1 = ushort.Parse(textBox.Text);
+                errorProvider1.SetError(textBox, null);
+                hasError = false;
+                if( var1 < 1 || var1 > 3000)
+                {
+                    errorProvider1.SetError(textBox, "请输入1-3000之间有效整数");
+                    hasError = true;
+                }
+            }
+            catch
+            {
+                errorProvider1.SetError(textBox, "请输入1-3000之间有效整数");
+                hasError = true;
+            }
 
         }
     }

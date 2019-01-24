@@ -1,24 +1,23 @@
 {
-  "configURL": "http://rfidv2.radeit.cn",
+  "configURL": "http://rfidv2.radeit.com",
   "dbConfig": {
     "dbAddress": "127.0.0.1:3306",
     "dbName": "rfid_db",
     "username": "root",
     "password": "910123"
   },
-  "inStoreIP": "192.168.100.189",
-  "inStorePower": 3000,
+  "inStoreIP": "192.168.100.188",
+  "inStorePower": 1000,
   "inStoreAntNums": 4,
   "inStorePorts": [
-    2,
-    3
-  ],
-  "checkIP": "192.168.100.189",
-  "checkAntNums": 4,
-  "checkPorts": [
     1
   ],
-  "readPortTime": 20,
+  "checkIP": "192.168.100.188",
+  "checkAntNums": 4,
+  "checkPorts": [
+    4
+  ],
+  "readPortTime": 10,
   "readPortCycle": 24,
   "analyzeCycle": 48,
   "wsAddress": "123.207.54.83:1359"

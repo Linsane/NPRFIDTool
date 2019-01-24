@@ -25,7 +25,7 @@ namespace NPRFIDTool.NPKit
         public DBConfig dbConfig;     // 本地数据配置
 
         public string inStoreIP; // 入库天线IP
-        public ushort inStorePower; // 入库天线功率
+        public ushort inStorePower = 0; // 入库天线功率
         public int inStoreAntNums; // 天线端口数
         public JArray inStorePorts = new JArray(); // 入库使用端口
 
