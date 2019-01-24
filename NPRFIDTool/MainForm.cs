@@ -295,24 +295,22 @@ namespace NPRFIDTool
                 {
                     // 开始分析差异数据，上报分析结果
                     Console.WriteLine("分析盘点结果");
-                    JObject remainData = dbManager.queryDataBase(TableType.TableTypeRemain);
-                    if (remainData.Count <= 0)
+                    // 请求remain表数据，根据数据表进行盘点分析
+                    services.getStockInit((remainData) =>
                     {
-                        Console.WriteLine("不存在remain数据,不需要分析结果");
-                        return;
-                    }
-                    JArray diffArray = readerManager.getDiffTagsArray(remainData);
-                    if (diffArray.Count > 0)
-                    {
-                        services.reportCheckDiff(diffArray);
-                        Console.WriteLine("盘点失败，上报差异结果"+ diffArray.ToString());
-                    }
-                    else
-                    {
-                        services.reportCheckSuccess(null);
-                        Console.WriteLine("盘点成功");
-                    }
-                    
+                        if (remainData == null) return;
+                        JArray diffArray = readerManager.getDiffTagsArray(remainData);
+                        if (diffArray.Count > 0)
+                        {
+                            services.reportCheckDiff(diffArray);
+                            Console.WriteLine("盘点失败，上报差异结果" + diffArray.ToString());
+                        }
+                        else
+                        {
+                            services.reportCheckSuccess(null);
+                            Console.WriteLine("盘点成功");
+                        }
+                    });
                 };
             }
             #endregion
