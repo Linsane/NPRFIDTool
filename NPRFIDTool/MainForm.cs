@@ -120,6 +120,7 @@ namespace NPRFIDTool
             // websocket通知结束读出入库端口
             NPWebSocket.stopScanHandler += (wse) =>
             {
+                reportScanStop();
                 readerManager.scanType = -1;
                 readerManager.endReading(inStoreReader);
                 Console.WriteLine("停止读出入库端口");
@@ -370,6 +371,7 @@ namespace NPRFIDTool
                 {
                     if(readerManager.scanType != -1)
                     {
+                        reportScanStop();
                         readerManager.scanType = -1;
                         readerManager.endReading(inStoreReader);
                         Console.WriteLine("出入库读取达到时限停止");
@@ -902,6 +904,18 @@ namespace NPRFIDTool
                 hasError = true;
             }
 
+        }
+
+        private void reportScanStop()
+        {
+            if (readerManager.scanType == 1) // 出库停止
+            {
+                NPWebSocket.sendStopOut();
+            }
+            else // 入库停止
+            {
+                NPWebSocket.sendStopEnter();
+            }
         }
     }
 }

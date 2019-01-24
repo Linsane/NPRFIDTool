@@ -161,5 +161,27 @@ namespace NPRFIDTool.NPKit
             };
             heartBeatTimer.Enabled = true;
         }
+
+        public static void sendStopEnter()
+        {
+            JObject obj = new JObject();
+            obj.Add("client_type", "app");
+            obj.Add("data", false);
+            obj.Add("act", "enter_stop_scan");
+            obj.Add("status",1);
+            string json = obj.ToString(Formatting.None);
+            ws.Send(json);
+        }
+
+        public static void sendStopOut()
+        {
+            JObject obj = new JObject();
+            obj.Add("client_type", "app");
+            obj.Add("data", false);
+            obj.Add("act", "out_stop_scan");
+            obj.Add("status", 1);
+            string json = obj.ToString(Formatting.None);
+            ws.Send(json);
+        }
     }
 }
