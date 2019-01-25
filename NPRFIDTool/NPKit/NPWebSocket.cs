@@ -25,9 +25,8 @@ namespace NPRFIDTool.NPKit
         public static void connect(string address)
         {
             
-            if (ws != null && (ws.ReadyState != WebSocketState.Connecting || ws.ReadyState != WebSocketState.Open) && currentAddress == address)
+            if (ws != null && (ws.ReadyState == WebSocketState.Connecting || ws.ReadyState == WebSocketState.Open) && currentAddress == address)
             {
-                ws.ConnectAsync();
                 return;
             }
             else

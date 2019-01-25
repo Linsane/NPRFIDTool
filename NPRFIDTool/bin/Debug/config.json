@@ -15,10 +15,10 @@
   "checkIP": "192.168.100.188",
   "checkAntNums": 4,
   "checkPorts": [
-    3
+    2
   ],
   "readPortTime": 20,
   "readPortCycle": 30,
   "analyzeCycle": 48,
-  "wsAddress": "123.207.54.83:1359"
+  "wsAddress": "123.207.54.83:1369"
 }

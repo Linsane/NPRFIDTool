@@ -124,6 +124,15 @@ namespace NPRFIDTool
                 resetAppStatus();
             };
 
+            #region WebSocket连接
+            // "123.207.54.83:1359"
+            if (configManager.wsAddress != null)
+            {
+                NPWebSocket.connect(configManager.wsAddress);
+            }
+
+            #endregion
+
             readerManager.failHandler += (ex) =>
             {
                 MessageBox.Show("连接读写器失败:" + ex.ToString());
@@ -368,9 +377,11 @@ namespace NPRFIDTool
             Console.WriteLine("启动的第一次盘点");
             NPLogger.log("启动的第一次盘点");
             readerManager.beginReading(checkReader);
-            timingManager.readPortTimer.Enabled = true;
-
-
+            if(timingManager != null && timingManager.readPortTimer != null)
+            {
+                timingManager.readPortTimer.Enabled = true;
+            }
+            
             controlButton.Enabled = true;
         }
 
@@ -733,6 +744,7 @@ namespace NPRFIDTool
             systemConfigGroup.Enabled = true;
             portsConfigGroupBox.Enabled = true;
             updateButton.Enabled = true;
+            this.ControlBox = true;
         }
 
         // 重设程序状态
@@ -746,13 +758,12 @@ namespace NPRFIDTool
             {
                 resetControlButton();
             }
-            this.ControlBox = true;
             if (dbManager != null) dbManager.disconnectDataBase();
             if (timingManager != null) timingManager.stopCycles();
             timingManager = null;
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
-            NPWebSocket.disconnect();
+            //NPWebSocket.disconnect();
             readerManager.clear();
         }
    
