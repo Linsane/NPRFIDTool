@@ -135,7 +135,7 @@ namespace NPRFIDTool
 
             readerManager.failHandler += (ex) =>
             {
-                MessageBox.Show("连接读写器失败:" + ex.ToString());
+                MessageBox.Show("连接读写器失败,请检查设备连接", "设备连接失败");
                 resetAppStatus();
             };
             readerManager.portFailHandler += (ex) =>
