@@ -801,6 +801,11 @@ namespace NPRFIDTool
         {
             readerManager.beginReading(inStoreReader);
             Console.WriteLine("开始入库");
+            JArray array = new JArray();
+            array.Add("300833B2DDD9014AB0001013");
+            array.Add("300833B2DDD9014AB0001014");
+            services.reportCheckDiff(array);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
