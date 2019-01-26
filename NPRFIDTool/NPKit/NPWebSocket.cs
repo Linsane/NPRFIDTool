@@ -50,7 +50,7 @@ namespace NPRFIDTool.NPKit
                 errorHandler(e);
             };
 
-            
+            ws.Connect();
         }
 
         // 断开长连接

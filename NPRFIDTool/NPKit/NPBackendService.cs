@@ -133,7 +133,7 @@ namespace NPRFIDTool.NPKit
         public async Task<JObject> reportCheckDiff(JArray diffArray)
         {
             JObject obj = new JObject();
-            obj.Add("action", "utscan");
+            obj.Add("action", "check");
             obj.Add("check", "err");
             obj.Add("label", diffArray);
 

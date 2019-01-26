@@ -61,6 +61,8 @@ namespace NPRFIDTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TEST CODE
+            NPWebSocket.connect();
             #region 控件管理
             inStoreRadioList = new RadioButton[]
             {
@@ -815,8 +817,11 @@ namespace NPRFIDTool
 
             #region 测试代码
 
-            // 记录数据到remain表
-            dbManager.refreshTableWithData(TableType.TableTypeRemain, readerManager.inStoreDict);
+            // 上报入库数据
+            JArray array = new JArray();
+            array.Add("300833B2DDD9014AB0001013");
+            array.Add("300833B2DDD9014AB0001014");
+            NPWebSocket.sendTagData(array);
 
             #endregion
         }

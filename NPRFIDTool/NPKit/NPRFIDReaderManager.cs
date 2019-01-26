@@ -241,7 +241,7 @@ namespace NPRFIDTool.NPKit
             }
             if (sendNeededTags.Count > 0)
             {
-                //NPWebSocket.sendTagData(sendNeededTags);
+                NPWebSocket.sendTagData(sendNeededTags);
                 Console.WriteLine();
                 foreach(string tag in sendNeededTags)
                 {
