@@ -32,6 +32,8 @@ namespace NPRFIDTool.NPKit
 
         public int scanType = -1; // 扫描类型 0 表示入库 1表示出库
 
+        public int connectStatus = ConnectStauts.NotStarted; // 0 未启动 1 连接成功 -1 连接失败 -2 端口有误
+
         public void beginReading(NPRFIDReaderInfo readerInfo)
         {
             Reader reader = null;
@@ -49,11 +51,12 @@ namespace NPRFIDTool.NPKit
                     wrapReader.isReading = false;
                     wrapReader.validPorts = (int[])reader.ParamGet("ConnectedAntennas");
                     readerDict.Add(readerInfo.readerIP, wrapReader);
-                    
+                    connectStatus = ConnectStauts.Connected;
                 }
                 catch (Exception ex)
                 {
                     failHandler(ex);
+                    connectStatus = ConnectStauts.Disconnected;
                 }
             }
             else
@@ -88,6 +91,7 @@ namespace NPRFIDTool.NPKit
                 {
                     if (Array.IndexOf(wrapReader.validPorts, port) == -1)
                     {
+                        connectStatus = ConnectStauts.PortError;
                         portFailHandler("盘点天线选择有误");
                         return;
                     }
@@ -101,6 +105,7 @@ namespace NPRFIDTool.NPKit
                 {
                     if (Array.IndexOf(wrapReader.validPorts, port) == -1)
                     {
+                        connectStatus = ConnectStauts.PortError;
                         portFailHandler("入库天线选择有误");
                         return;
                     }
@@ -346,6 +351,7 @@ namespace NPRFIDTool.NPKit
         {
             checkedDict.RemoveAll();
             inStoreDict.RemoveAll();
+            readerDict.Clear();
         }
 
         public void clearCheck()

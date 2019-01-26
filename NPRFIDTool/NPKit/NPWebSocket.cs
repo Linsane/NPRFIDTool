@@ -12,6 +12,16 @@ namespace NPRFIDTool.NPKit
     delegate void WebSocketStartOutStoreHandler(EventArgs e); // 通知开始读出库数据
     delegate void WebSocketStopInStoreHandler(EventArgs e); // 通知结束读入库端口
     delegate void WebSocketCloseHandler(EventArgs e); // 通知结束读入库端口
+    delegate void WebSocketStatusHandler(EventArgs e); // 通知反馈硬件设备的连接状态
+
+    class ConnectStauts
+    {
+        public static int Connected = 1;        // 已连接
+        public static int NotStarted = -1;      // 未启动
+        public static int Disconnected = -2;    // 无法连接
+        public static int PortError = -3;       // 端口无法使用
+    }
+
     class NPWebSocket
     {
         private static WebSocket ws;
@@ -20,6 +30,7 @@ namespace NPRFIDTool.NPKit
         public static WebSocketStartOutStoreHandler startOutStoreHandler;
         public static WebSocketStopInStoreHandler stopScanHandler;
         public static WebSocketCloseHandler connectStopHandler;
+        public static WebSocketStatusHandler statusHandler;
         public static string currentAddress;
         public static System.Timers.Timer heartBeatTimer;
 
@@ -71,6 +82,7 @@ namespace NPRFIDTool.NPKit
                         {
                             Console.WriteLine("后台检测RFID硬件连接状态");
                             NPLogger.log("后台检测RFID硬件连接状态");
+                            statusHandler(e);
                         }
                         break;
                 }
@@ -180,6 +192,33 @@ namespace NPRFIDTool.NPKit
             obj.Add("data", false);
             obj.Add("act", "out_stop_scan");
             obj.Add("status", 1);
+            string json = obj.ToString(Formatting.None);
+            ws.Send(json);
+        }
+
+        public static void sendRFIDConnectStatus(int status)
+        {
+            JObject obj = new JObject();
+            obj.Add("client_type", "app");
+            obj.Add("act", "connect_status");
+            obj.Add("code", status);
+            string msg = "";
+            switch (status)
+            {
+                case 1:
+                    msg = "设备连接正常。";
+                    break;
+                case -1:
+                    msg = "客户端未启动,尚未连接设备。";
+                    break;
+                case -2:
+                    msg = "设备连接失败，请检查客户端配置。";
+                    break;
+                case -3:
+                    msg = "选择了不可用的天线，请检查配置。";
+                    break;
+            }
+            obj.Add("msg", msg);
             string json = obj.ToString(Formatting.None);
             ws.Send(json);
         }

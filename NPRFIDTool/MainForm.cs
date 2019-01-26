@@ -126,6 +126,14 @@ namespace NPRFIDTool
                 Console.WriteLine("停止读出入库端口");
                 NPLogger.log("停止读出入库端口");
             };
+            // websocket查询本地硬件的连接状态
+            NPWebSocket.statusHandler += (wse) =>
+            {
+                int status = readerManager.connectStatus;
+                Console.WriteLine("反馈硬件连接状态code:" + status.ToString());
+                NPLogger.log("反馈硬件连接状态code:" + status.ToString());
+                NPWebSocket.sendRFIDConnectStatus(ConnectStauts.Connected);
+            };
             NPWebSocket.connectStopHandler += (wse) =>
             {
                 resetAppStatus();
@@ -236,6 +244,10 @@ namespace NPRFIDTool
             Button button = (Button)sender;
             if (button.Text == "停止") // 处理停止逻辑
             {
+                if (readerManager != null)
+                {
+                    readerManager.connectStatus = ConnectStauts.NotStarted;
+                }
                 resetAppStatus();
                 return;
             }
