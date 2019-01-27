@@ -9,12 +9,12 @@
   "inStoreIP": "192.168.100.188",
   "inStoreAntNums": 4,
   "inStorePorts": [
-    2
+    1
   ],
   "checkIP": "192.168.100.188",
   "checkAntNums": 4,
   "checkPorts": [
-    3
+    4
   ],
   "readPortTime": 10,
   "readPortCycle": 30,

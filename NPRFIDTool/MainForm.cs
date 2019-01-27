@@ -252,8 +252,8 @@ namespace NPRFIDTool
                 resetAppStatus();
                 return;
             }
-            // 加载已盘点的数据
-            readerManager.checkedDict = dbManager.queryDataBase(TableType.TableTypeCheck);
+            // 清空数据库
+            dbManager.clearDataBase(TableType.TableTypeCheck);
             dbManager.clearDataBase(TableType.TableTypeRemain);
             #endregion
 
@@ -801,10 +801,13 @@ namespace NPRFIDTool
         {
             readerManager.beginReading(inStoreReader);
             Console.WriteLine("开始入库");
+
+            /*
             JArray array = new JArray();
             array.Add("300833B2DDD9014AB0001013");
             array.Add("300833B2DDD9014AB0001014");
             services.reportCheckDiff(array);
+            */
 
         }
 
@@ -816,11 +819,12 @@ namespace NPRFIDTool
             #region 测试代码
 
             // 上报入库数据
+            /*
             JArray array = new JArray();
             array.Add("300833B2DDD9014AB0001013");
             array.Add("300833B2DDD9014AB0001014");
             NPWebSocket.sendTagData(array);
-
+            */
             #endregion
         }
 
