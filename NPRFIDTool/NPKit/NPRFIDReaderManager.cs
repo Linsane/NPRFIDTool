@@ -12,11 +12,13 @@ namespace NPRFIDTool.NPKit
 {
     enum ReaderStatus { readerStatusStop, readerStatusReading };
     delegate void CreatReaderFailHandler(Exception ex);
+    delegate void ReaderPortFail(string msg);
     class WrapReader
     {
         public Reader reader;
         public JArray checkPorts;
         public bool isReading;
+        public int[] validPorts;
     }
 
     class NPRFIDReaderManager
@@ -26,6 +28,7 @@ namespace NPRFIDTool.NPKit
 
         public Dictionary<string,WrapReader> readerDict = new Dictionary<string, WrapReader>();
         public CreatReaderFailHandler failHandler;
+        public ReaderPortFail portFailHandler;
 
         public void beginReading(NPRFIDReaderInfo readerInfo)
         {
@@ -42,7 +45,9 @@ namespace NPRFIDTool.NPKit
                     wrapReader.reader = reader;
                     wrapReader.checkPorts = new JArray();
                     wrapReader.isReading = false;
+                    wrapReader.validPorts = (int[])reader.ParamGet("ConnectedAntennas");
                     readerDict.Add(readerInfo.readerIP, wrapReader);
+                    
                 }
                 catch (Exception ex)
                 {
@@ -70,15 +75,34 @@ namespace NPRFIDTool.NPKit
 
             if (reader == null) return;
 
+            // 判断端口是否可用
+
+            int[] usedPorts = readerInfo.usedPorts.ToObject<int[]>();
             // 如果是盘点Reader，则记录好盘点所用的端口
             ArrayList arrayList = null;
             if (readerInfo.portType == PortType.PortTypeCheck)
             {
+                foreach (int port in usedPorts)
+                {
+                    if (Array.IndexOf(wrapReader.validPorts, port) == -1)
+                    {
+                        portFailHandler("盘点天线选择有误");
+                        return;
+                    }
+                }
                 wrapReader.checkPorts = new JArray(readerInfo.usedPorts);
             }
 
             if(readerInfo.portType == PortType.PortTypeInStore)
             {
+                foreach (int port in usedPorts)
+                {
+                    if (Array.IndexOf(wrapReader.validPorts, port) == -1)
+                    {
+                        portFailHandler("入库天线选择有误");
+                        return;
+                    }
+                }
                 inStoreDict.RemoveAll();
             }
 

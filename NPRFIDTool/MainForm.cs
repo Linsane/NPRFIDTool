@@ -104,12 +104,16 @@ namespace NPRFIDTool
             };
             NPWebSocket.connectStopHandler += (wse) =>
             {
-                MessageBox.Show("websocket 连接断开");
                 resetAppStatus();
             };
             readerManager.failHandler += (ex) =>
             {
                 MessageBox.Show("连接读写器失败:" + ex.ToString());
+                resetAppStatus();
+            };
+            readerManager.portFailHandler += (ex) =>
+            {
+                MessageBox.Show(ex);
                 resetAppStatus();
             };
             #endregion
@@ -387,7 +391,6 @@ namespace NPRFIDTool
             configManager.analyzeCycle = int.Parse(analyzeCycleTextBox.Text);
 
             configManager.markDownConfiguration();
-            MessageBox.Show("配置已更新");
             #endregion
         }
 
