@@ -61,8 +61,6 @@ namespace NPRFIDTool
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // TEST CODE
-            NPWebSocket.connect();
             #region 控件管理
             inStoreRadioList = new RadioButton[]
             {

@@ -77,26 +77,9 @@ namespace NPRFIDTool.NPKit
                 wrapReader.checkPorts = new JArray(readerInfo.usedPorts);
             }
 
-            // 如果是入库Reader，判断一下端口功率是否为10db，不是的话改为10db
             if(readerInfo.portType == PortType.PortTypeInStore)
             {
-
                 inStoreDict.RemoveAll();
-
-                /*
-                AntPower[] pwrs = (AntPower[])reader.ParamGet("AntPowerConf"); // 获取当前配置
-                bool needUpdate = false;
-                foreach (int num in readerInfo.usedPorts)
-                {
-                    if(pwrs[num-1].ReadPower != 10)
-                    {
-                        pwrs[num - 1].ReadPower = 10;
-                        pwrs[num - 1].WritePower = 10;
-                        needUpdate = true;
-                    }
-                }
-                reader.ParamSet("AntPowerConf", pwrs);
-                */
             }
 
             if (!wrapReader.isReading)
@@ -160,11 +143,21 @@ namespace NPRFIDTool.NPKit
             //获取读写器最大发射功率
             int maxp = (int)reader.ParamGet("RfPowerMax");
             AntPower[] pwrs = new AntPower[antnum];
+            int[] usedPorts = readerInfo.usedPorts.ToObject<int[]>();
             for (int i = 0; i < antnum; ++i)
             {
                 pwrs[i].AntId = (byte)(i + 1);
-                pwrs[i].ReadPower = (ushort)maxp;
-                pwrs[i].WritePower = (ushort)maxp;
+                if (readerInfo.portType == PortType.PortTypeCheck && Array.IndexOf(usedPorts,antnum+1) != -1)
+                {
+                    pwrs[i].ReadPower = (ushort)maxp;
+                    pwrs[i].WritePower = (ushort)maxp;
+                }
+                else
+                {
+                    pwrs[i].ReadPower = (ushort)1000;
+                    pwrs[i].WritePower = (ushort)1000;
+                }
+               
             }
             //设置读写器发射功率,本例设置为最大发射功率，可根据实际情况调整,
             //一般来说，功率越大则识别距离越远
