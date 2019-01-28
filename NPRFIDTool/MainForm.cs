@@ -95,17 +95,23 @@ namespace NPRFIDTool
             // websocket通知开始读入库端口
             NPWebSocket.startInStoreHandler += (wse) =>
             {
-
+                readerManager.scanType = 0;
+                readerManager.beginReading(inStoreReader);
+                Console.WriteLine("开始入库");
             };
             // websocket通知开始读入库端口
             NPWebSocket.startOutStoreHandler += (wse) =>
             {
-
+                readerManager.scanType = 1;
+                readerManager.beginReading(inStoreReader);
+                Console.WriteLine("开始出库");
             };
             // websocket通知结束读出入库端口
             NPWebSocket.stopScanHandler += (wse) =>
             {
-                
+                readerManager.scanType = -1;
+                readerManager.endReading(inStoreReader);
+                Console.WriteLine("停止读出入库端口");
             };
             NPWebSocket.connectStopHandler += (wse) =>
             {
@@ -122,9 +128,6 @@ namespace NPRFIDTool
                 resetAppStatus();
             };
             #endregion
-
-            // TEST CODE
-            NPWebSocket.connect();
         }
 
         // 加载本地配置到控件
@@ -686,6 +689,9 @@ namespace NPRFIDTool
         {
             controlButton.Text = "启动";
             controlButton.Enabled = true;
+            systemConfigGroup.Enabled = true;
+            portsConfigGroupBox.Enabled = true;
+            updateButton.Enabled = true;
         }
 
         // 重设程序状态
@@ -704,9 +710,6 @@ namespace NPRFIDTool
             NPWebSocket.disconnect();
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
-            systemConfigGroup.Enabled = true;
-            portsConfigGroupBox.Enabled = true;
-            updateButton.Enabled = true;
         }
    
         #region 控件输入校验
@@ -833,7 +836,7 @@ namespace NPRFIDTool
             JArray array = new JArray();
             array.Add("300833B2DDD9014AB0001013");
             array.Add("300833B2DDD9014AB0001014");
-            NPWebSocket.sendTagData(array, false);
+            NPWebSocket.sendTagData(array, 0);
             #endregion
         }
 

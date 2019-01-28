@@ -30,6 +30,8 @@ namespace NPRFIDTool.NPKit
         public CreatReaderFailHandler failHandler;
         public ReaderPortFail portFailHandler;
 
+        public int scanType = -1; // 扫描类型 0 表示入库 1表示出库
+
         public void beginReading(NPRFIDReaderInfo readerInfo)
         {
             Reader reader = null;
@@ -171,7 +173,7 @@ namespace NPRFIDTool.NPKit
             for (int i = 0; i < antnum; ++i)
             {
                 pwrs[i].AntId = (byte)(i + 1);
-                if (readerInfo.portType == PortType.PortTypeCheck && Array.IndexOf(usedPorts,antnum+1) != -1)
+                if (readerInfo.portType == PortType.PortTypeCheck && Array.IndexOf(usedPorts,i+1) != -1)
                 {
                     pwrs[i].ReadPower = (ushort)maxp;
                     pwrs[i].WritePower = (ushort)maxp;
@@ -256,13 +258,13 @@ namespace NPRFIDTool.NPKit
                     }
                 }
             }
-            if (sendNeededTags.Count > 0)
+            if (sendNeededTags.Count > 0 && scanType != -1)
             {
-                NPWebSocket.sendTagData(sendNeededTags);
-                Console.WriteLine();
+                NPWebSocket.sendTagData(sendNeededTags, scanType);
+                string msg = "上报" + (scanType == 1 ? "出库" : "入库") + "数据:";
                 foreach(string tag in sendNeededTags)
                 {
-                    Console.WriteLine("上报入库数据:" + tag);
+                    Console.WriteLine(msg + tag);
                 }
             }
         }

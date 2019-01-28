@@ -59,6 +59,7 @@ namespace NPRFIDTool.NPKit
             ws.OnOpen += (sender, e) =>
             {
                 Console.WriteLine("Websocket Open");
+                initial();
             };
 
             ws.OnClose += (sender, e) =>
@@ -86,10 +87,10 @@ namespace NPRFIDTool.NPKit
         }
 
         // 发送入库数据
-        public static void sendTagData(JArray tags, bool outScan)
+        public static void sendTagData(JArray tags, int scanType)
         {
             JObject obj = new JObject();
-            if (outScan)
+            if (scanType == 1)
             {
                 obj.Add("act", "out_scan");
             }
@@ -100,6 +101,16 @@ namespace NPRFIDTool.NPKit
             
             obj.Add("client_type", "app");
             obj.Add("data", tags);
+            obj.Add("status", 1);
+            string json = obj.ToString(Formatting.None);
+            ws.Send(json);
+        }
+
+        public static void initial()
+        {
+            JObject obj = new JObject();
+            obj.Add("client_type", "app");
+            obj.Add("data", "");
             string json = obj.ToString(Formatting.None);
             ws.Send(json);
         }
