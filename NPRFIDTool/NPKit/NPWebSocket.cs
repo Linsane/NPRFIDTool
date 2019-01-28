@@ -7,7 +7,8 @@ using Newtonsoft.Json;
 namespace NPRFIDTool.NPKit
 {
     delegate void WebSocketErrorHandler(ErrorEventArgs err);
-    delegate void WebSocketStartInStoreHandler(EventArgs e); // 通知开始读入库端口
+    delegate void WebSocketStartInStoreHandler(EventArgs e); // 通知开始读入库数据
+    delegate void WebSocketStartOutStoreHandler(EventArgs e); // 通知开始读出库数据
     delegate void WebSocketStopInStoreHandler(EventArgs e); // 通知结束读入库端口
     delegate void WebSocketCloseHandler(EventArgs e); // 通知结束读入库端口
     class NPWebSocket
@@ -15,7 +16,8 @@ namespace NPRFIDTool.NPKit
         private static WebSocket ws;
         public static WebSocketErrorHandler errorHandler;
         public static WebSocketStartInStoreHandler startInStoreHandler;
-        public static WebSocketStopInStoreHandler stopInStoreHandler;
+        public static WebSocketStartOutStoreHandler startOutStoreHandler;
+        public static WebSocketStopInStoreHandler stopScanHandler;
         public static WebSocketCloseHandler connectStopHandler;
 
         // 建立长链接
@@ -30,7 +32,28 @@ namespace NPRFIDTool.NPKit
 
             ws.OnMessage += (sender, e) =>
             {
-                Console.WriteLine("Websocket says: " + e.Data);
+                JObject msgObj = JObject.Parse(e.Data);
+                switch (msgObj["act"].ToString())
+                {
+                    case "enter_scan":
+                        {
+                            Console.WriteLine("后台通知开始扫描入库标签");
+                            startInStoreHandler(e);
+                        }
+                        break;
+                    case "out_scan":
+                        {
+                            Console.WriteLine("后台通知开始扫描出库标签");
+                            startOutStoreHandler(e);
+                        }
+                        break;
+                    case "stop_scan":
+                        {
+                            Console.WriteLine("后台通知停止扫描出入库标签");
+                            stopScanHandler(e);
+                        }
+                        break;
+                }
             };
 
             ws.OnOpen += (sender, e) =>
@@ -63,13 +86,20 @@ namespace NPRFIDTool.NPKit
         }
 
         // 发送入库数据
-        public static void sendTagData(JArray tags)
+        public static void sendTagData(JArray tags, bool outScan)
         {
             JObject obj = new JObject();
-            obj.Add("act", "scan_elabel");
+            if (outScan)
+            {
+                obj.Add("act", "out_scan");
+            }
+            else
+            {
+                obj.Add("act", "enter_scan");
+            }
+            
             obj.Add("client_type", "app");
             obj.Add("data", tags);
-            obj.Add("status", "1");
             string json = obj.ToString(Formatting.None);
             ws.Send(json);
         }

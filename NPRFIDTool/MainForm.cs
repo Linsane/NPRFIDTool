@@ -97,10 +97,15 @@ namespace NPRFIDTool
             {
 
             };
-            // websocket通知结束读入库端口
-            NPWebSocket.stopInStoreHandler += (wse) =>
+            // websocket通知开始读入库端口
+            NPWebSocket.startOutStoreHandler += (wse) =>
             {
-                Console.WriteLine("websocket通知入库结束");
+
+            };
+            // websocket通知结束读出入库端口
+            NPWebSocket.stopScanHandler += (wse) =>
+            {
+                
             };
             NPWebSocket.connectStopHandler += (wse) =>
             {
@@ -117,6 +122,9 @@ namespace NPRFIDTool
                 resetAppStatus();
             };
             #endregion
+
+            // TEST CODE
+            NPWebSocket.connect();
         }
 
         // 加载本地配置到控件
@@ -822,12 +830,10 @@ namespace NPRFIDTool
             #region 测试代码
 
             // 上报入库数据
-            /*
             JArray array = new JArray();
             array.Add("300833B2DDD9014AB0001013");
             array.Add("300833B2DDD9014AB0001014");
-            NPWebSocket.sendTagData(array);
-            */
+            NPWebSocket.sendTagData(array, false);
             #endregion
         }
 
