@@ -259,7 +259,7 @@
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 12);
             this.label16.TabIndex = 0;
-            this.label16.Text = "websocket地址";
+            this.label16.Text = "WebSocket地址";
             // 
             // websocketTextBox
             // 
@@ -300,7 +300,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "api域名";
+            this.label1.Text = "API域名";
             // 
             // urlTextBox
             // 
@@ -321,7 +321,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(501, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(504, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -349,7 +349,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(477, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(480, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -401,7 +401,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(286, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbNameTextBox.TabIndex = 7;
             // 
             // dbUserNameTextBox
@@ -409,7 +409,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(286, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             // 
             // dbPasswordTextBox
@@ -417,7 +417,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(286, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             // 
             // dbAddressTextBox
@@ -425,7 +425,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(286, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(289, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -466,6 +466,7 @@
             this.scanConfigGroupBox.TabIndex = 1;
             this.scanConfigGroupBox.TabStop = false;
             this.scanConfigGroupBox.Text = "扫描配置";
+            this.scanConfigGroupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.scanConfigGroupBox_Paint);
             // 
             // splitContainer1
             // 
@@ -520,7 +521,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(136, 12);
             this.label12.TabIndex = 0;
-            this.label12.Text = "扫描天线时长(秒)";
+            this.label12.Text = "扫描时长(秒)";
             // 
             // scanCycleTextBox
             // 
@@ -572,7 +573,6 @@
             this.networkConfigGroupBox.Size = new System.Drawing.Size(875, 315);
             this.networkConfigGroupBox.TabIndex = 0;
             this.networkConfigGroupBox.TabStop = false;
-            this.networkConfigGroupBox.Text = "网络配置";
             // 
             // networkConfigContrainer
             // 
@@ -604,7 +604,7 @@
             this.inStoreConfigGroupBox.Size = new System.Drawing.Size(432, 170);
             this.inStoreConfigGroupBox.TabIndex = 0;
             this.inStoreConfigGroupBox.TabStop = false;
-            this.inStoreConfigGroupBox.Text = "出入库天线配置";
+            this.inStoreConfigGroupBox.Text = "出入库配置";
             // 
             // tableLayoutPanel1
             // 
@@ -637,7 +637,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 30);
             this.label9.TabIndex = 0;
-            this.label9.Text = "入库天线IP:";
+            this.label9.Text = "读写器地址";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label10
@@ -1064,7 +1064,7 @@
             this.outStoreConfigGroupBox.Size = new System.Drawing.Size(430, 170);
             this.outStoreConfigGroupBox.TabIndex = 0;
             this.outStoreConfigGroupBox.TabStop = false;
-            this.outStoreConfigGroupBox.Text = "仓库天线配置";
+            this.outStoreConfigGroupBox.Text = "盘点配置";
             // 
             // tableLayoutPanel4
             // 
@@ -1211,7 +1211,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 30);
             this.label6.TabIndex = 0;
-            this.label6.Text = "盘点天线IP:";
+            this.label6.Text = "读写器地址";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
@@ -1502,11 +1502,11 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(792, 584);
+            this.label17.Location = new System.Drawing.Point(801, 584);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 12);
+            this.label17.Size = new System.Drawing.Size(77, 12);
             this.label17.TabIndex = 7;
-            this.label17.Text = "版本号：v1.0.0";
+            this.label17.Text = "版本号：v1.0";
             // 
             // MainForm
             // 
@@ -1524,7 +1524,7 @@
             this.MinimumSize = new System.Drawing.Size(842, 642);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RFID桌面管理器";
+            this.Text = "海豚湾终端管理器";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.systemConfigGroup.ResumeLayout(false);
             this.systemConfigContainer.Panel1.ResumeLayout(false);

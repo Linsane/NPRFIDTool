@@ -36,7 +36,7 @@ namespace NPRFIDTool
         #region 界面改动
         private void systemConfigGroup_Paint(object sender, PaintEventArgs e)
         {
-            string title = "系统环境配置";
+            string title = "";
             SizeF fontSize = e.Graphics.MeasureString(title, systemConfigGroup.Font);
             e.Graphics.DrawString(title, systemConfigGroup.Font, Brushes.Black, (systemConfigGroup.Width - fontSize.Width) / 2, 1);
         }
@@ -928,6 +928,13 @@ namespace NPRFIDTool
             {
                 NPWebSocket.sendStopEnter();
             }
+        }
+
+        private void scanConfigGroupBox_Paint(object sender, PaintEventArgs e)
+        {
+            string title = "运行记录";
+            SizeF fontSize = e.Graphics.MeasureString(title, scanConfigGroupBox.Font);
+            e.Graphics.DrawString(title, scanConfigGroupBox.Font, Brushes.Black, (scanConfigGroupBox.Width - fontSize.Width) / 2 + fontSize.Width / 2, 1);
         }
     }
 }
