@@ -91,6 +91,12 @@ namespace NPRFIDTool
             foreach (NPCheckInfoControl control in this.checkControls)
             {
                 NPRFIDReaderInfo info = (NPRFIDReaderInfo)this.checkReaderInfos[control.index];
+                if (control.hasError || info.readerIP == "" || info.readerIP == null)
+                {
+                    MessageBox.Show("含有不正确的配置，请进行修改");
+                    errorExist = true;
+                    break;
+                }
                 info.readerIP = control.getIpAddress();
                 info.readerAntNum = control.getPortNum();
                 info.usedPorts = control.getUsedPort();
