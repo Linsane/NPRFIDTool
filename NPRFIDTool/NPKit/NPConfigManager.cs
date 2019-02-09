@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace NPRFIDTool.NPKit
 {
-    enum PortType { PortTypeInStore, PortTypeCheck };
+    public enum PortType { PortTypeInStore, PortTypeCheck };
     class DBConfig
     {
         public string dbAddress;

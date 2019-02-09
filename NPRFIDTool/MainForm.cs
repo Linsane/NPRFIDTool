@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
+using NPCustomWinFormControl;
 
 namespace NPRFIDTool
 {
@@ -935,6 +936,23 @@ namespace NPRFIDTool
             string title = "运行记录";
             SizeF fontSize = e.Graphics.MeasureString(title, scanConfigGroupBox.Font);
             e.Graphics.DrawString(title, scanConfigGroupBox.Font, Brushes.Black, (scanConfigGroupBox.Width - fontSize.Width) / 2 + fontSize.Width / 2, 1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CheckInfoForm checkForm = new CheckInfoForm();
+            NPRFIDReaderInfo info1 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.100", 4, new JArray(new int[] { 1,2}), "盘点器1");
+            NPRFIDReaderInfo info2 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.101", 4, new JArray(new int[] { 2, 3 }), "盘点器2");
+            NPRFIDReaderInfo info3 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.102", 4, new JArray(new int[] { 2, 3 }), "盘点器3");
+            NPRFIDReaderInfo info4 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.103", 4, new JArray(new int[] { 3, 4 }), "盘点器4");
+            NPRFIDReaderInfo info5 = new NPRFIDReaderInfo(PortType.PortTypeCheck, "192.168.100.104", 4, new JArray(new int[] { 1, 3 }), "盘点器5");
+            NPRFIDReaderInfo[] infoArray = new NPRFIDReaderInfo[]
+            {
+                info1, info2, info3, info4, info5, info1, info1,info1, info1
+            };
+            checkForm.setUpCheckReaderInfos(infoArray);
+            checkForm.ShowDialog();
+     
         }
     }
 }
