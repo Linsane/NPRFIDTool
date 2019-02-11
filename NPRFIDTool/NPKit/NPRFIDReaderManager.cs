@@ -336,5 +336,11 @@ namespace NPRFIDTool.NPKit
             }
             return diffArray;
         }
+
+        public void clear()
+        {
+            checkedDict.RemoveAll();
+            inStoreDict.RemoveAll();
+        }
     }
 }

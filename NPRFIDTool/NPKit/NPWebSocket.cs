@@ -33,6 +33,7 @@ namespace NPRFIDTool.NPKit
             ws.OnMessage += (sender, e) =>
             {
                 JObject msgObj = JObject.Parse(e.Data);
+                if (msgObj["act"] == null) return; 
                 switch (msgObj["act"].ToString())
                 {
                     case "enter_scan":

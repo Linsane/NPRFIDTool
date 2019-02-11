@@ -123,8 +123,6 @@
             this.checkCheckBox1 = new System.Windows.Forms.CheckBox();
             this.controlButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.systemConfigGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemConfigContainer)).BeginInit();
             this.systemConfigContainer.Panel1.SuspendLayout();
@@ -265,7 +263,7 @@
             this.localConfigGroup.Location = new System.Drawing.Point(0, 0);
             this.localConfigGroup.Name = "localConfigGroup";
             this.localConfigGroup.Padding = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.localConfigGroup.Size = new System.Drawing.Size(468, 195);
+            this.localConfigGroup.Size = new System.Drawing.Size(471, 195);
             this.localConfigGroup.TabIndex = 0;
             this.localConfigGroup.TabStop = false;
             this.localConfigGroup.Text = "本地配置";
@@ -293,7 +291,7 @@
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.dbConfigPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.dbConfigPanel.Size = new System.Drawing.Size(444, 158);
+            this.dbConfigPanel.Size = new System.Drawing.Size(447, 158);
             this.dbConfigPanel.TabIndex = 0;
             // 
             // label2
@@ -345,7 +343,7 @@
             this.dbNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbNameTextBox.Location = new System.Drawing.Point(148, 48);
             this.dbNameTextBox.Name = "dbNameTextBox";
-            this.dbNameTextBox.Size = new System.Drawing.Size(273, 21);
+            this.dbNameTextBox.Size = new System.Drawing.Size(276, 21);
             this.dbNameTextBox.TabIndex = 7;
             this.dbNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -354,7 +352,7 @@
             this.dbUserNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbUserNameTextBox.Location = new System.Drawing.Point(148, 87);
             this.dbUserNameTextBox.Name = "dbUserNameTextBox";
-            this.dbUserNameTextBox.Size = new System.Drawing.Size(273, 21);
+            this.dbUserNameTextBox.Size = new System.Drawing.Size(276, 21);
             this.dbUserNameTextBox.TabIndex = 8;
             this.dbUserNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -363,7 +361,7 @@
             this.dbPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbPasswordTextBox.Location = new System.Drawing.Point(148, 127);
             this.dbPasswordTextBox.Name = "dbPasswordTextBox";
-            this.dbPasswordTextBox.Size = new System.Drawing.Size(273, 21);
+            this.dbPasswordTextBox.Size = new System.Drawing.Size(276, 21);
             this.dbPasswordTextBox.TabIndex = 9;
             this.dbPasswordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -372,7 +370,7 @@
             this.dbAddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dbAddressTextBox.Location = new System.Drawing.Point(148, 9);
             this.dbAddressTextBox.Name = "dbAddressTextBox";
-            this.dbAddressTextBox.Size = new System.Drawing.Size(273, 21);
+            this.dbAddressTextBox.Size = new System.Drawing.Size(276, 21);
             this.dbAddressTextBox.TabIndex = 6;
             this.dbAddressTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.dbInfo_Validating);
             // 
@@ -1414,35 +1412,11 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(31, 628);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "开始入库";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(115, 628);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "结束入库";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 661);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.controlButton);
             this.Controls.Add(this.portsConfigGroupBox);
             this.Controls.Add(this.updateButton);
@@ -1599,8 +1573,6 @@
         private System.Windows.Forms.RadioButton checkRadio1;
         private System.Windows.Forms.Button controlButton;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
     }
 }
 

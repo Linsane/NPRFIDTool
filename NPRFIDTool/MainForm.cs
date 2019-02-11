@@ -710,6 +710,7 @@ namespace NPRFIDTool
             NPWebSocket.disconnect();
             readerManager.endReading(inStoreReader);
             readerManager.endReading(checkReader);
+            readerManager.clear();
         }
    
         #region 控件输入校验
@@ -810,36 +811,6 @@ namespace NPRFIDTool
             }
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            readerManager.beginReading(inStoreReader);
-            Console.WriteLine("开始入库");
-
-            /*
-            JArray array = new JArray();
-            array.Add("300833B2DDD9014AB0001013");
-            array.Add("300833B2DDD9014AB0001014");
-            services.reportCheckDiff(array);
-            */
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            readerManager.endReading(inStoreReader);
-            Console.WriteLine("结束入库");
-
-            #region 测试代码
-
-            // 上报入库数据
-            JArray array = new JArray();
-            array.Add("300833B2DDD9014AB0001013");
-            array.Add("300833B2DDD9014AB0001014");
-            NPWebSocket.sendTagData(array, 0);
-            #endregion
-        }
-
 
     }
 }
